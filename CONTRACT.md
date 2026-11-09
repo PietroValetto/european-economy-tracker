@@ -94,8 +94,12 @@ Field rules:
 - For `type: "country-strip"` (small multiples, one panel per country), `series[]` has one entry per country with `"key"` = Eurostat geo code and `"label"` = country name; the story country (if any) has role `story`.
 - `latest` and `previous` are what the key-indicator tile and the "latest value" label show. Values are already rounded for display by the pipeline (`decimals` below).
 - Optional `"decimals": 1` (display precision, default 1) and `"format": "pct" | "pp" | "index" | "eur_bn" | "level"`.
+- Optional `series[].mark`: `"bar"` or `"line"`. For `bar-line`, it says which series are bars (default: the first series is bars, the rest lines).
+- Optional `series[].curve`: `"step-after"` for policy rates and other step series (default: linear).
+- Categorical bars (for example debt by country): `points` may use category labels instead of periods (`[["Italy", 137.1], ...]`), with an optional bundle-level `"highlight": "IT"` naming the one bar drawn in amber.
+- Table `columns[].format` is one of `pct`, `pp`, `index`, `level`, `eur_bn`, `change` (`pp` and `change` are shown signed). Rows may carry `"decimals"`.
 - `original: true` marks a measure the tracker computes itself (it shows an "Original" tag and links to its methods entry).
-- `data_updated` is the publisher's own update stamp (Eurostat `updated`, ECB `Last-Modified`). `built_at` is the pipeline run time, UTC.
+- `data_updated` is the publisher's own update stamp (Eurostat `updated`, ECB `Last-Modified`). `built_at` is the pipeline run time as an ISO timestamp in `UTC` (suffix `Z`).
 
 ## 4. Index: `site/data/index.json`
 
@@ -113,10 +117,10 @@ Field rules:
   ],
   "strip": [
     {"id": "gdp-qq", "label": "GDP growth", "value": 0.4, "unit": "% q/q", "period": "2026-Q3",
-     "previous": 0.6, "good_direction": "up", "chart_id": "gdp-growth", "page": "gdp", "flag": null}
+     "previous": 0.6, "decimals": 1, "good_direction": "up", "chart_id": "gdp-growth", "page": "gdp", "flag": null}
   ],
   "countries": ["DE", "FR", "IT", "ES", "NL", "PL"],
-  "failed": [{"id": "some-series", "error": "empty response"}]
+  "failed": [{"id": "some-series", "error": "empty response", "chart_ids": ["chart-that-uses-it"]}]
 }
 ```
 

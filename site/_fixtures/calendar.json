@@ -1,0 +1,228 @@
+{
+ "built_at": "2026-11-09T06:00:00Z",
+ "events": [
+  {
+   "date": "2026-11-09",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Industrial producer prices, September",
+   "publisher": "Eurostat",
+   "tier": 3,
+   "datasets": [
+    "sts_inppd_m"
+   ],
+   "chart_ids": []
+  },
+  {
+   "date": "2026-11-13",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "GDP and employment, flash estimate, Q3 2026",
+   "publisher": "Eurostat",
+   "tier": 1,
+   "datasets": [
+    "namq_10_gdp",
+    "namq_10_pe"
+   ],
+   "chart_ids": [
+    "gdp-growth"
+   ]
+  },
+  {
+   "date": "2026-11-13",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Industrial production, September",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "sts_inpr_m"
+   ],
+   "chart_ids": []
+  },
+  {
+   "date": "2026-11-17",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Inflation (HICP), October, final",
+   "publisher": "Eurostat",
+   "tier": 1,
+   "datasets": [
+    "prc_hicp_minr"
+   ],
+   "chart_ids": [
+    "hicp-headline-core",
+    "hicp-contrib",
+    "hicp-countries-heatmap"
+   ]
+  },
+  {
+   "date": "2026-11-19",
+   "time": "10:00",
+   "tz": "Europe/Brussels",
+   "title": "Negotiated wage indicator, Q3 2026",
+   "publisher": "ECB",
+   "tier": 2,
+   "datasets": [
+    "INW"
+   ],
+   "chart_ids": [
+    "wages-negotiated"
+   ]
+  },
+  {
+   "date": "2026-11-20",
+   "time": "16:00",
+   "tz": "Europe/Brussels",
+   "title": "Consumer confidence, flash, November",
+   "publisher": "European Commission",
+   "tier": 2,
+   "datasets": [
+    "ei_bssi_m_r2"
+   ],
+   "chart_ids": []
+  },
+  {
+   "date": "2026-11-27",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Economic sentiment indicator, November",
+   "publisher": "European Commission",
+   "tier": 2,
+   "datasets": [
+    "ei_bssi_m_r2"
+   ],
+   "chart_ids": [
+    "esi-sentiment"
+   ]
+  },
+  {
+   "date": "2026-11-27",
+   "time": "10:00",
+   "tz": "Europe/Brussels",
+   "title": "Monetary developments, October",
+   "publisher": "ECB",
+   "tier": 3,
+   "datasets": [
+    "BSI"
+   ],
+   "chart_ids": []
+  },
+  {
+   "date": "2026-12-01",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Unemployment, October",
+   "publisher": "Eurostat",
+   "tier": 1,
+   "datasets": [
+    "une_rt_m"
+   ],
+   "chart_ids": [
+    "unemployment-rate"
+   ]
+  },
+  {
+   "date": "2026-12-02",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Inflation (HICP), November, flash estimate",
+   "publisher": "Eurostat",
+   "tier": 1,
+   "datasets": [
+    "prc_hicp_minr",
+    "prc_hicp_fpd"
+   ],
+   "chart_ids": [
+    "hicp-headline-core"
+   ]
+  },
+  {
+   "date": "2026-12-05",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "GDP and employment, Q3 2026, detailed",
+   "publisher": "Eurostat",
+   "tier": 1,
+   "datasets": [
+    "namq_10_gdp"
+   ],
+   "chart_ids": [
+    "gdp-growth",
+    "gdp-contrib",
+    "gdp-countries"
+   ]
+  },
+  {
+   "date": "2026-12-15",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Job vacancies, Q3 2026",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "jvs_q_r21"
+   ],
+   "chart_ids": [
+    "beveridge-curve"
+   ]
+  },
+  {
+   "date": "2026-12-17",
+   "time": "14:15",
+   "tz": "Europe/Brussels",
+   "title": "ECB monetary policy decision",
+   "publisher": "ECB",
+   "tier": 1,
+   "datasets": [
+    "FM"
+   ],
+   "chart_ids": [
+    "ecb-policy-rates"
+   ]
+  },
+  {
+   "date": "2026-12-17",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Inflation (HICP), November, final",
+   "publisher": "Eurostat",
+   "tier": 1,
+   "datasets": [
+    "prc_hicp_minr"
+   ],
+   "chart_ids": [
+    "hicp-headline-core"
+   ]
+  },
+  {
+   "date": "2026-12-18",
+   "time": "10:00",
+   "tz": "Europe/Brussels",
+   "title": "Euro area balance of payments, October",
+   "publisher": "ECB",
+   "tier": 3,
+   "datasets": [
+    "BP6"
+   ],
+   "chart_ids": [
+    "current-account"
+   ]
+  },
+  {
+   "date": "2026-12-22",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Government debt and deficit, Q3 2026",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "gov_10q_ggdebt"
+   ],
+   "chart_ids": [
+    "gov-debt",
+    "gov-balance"
+   ]
+  }
+ ]
+}

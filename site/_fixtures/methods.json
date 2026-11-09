@@ -1,0 +1,344 @@
+{
+ "entries": [
+  {
+   "id": "hicp-headline-core",
+   "title": "Inflation is back above the 2% target",
+   "what": "Euro area HICP, % change on a year earlier",
+   "transform": "Shown as published.",
+   "sources": [
+    {
+     "name": "Eurostat",
+     "dataset": "Eurostat, HICP (prc_hicp_minr)",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table"
+    }
+   ],
+   "frequency": "Monthly",
+   "caveats": "Flash estimate for the latest month (flag e).",
+   "original": false,
+   "updated": "2026-11-04"
+  },
+  {
+   "id": "hicp-contrib",
+   "title": "Energy is doing most of the pushing",
+   "what": "Contributions to euro area HICP inflation, percentage points",
+   "transform": "Each component's annual rate multiplied by its weight in the basket, so the parts add up to the total (small rounding gaps possible).",
+   "sources": [
+    {
+     "name": "Eurostat",
+     "dataset": "Eurostat, HICP contributions (prc_hicp_ctr)",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_ctr/default/table"
+    }
+   ],
+   "frequency": "Monthly",
+   "caveats": "None beyond the usual revisions.",
+   "original": false,
+   "updated": "2026-11-04"
+  },
+  {
+   "id": "hicp-countries-heatmap",
+   "title": "Prices are rising faster almost everywhere",
+   "what": "HICP, % change on a year earlier, by country",
+   "transform": "Shown as published.",
+   "sources": [
+    {
+     "name": "Eurostat",
+     "dataset": "Eurostat, HICP (prc_hicp_minr)",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table"
+    }
+   ],
+   "frequency": "Monthly",
+   "caveats": "Colours centre on the ECB's 2% target. Latest month is a flash estimate.",
+   "original": false,
+   "updated": "2026-11-04"
+  },
+  {
+   "id": "hicp-bank",
+   "title": "Inflation at a glance",
+   "what": "Euro area HICP and components, % change on a year earlier",
+   "transform": "Latest published value, the one before it and the same period a year earlier.",
+   "sources": [
+    {
+     "name": "Eurostat",
+     "dataset": "Eurostat (prc_hicp_minr); ECB (HICP supercore)",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table"
+    }
+   ],
+   "frequency": "Monthly",
+   "caveats": "None beyond the usual revisions.",
+   "original": false,
+   "updated": "2026-11-04"
+  },
+  {
+   "id": "gdp-growth",
+   "title": "The economy is still growing, slowly",
+   "what": "Euro area real GDP, % change",
+   "transform": "Bars: change on the previous period. Line: change on the same period a year earlier.",
+   "sources": [
+    {
+     "name": "Eurostat",
+     "dataset": "Eurostat, quarterly national accounts (namq_10_gdp)",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table"
+    }
+   ],
+   "frequency": "Quarterly",
+   "caveats": "Chain-linked volumes, seasonally and calendar adjusted.",
+   "original": false,
+   "updated": "2026-11-05"
+  },
+  {
+   "id": "gdp-contrib",
+   "title": "Households are carrying the recovery",
+   "what": "Contributions to quarterly euro area GDP growth, percentage points",
+   "transform": "Each component's annual rate multiplied by its weight in the basket, so the parts add up to the total (small rounding gaps possible).",
+   "sources": [
+    {
+     "name": "Eurostat",
+     "dataset": "Eurostat, quarterly national accounts (namq_10_gdp)",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table"
+    }
+   ],
+   "frequency": "Quarterly",
+   "caveats": "2020 swings are clipped at plus and minus 2 points to keep recent quarters readable.",
+   "original": true,
+   "updated": "2026-11-05"
+  },
+  {
+   "id": "gdp-countries",
+   "title": "Spain keeps outgrowing the big three",
+   "what": "Real GDP, % change on a year earlier",
+   "transform": "Shown as published, one panel per country on a shared scale.",
+   "sources": [
+    {
+     "name": "Eurostat",
+     "dataset": "Eurostat, quarterly national accounts (namq_10_gdp)",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table"
+    }
+   ],
+   "frequency": "Quarterly",
+   "caveats": "Pandemic quarters fall outside the shared scale.",
+   "original": false,
+   "updated": "2026-11-05"
+  },
+  {
+   "id": "unemployment-rate",
+   "title": "Unemployment has stopped falling",
+   "what": "Unemployment rate, % of the labour force, seasonally adjusted",
+   "transform": "Shown as published.",
+   "sources": [
+    {
+     "name": "Eurostat",
+     "dataset": "Eurostat, unemployment by sex and age (une_rt_m)",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m/default/table"
+    }
+   ],
+   "frequency": "Monthly",
+   "caveats": "None beyond the usual revisions.",
+   "original": false,
+   "updated": "2026-11-05"
+  },
+  {
+   "id": "beveridge-curve",
+   "title": "Fewer vacancies, same unemployment",
+   "what": "Job vacancy rate against the unemployment rate, quarterly, %",
+   "transform": "Quarterly vacancy rate against the quarterly average of monthly unemployment rates.",
+   "sources": [
+    {
+     "name": "Eurostat",
+     "dataset": "Eurostat (jvs_q_r21, une_rt_m)",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/jvs_q_r21/default/table"
+    }
+   ],
+   "frequency": "Quarterly",
+   "caveats": "None beyond the usual revisions.",
+   "original": false,
+   "updated": "2026-09-15"
+  },
+  {
+   "id": "labour-bank",
+   "title": "The labour market at a glance",
+   "what": "Euro area",
+   "transform": "Latest published value, the one before it and the same period a year earlier.",
+   "sources": [
+    {
+     "name": "Eurostat",
+     "dataset": "Eurostat (une_rt_m, namq_10_pe, jvs_q_r21); Indeed Hiring Lab",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m/default/table"
+    }
+   ],
+   "frequency": "Monthly",
+   "caveats": "None beyond the usual revisions.",
+   "original": false,
+   "updated": "2026-11-04"
+  },
+  {
+   "id": "unemployment-heatmap",
+   "title": "Southern Europe has closed much of the gap",
+   "what": "Unemployment rate by country, annual average, %",
+   "transform": "Shown as published.",
+   "sources": [
+    {
+     "name": "Eurostat",
+     "dataset": "Eurostat, unemployment by sex and age (une_rt_a, une_rt_m)",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_a/default/table"
+    }
+   ],
+   "frequency": "Annual",
+   "caveats": "2026 is the average of January to September.",
+   "original": false,
+   "updated": "2026-11-04"
+  },
+  {
+   "id": "wages-negotiated",
+   "title": "Pay deals are cooling just as prices heat up",
+   "what": "Euro area wage growth, % change on a year earlier",
+   "transform": "Shown as published.",
+   "sources": [
+    {
+     "name": "ECB",
+     "dataset": "ECB (INW, EWT); Eurostat (lc_lci_r2_q)",
+     "url": "https://data.ecb.europa.eu/data/datasets/INW"
+    }
+   ],
+   "frequency": "Quarterly",
+   "caveats": "The wage tracker runs ahead of the data because it codes agreements already signed.",
+   "original": false,
+   "updated": "2026-11-04"
+  },
+  {
+   "id": "bond-yields",
+   "title": "Borrowing costs are back near their 2023 highs",
+   "what": "10-year government bond yield, %",
+   "transform": "Shown as published.",
+   "sources": [
+    {
+     "name": "ECB",
+     "dataset": "ECB, euro area yield curves (YC)",
+     "url": "https://data.ecb.europa.eu/data/datasets/YC"
+    }
+   ],
+   "frequency": "Daily",
+   "caveats": "None beyond the usual revisions.",
+   "original": false,
+   "updated": "2026-11-09"
+  },
+  {
+   "id": "eurusd",
+   "title": "The euro has given back part of its 2025 rally",
+   "what": "US dollars per euro, ECB reference rate",
+   "transform": "Shown as published.",
+   "sources": [
+    {
+     "name": "ECB",
+     "dataset": "ECB, euro foreign exchange reference rates (EXR)",
+     "url": "https://data.ecb.europa.eu/data/datasets/EXR"
+    }
+   ],
+   "frequency": "Daily",
+   "caveats": "None beyond the usual revisions.",
+   "original": false,
+   "updated": "2026-11-06"
+  },
+  {
+   "id": "ecb-policy-rates",
+   "title": "The ECB has started raising rates again",
+   "what": "ECB policy rates and the overnight market rate, %",
+   "transform": "Shown as published.",
+   "sources": [
+    {
+     "name": "ECB",
+     "dataset": "ECB (FM, EST)",
+     "url": "https://data.ecb.europa.eu/data/datasets/FM"
+    }
+   ],
+   "frequency": "Daily",
+   "caveats": "None beyond the usual revisions.",
+   "original": false,
+   "updated": "2026-11-09"
+  },
+  {
+   "id": "gov-debt",
+   "title": "Public debt is creeping up again",
+   "what": "Euro area general government gross debt, % of GDP",
+   "transform": "Shown as published.",
+   "sources": [
+    {
+     "name": "Eurostat",
+     "dataset": "Eurostat, quarterly government debt (gov_10q_ggdebt)",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10q_ggdebt/default/table"
+    }
+   ],
+   "frequency": "Quarterly",
+   "caveats": "None beyond the usual revisions.",
+   "original": false,
+   "updated": "2026-10-21"
+  },
+  {
+   "id": "gov-balance",
+   "title": "Deficits are stuck above the 3% line",
+   "what": "Euro area general government balance, % of GDP, seasonally adjusted",
+   "transform": "Shown as published.",
+   "sources": [
+    {
+     "name": "Eurostat",
+     "dataset": "Eurostat, quarterly government finance (gov_10q_ggnfa)",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10q_ggnfa/default/table"
+    }
+   ],
+   "frequency": "Quarterly",
+   "caveats": "None beyond the usual revisions.",
+   "original": false,
+   "updated": "2026-10-21"
+  },
+  {
+   "id": "gov-debt-countries",
+   "title": "Five countries owe more than they produce in a year",
+   "what": "General government gross debt, % of GDP, second quarter of 2026",
+   "transform": "Shown as published.",
+   "sources": [
+    {
+     "name": "Eurostat",
+     "dataset": "Eurostat, quarterly government debt (gov_10q_ggdebt)",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10q_ggdebt/default/table"
+    }
+   ],
+   "frequency": "Quarterly",
+   "caveats": "None beyond the usual revisions.",
+   "original": false,
+   "updated": "2026-10-21"
+  },
+  {
+   "id": "current-account",
+   "title": "The surplus is shrinking as energy bills rise",
+   "what": "Euro area current account, % of GDP, four-quarter sum",
+   "transform": "Components summed over the last four quarters and divided by four-quarter nominal GDP.",
+   "sources": [
+    {
+     "name": "ECB",
+     "dataset": "ECB, balance of payments (BOP); Eurostat (namq_10_gdp)",
+     "url": "https://data.ecb.europa.eu/data/datasets/BP6"
+    }
+   ],
+   "frequency": "Quarterly",
+   "caveats": "None beyond the usual revisions.",
+   "original": true,
+   "updated": "2026-10-28"
+  },
+  {
+   "id": "esi-sentiment",
+   "title": "Business and consumer mood is below normal",
+   "what": "Economic sentiment indicator, long-run average = 100",
+   "transform": "Shown as published.",
+   "sources": [
+    {
+     "name": "European Commission",
+     "dataset": "European Commission, business and consumer surveys (ei_bssi_m_r2)",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/ei_bssi_m_r2/default/table"
+    }
+   ],
+   "frequency": "Monthly",
+   "caveats": "None beyond the usual revisions.",
+   "original": false,
+   "updated": "2026-10-29"
+  }
+ ]
+}

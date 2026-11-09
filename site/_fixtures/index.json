@@ -1,0 +1,382 @@
+{
+ "schema": 1,
+ "built_at": "2026-11-09T06:00:00Z",
+ "pages": [
+  {
+   "id": "gdp",
+   "title": "GDP",
+   "path": "gdp/",
+   "description": "How fast the euro area economy is growing, what is driving it and how the big economies compare.",
+   "sections": [
+    {
+     "id": "growth",
+     "title": "Growth",
+     "intro": "Real GDP is the value of everything the euro area produces, adjusted for prices. Quarterly growth is noisy; the change on a year earlier is the steadier read.",
+     "charts": [
+      "gdp-growth",
+      "gdp-contrib"
+     ],
+     "tables": []
+    },
+    {
+     "id": "countries",
+     "title": "Across countries",
+     "intro": "The same growth rate, country by country, on one shared scale.",
+     "charts": [
+      "gdp-countries"
+     ],
+     "tables": []
+    }
+   ]
+  },
+  {
+   "id": "labour",
+   "title": "Labour",
+   "path": "labour/",
+   "description": "Jobs, unemployment and how hard it is for employers to find workers.",
+   "sections": [
+    {
+     "id": "jobs",
+     "title": "Unemployment and vacancies",
+     "intro": "Unemployment is close to its lowest since the euro began. Vacancies tell you whether employers still want more people.",
+     "charts": [
+      "unemployment-rate",
+      "beveridge-curve"
+     ],
+     "tables": [
+      "labour-bank"
+     ]
+    },
+    {
+     "id": "countries",
+     "title": "Across countries",
+     "intro": "Unemployment by country, darker where it is higher.",
+     "charts": [
+      "unemployment-heatmap"
+     ],
+     "tables": []
+    }
+   ]
+  },
+  {
+   "id": "wages",
+   "title": "Wages",
+   "path": "wages/",
+   "description": "What workers are being paid, and whether pay is keeping up with prices.",
+   "sections": [
+    {
+     "id": "pay",
+     "title": "Pay growth",
+     "intro": "Negotiated wages are the deals unions and employers sign. The ECB tracker reads the deals already signed for the year ahead.",
+     "charts": [
+      "wages-negotiated"
+     ],
+     "tables": []
+    }
+   ]
+  },
+  {
+   "id": "inflation",
+   "title": "Inflation",
+   "path": "inflation/",
+   "description": "Consumer prices in the euro area: headline, core, services and the ECB's underlying measures.",
+   "sections": [
+    {
+     "id": "headline",
+     "title": "Headline and core",
+     "intro": "Headline inflation is what you pay at the till. Core strips out energy and food, which swing the most, to show the trend underneath.",
+     "charts": [
+      "hicp-headline-core",
+      "hicp-contrib"
+     ],
+     "tables": [
+      "hicp-bank"
+     ]
+    },
+    {
+     "id": "countries",
+     "title": "Across countries",
+     "intro": "The same euro, different price rises: inflation by member state over the last year.",
+     "charts": [
+      "hicp-countries-heatmap"
+     ],
+     "tables": []
+    }
+   ]
+  },
+  {
+   "id": "financial",
+   "title": "Financial",
+   "path": "financial/",
+   "description": "Bond yields, the euro and the cost of borrowing.",
+   "sections": [
+    {
+     "id": "bonds",
+     "title": "Bonds",
+     "intro": "Government bond yields set the floor for what mortgages and business loans cost.",
+     "charts": [
+      "bond-yields"
+     ],
+     "tables": []
+    },
+    {
+     "id": "currency",
+     "title": "The euro",
+     "intro": "A stronger euro makes imports cheaper and exports harder to sell.",
+     "charts": [
+      "eurusd"
+     ],
+     "tables": []
+    }
+   ]
+  },
+  {
+   "id": "ecb",
+   "title": "ECB",
+   "path": "ecb/",
+   "description": "The European Central Bank's interest rates and what markets pay for overnight money.",
+   "sections": [
+    {
+     "id": "rates",
+     "title": "Policy rates",
+     "intro": "The deposit facility rate is the ECB's main lever. Market rates follow it within a day.",
+     "charts": [
+      "ecb-policy-rates"
+     ],
+     "tables": []
+    }
+   ]
+  },
+  {
+   "id": "fiscal",
+   "title": "Fiscal",
+   "path": "fiscal/",
+   "description": "Public debt and deficits, for the euro area and its members.",
+   "sections": [
+    {
+     "id": "debt",
+     "title": "Debt",
+     "intro": "Government debt as a share of what the economy produces in a year.",
+     "charts": [
+      "gov-debt",
+      "gov-debt-countries"
+     ],
+     "tables": []
+    },
+    {
+     "id": "deficit",
+     "title": "Deficits",
+     "intro": "The gap between what governments spend and what they collect.",
+     "charts": [
+      "gov-balance"
+     ],
+     "tables": []
+    }
+   ]
+  },
+  {
+   "id": "international",
+   "title": "International",
+   "path": "international/",
+   "description": "The euro area's trade and money flows with the rest of the world.",
+   "sections": [
+    {
+     "id": "external",
+     "title": "Current account",
+     "intro": "A surplus means the euro area earns more from the world than it spends there.",
+     "charts": [
+      "current-account"
+     ],
+     "tables": []
+    }
+   ]
+  },
+  {
+   "id": "europe",
+   "title": "Europe",
+   "path": "europe/",
+   "description": "Indicators only Europe has: surveys, energy and the gaps between member states.",
+   "sections": [
+    {
+     "id": "surveys",
+     "title": "Surveys",
+     "intro": "The European Commission asks businesses and households every month how things are going.",
+     "charts": [
+      "esi-sentiment"
+     ],
+     "tables": []
+    },
+    {
+     "id": "energy",
+     "title": "Energy",
+     "intro": "Gas storage and wholesale power prices.",
+     "charts": [],
+     "tables": []
+    }
+   ]
+  }
+ ],
+ "strip": [
+  {
+   "id": "gdp-qq",
+   "label": "GDP growth",
+   "value": 0.4,
+   "unit": "% q/q",
+   "period": "2026-Q3",
+   "previous": 0.6,
+   "good_direction": "up",
+   "chart_id": "gdp-growth",
+   "page": "gdp",
+   "flag": null
+  },
+  {
+   "id": "unemp",
+   "label": "Unemployment",
+   "value": 6.5,
+   "unit": "%",
+   "period": "2026-09",
+   "previous": 6.5,
+   "good_direction": "down",
+   "chart_id": "unemployment-rate",
+   "page": "labour",
+   "flag": null
+  },
+  {
+   "id": "jvr",
+   "label": "Job vacancy rate",
+   "value": 2.1,
+   "unit": "%",
+   "period": "2026-Q2",
+   "previous": 2.2,
+   "good_direction": "none",
+   "chart_id": "beveridge-curve",
+   "page": "labour",
+   "flag": null
+  },
+  {
+   "id": "hicp",
+   "label": "Inflation",
+   "value": 4.0,
+   "unit": "% y/y",
+   "period": "2026-10",
+   "previous": 3.8,
+   "good_direction": "down",
+   "chart_id": "hicp-headline-core",
+   "page": "inflation",
+   "flag": "e"
+  },
+  {
+   "id": "hicp-core",
+   "label": "Core inflation",
+   "value": 2.6,
+   "unit": "% y/y",
+   "period": "2026-10",
+   "previous": 2.5,
+   "good_direction": "down",
+   "chart_id": "hicp-headline-core",
+   "page": "inflation",
+   "flag": "e"
+  },
+  {
+   "id": "negwages",
+   "label": "Negotiated wages",
+   "value": 2.4,
+   "unit": "% y/y",
+   "period": "2026-Q2",
+   "previous": 2.6,
+   "good_direction": "none",
+   "chart_id": "wages-negotiated",
+   "page": "wages",
+   "flag": null
+  },
+  {
+   "id": "dfr",
+   "label": "ECB deposit rate",
+   "value": 2.5,
+   "unit": "%",
+   "period": "2026-09-16",
+   "previous": 2.25,
+   "good_direction": "none",
+   "chart_id": "ecb-policy-rates",
+   "page": "ecb",
+   "flag": null,
+   "decimals": 2
+  },
+  {
+   "id": "y10",
+   "label": "10-year yield (AAA)",
+   "value": 3.29,
+   "unit": "%",
+   "period": "2026-11-06",
+   "previous": 3.29,
+   "good_direction": "none",
+   "chart_id": "bond-yields",
+   "page": "financial",
+   "flag": null,
+   "decimals": 2
+  },
+  {
+   "id": "eurusd",
+   "label": "Euro in dollars",
+   "value": 1.1165,
+   "unit": "$ per €",
+   "period": "2026-11-06",
+   "previous": 1.1224,
+   "good_direction": "none",
+   "chart_id": "eurusd",
+   "page": "financial",
+   "flag": null,
+   "decimals": 4
+  },
+  {
+   "id": "esi",
+   "label": "Economic sentiment",
+   "value": 96.9,
+   "unit": "index",
+   "period": "2026-10",
+   "previous": 97.5,
+   "good_direction": "up",
+   "chart_id": "esi-sentiment",
+   "page": "europe",
+   "flag": null
+  },
+  {
+   "id": "debt",
+   "label": "Public debt",
+   "value": 88.8,
+   "unit": "% of GDP",
+   "period": "2026-Q2",
+   "previous": 88.4,
+   "good_direction": "down",
+   "chart_id": "gov-debt",
+   "page": "fiscal",
+   "flag": "p"
+  },
+  {
+   "id": "balance",
+   "label": "Budget balance",
+   "value": -3.3,
+   "unit": "% of GDP",
+   "period": "2026-Q2",
+   "previous": -3.2,
+   "good_direction": "up",
+   "chart_id": "gov-balance",
+   "page": "fiscal",
+   "flag": null
+  }
+ ],
+ "countries": [
+  "DE",
+  "FR",
+  "IT",
+  "ES",
+  "NL",
+  "PL"
+ ],
+ "failed": [
+  {
+   "id": "beveridge-curve",
+   "error": "empty response from jvs_q_r21"
+  }
+ ]
+}
