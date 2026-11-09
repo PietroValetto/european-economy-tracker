@@ -1,0 +1,32 @@
+{
+  "about": "ECB Governing Council monetary policy meetings (the decision day, day 2 of each two-day meeting). Hand-maintained: refresh from the ECB schedule each year. The decision is published at 14:15 and the press conference starts at 14:45, Frankfurt time.",
+  "source": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
+  "checked": "2026-11-09",
+  "tz": "Europe/Brussels",
+  "decision_time": "14:15",
+  "press_conference_time": "14:45",
+  "datasets": ["FM"],
+  "projections": {
+    "about": "Staff macroeconomic projections are published at the March, June, September and December meetings: ECB staff in March and September, Eurosystem staff (with the national central banks) in June and December.",
+    "months": {"3": "ECB staff", "6": "Eurosystem staff", "9": "ECB staff", "12": "Eurosystem staff"},
+    "datasets": ["MPD"]
+  },
+  "meetings": [
+    {"date": "2026-02-05", "verified": "secondary sources; past meeting"},
+    {"date": "2026-03-19", "verified": "secondary sources; past meeting"},
+    {"date": "2026-04-30", "verified": "secondary sources; past meeting"},
+    {"date": "2026-06-11", "verified": "deposit rate change effective 2026-06-17 in the ECB FM flow"},
+    {"date": "2026-07-23", "verified": "secondary sources; past meeting"},
+    {"date": "2026-09-10", "verified": "ECB press conference page; hosted by the Bundesbank in Berlin", "place": "Berlin"},
+    {"date": "2026-10-29", "verified": "ECB press conference page"},
+    {"date": "2026-12-17", "verified": "ECB meeting calendar, checked 2026-11-09"},
+    {"date": "2027-02-04", "verified": "ECB meeting calendar, checked 2026-11-09"},
+    {"date": "2027-03-18", "verified": "ECB meeting calendar, checked 2026-11-09"},
+    {"date": "2027-04-29", "verified": "ECB meeting calendar, checked 2026-11-09"},
+    {"date": "2027-06-10", "verified": "ECB meeting calendar, checked 2026-11-09"},
+    {"date": "2027-07-22", "verified": "ECB meeting calendar, checked 2026-11-09"},
+    {"date": "2027-09-09", "verified": "ECB meeting calendar, checked 2026-11-09"},
+    {"date": "2027-10-28", "verified": "ECB meeting calendar, checked 2026-11-09"},
+    {"date": "2027-12-16", "verified": "ECB meeting calendar, checked 2026-11-09"}
+  ]
+}

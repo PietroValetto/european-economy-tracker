@@ -1,0 +1,755 @@
+{
+ "built_at": "2026-11-09T15:56:34Z",
+ "from": "2026-11-09",
+ "to": "2026-12-24",
+ "events": [
+  {
+   "id": "2026-11-09-services-production",
+   "date": "2026-11-09",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Services production, September",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "sts_sepr_m"
+   ],
+   "chart_ids": [],
+   "period": "2026-09"
+  },
+  {
+   "id": "2026-11-09-services-turnover",
+   "date": "2026-11-09",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Services turnover",
+   "publisher": "Eurostat",
+   "tier": 3,
+   "datasets": [
+    "sts_setu_m"
+   ],
+   "chart_ids": [
+    "monthly-activity-table",
+    "services-turnover"
+   ],
+   "period": null
+  },
+  {
+   "id": "2026-11-10-recovery-facility",
+   "date": "2026-11-10",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Recovery and Resilience Facility statistics",
+   "publisher": "Eurostat",
+   "tier": 3,
+   "datasets": [],
+   "chart_ids": [],
+   "period": null
+  },
+  {
+   "id": "2026-11-13-gdp-flash",
+   "date": "2026-11-13",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "GDP and employment, flash estimate, Q3 2026",
+   "publisher": "Eurostat",
+   "tier": 1,
+   "datasets": [
+    "namq_10_gdp",
+    "namq_10_pe"
+   ],
+   "chart_ids": [
+    "gdp-growth",
+    "europe-at-a-glance",
+    "gdp-contributions",
+    "gdp-country-heatmap",
+    "gdp-level",
+    "gdp-level-countries",
+    "gdp-table",
+    "intl-gdp-growth",
+    "intl-gdp-level",
+    "intl-overview",
+    "employment-growth",
+    "employment-level"
+   ],
+   "period": "2026-Q3"
+  },
+  {
+   "id": "2026-11-13-trade",
+   "date": "2026-11-13",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "International trade in goods, September",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "ext_st_eu27_2020sitc"
+   ],
+   "chart_ids": [],
+   "period": "2026-09"
+  },
+  {
+   "id": "2026-11-13-consumption-by-purpose",
+   "date": "2026-11-13",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Household consumption by purpose",
+   "publisher": "Eurostat",
+   "tier": 3,
+   "datasets": [
+    "nama_10_co3_p3"
+   ],
+   "chart_ids": [],
+   "period": null
+  },
+  {
+   "id": "2026-11-16-industrial-production",
+   "date": "2026-11-16",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Industrial production, September",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "sts_inpr_m"
+   ],
+   "chart_ids": [
+    "industrial-production",
+    "monthly-activity-table"
+   ],
+   "period": "2026-09"
+  },
+  {
+   "id": "2026-11-16-bankruptcies",
+   "date": "2026-11-16",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Business registrations and bankruptcies",
+   "publisher": "Eurostat",
+   "tier": 3,
+   "datasets": [
+    "sts_rb_q"
+   ],
+   "chart_ids": [
+    "business-demography"
+   ],
+   "period": null
+  },
+  {
+   "id": "2026-11-16-energy",
+   "date": "2026-11-16",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Monthly energy statistics",
+   "publisher": "Eurostat",
+   "tier": 3,
+   "datasets": [
+    "nrg_cb_gasm",
+    "nrg_cb_oilm",
+    "nrg_cb_em"
+   ],
+   "chart_ids": [],
+   "period": null
+  },
+  {
+   "id": "2026-11-18-hicp-final",
+   "date": "2026-11-18",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Inflation (HICP), final, October",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "prc_hicp_minr",
+    "prc_hicp_ctr",
+    "prc_hicp_ct",
+    "prc_hicp_fpd",
+    "prc_hicp_inw",
+    "HICP"
+   ],
+   "chart_ids": [
+    "hicp-headline-core",
+    "ecb-underlying",
+    "europe-at-a-glance",
+    "hicp-administered",
+    "hicp-bank",
+    "hicp-components",
+    "hicp-constant-tax",
+    "hicp-contributions",
+    "hicp-countries",
+    "hicp-country-heatmap",
+    "intl-inflation",
+    "intl-overview",
+    "hicp-flash-final",
+    "hicp-3m-annualised"
+   ],
+   "period": "2026-10"
+  },
+  {
+   "id": "2026-11-19-balance-of-payments",
+   "date": "2026-11-19",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Balance of payments, September",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "bop_c6_m",
+    "bop_c6_q"
+   ],
+   "chart_ids": [],
+   "period": "2026-09"
+  },
+  {
+   "id": "2026-11-19-construction",
+   "date": "2026-11-19",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Production in construction, September",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "sts_copr_m"
+   ],
+   "chart_ids": [
+    "construction-output",
+    "monthly-activity-table"
+   ],
+   "period": "2026-09"
+  },
+  {
+   "id": "2026-11-19-job-vacancies-flash",
+   "date": "2026-11-19",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Job vacancies, flash estimate, Q3 2026",
+   "publisher": "Eurostat",
+   "tier": 3,
+   "datasets": [
+    "jvs_q_r21"
+   ],
+   "chart_ids": [
+    "job-vacancy-rate"
+   ],
+   "period": "2026-Q3"
+  },
+  {
+   "id": "2026-11-19-labour-costs-flash",
+   "date": "2026-11-19",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Labour cost index, flash estimate, Q3 2026",
+   "publisher": "Eurostat",
+   "tier": 3,
+   "datasets": [
+    "lc_lci_r2_q"
+   ],
+   "chart_ids": [],
+   "period": "2026-Q3"
+  },
+  {
+   "id": "2026-11-20-gdp-by-industry",
+   "date": "2026-11-20",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "GDP and employment by industry, Q3 2026",
+   "publisher": "Eurostat",
+   "tier": 3,
+   "datasets": [
+    "namq_10_a10",
+    "namq_10_a10_e"
+   ],
+   "chart_ids": [],
+   "period": "2026-Q3"
+  },
+  {
+   "id": "2026-11-20-government-debt-structure",
+   "date": "2026-11-20",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Structure of government debt",
+   "publisher": "Eurostat",
+   "tier": 3,
+   "datasets": [],
+   "chart_ids": [],
+   "period": null
+  },
+  {
+   "id": "2026-11-20-consumer-confidence-flash",
+   "date": "2026-11-20",
+   "time": "16:00",
+   "tz": "Europe/Brussels",
+   "title": "Consumer confidence, flash estimate, November",
+   "publisher": "European Commission",
+   "tier": 2,
+   "datasets": [],
+   "chart_ids": [],
+   "period": "2026-11"
+  },
+  {
+   "id": "2026-11-27-business-consumer-surveys",
+   "date": "2026-11-27",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Economic sentiment and business and consumer surveys, November",
+   "publisher": "European Commission",
+   "tier": 2,
+   "datasets": [
+    "ei_bssi_m_r2",
+    "ei_bsco_m"
+   ],
+   "chart_ids": [
+    "economic-sentiment",
+    "esi-countries",
+    "sentiment-components",
+    "consumer-price-expectations"
+   ],
+   "period": "2026-11"
+  },
+  {
+   "id": "2026-12-01-hicp-flash",
+   "date": "2026-12-01",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Inflation (HICP), flash estimate, November",
+   "publisher": "Eurostat",
+   "tier": 1,
+   "datasets": [
+    "prc_hicp_fpd",
+    "prc_hicp_minr",
+    "HICP"
+   ],
+   "chart_ids": [
+    "hicp-headline-core",
+    "hicp-flash-final",
+    "ecb-underlying",
+    "europe-at-a-glance",
+    "hicp-administered",
+    "hicp-bank",
+    "hicp-components",
+    "hicp-constant-tax",
+    "hicp-contributions",
+    "hicp-countries",
+    "hicp-country-heatmap",
+    "intl-inflation",
+    "intl-overview",
+    "hicp-3m-annualised"
+   ],
+   "period": "2026-11"
+  },
+  {
+   "id": "2026-12-02-unemployment",
+   "date": "2026-12-02",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Unemployment, October",
+   "publisher": "Eurostat",
+   "tier": 1,
+   "datasets": [
+    "une_rt_m"
+   ],
+   "chart_ids": [
+    "unemployment-rate",
+    "europe-at-a-glance",
+    "intl-overview",
+    "intl-unemployment",
+    "sahm-rule",
+    "unemployment-countries"
+   ],
+   "period": "2026-10"
+  },
+  {
+   "id": "2026-12-02-building-permits",
+   "date": "2026-12-02",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Building permits",
+   "publisher": "Eurostat",
+   "tier": 3,
+   "datasets": [
+    "sts_cobp_m"
+   ],
+   "chart_ids": [],
+   "period": null
+  },
+  {
+   "id": "2026-12-02-industrial-turnover",
+   "date": "2026-12-02",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Industrial turnover",
+   "publisher": "Eurostat",
+   "tier": 3,
+   "datasets": [
+    "sts_intv_m"
+   ],
+   "chart_ids": [],
+   "period": null
+  },
+  {
+   "id": "2026-12-03-producer-prices",
+   "date": "2026-12-03",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Industrial producer prices, October",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "sts_inppd_m"
+   ],
+   "chart_ids": [],
+   "period": "2026-10"
+  },
+  {
+   "id": "2026-12-04-retail-trade",
+   "date": "2026-12-04",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Retail trade, October",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "sts_trtu_m"
+   ],
+   "chart_ids": [
+    "monthly-activity-table",
+    "retail-sales"
+   ],
+   "period": "2026-10"
+  },
+  {
+   "id": "2026-12-04-import-prices",
+   "date": "2026-12-04",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Industrial import prices, October",
+   "publisher": "Eurostat",
+   "tier": 3,
+   "datasets": [
+    "sts_inpi_m"
+   ],
+   "chart_ids": [],
+   "period": "2026-10"
+  },
+  {
+   "id": "2026-12-07-gdp-full",
+   "date": "2026-12-07",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "GDP and employment, detailed estimate, Q3 2026",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "namq_10_gdp",
+    "namq_10_pe",
+    "namq_10_a10",
+    "namq_10_a10_e",
+    "namq_10_fcs",
+    "namq_10_lp_ulc"
+   ],
+   "chart_ids": [
+    "gdp-growth",
+    "europe-at-a-glance",
+    "gdp-contributions",
+    "gdp-country-heatmap",
+    "gdp-level",
+    "gdp-level-countries",
+    "gdp-table",
+    "intl-gdp-growth",
+    "intl-gdp-level",
+    "intl-overview",
+    "employment-growth",
+    "employment-level"
+   ],
+   "period": "2026-Q3"
+  },
+  {
+   "id": "2026-12-07-services-production",
+   "date": "2026-12-07",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Services production, October",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "sts_sepr_m"
+   ],
+   "chart_ids": [],
+   "period": "2026-10"
+  },
+  {
+   "id": "2026-12-07-services-turnover",
+   "date": "2026-12-07",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Services turnover",
+   "publisher": "Eurostat",
+   "tier": 3,
+   "datasets": [
+    "sts_setu_m"
+   ],
+   "chart_ids": [
+    "monthly-activity-table",
+    "services-turnover"
+   ],
+   "period": null
+  },
+  {
+   "id": "2026-12-11-labour-force-survey",
+   "date": "2026-12-11",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Labour force survey, quarterly results, Q3 2026",
+   "publisher": "Eurostat",
+   "tier": 3,
+   "datasets": [
+    "lfsi_emp_q",
+    "lfsi_sla_q",
+    "lfsq_ergan"
+   ],
+   "chart_ids": [
+    "employment-rates",
+    "labour-slack"
+   ],
+   "period": "2026-Q3"
+  },
+  {
+   "id": "2026-12-11-labour-flows",
+   "date": "2026-12-11",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Labour market flows, Q3 2026",
+   "publisher": "Eurostat",
+   "tier": 3,
+   "datasets": [
+    "lfsi_long_q"
+   ],
+   "chart_ids": [
+    "labour-flows"
+   ],
+   "period": "2026-Q3"
+  },
+  {
+   "id": "2026-12-15-industrial-production",
+   "date": "2026-12-15",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Industrial production, October",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "sts_inpr_m"
+   ],
+   "chart_ids": [
+    "industrial-production",
+    "monthly-activity-table"
+   ],
+   "period": "2026-10"
+  },
+  {
+   "id": "2026-12-15-energy",
+   "date": "2026-12-15",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Monthly energy statistics",
+   "publisher": "Eurostat",
+   "tier": 3,
+   "datasets": [
+    "nrg_cb_gasm",
+    "nrg_cb_oilm",
+    "nrg_cb_em"
+   ],
+   "chart_ids": [],
+   "period": null
+  },
+  {
+   "id": "2026-12-16-trade",
+   "date": "2026-12-16",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "International trade in goods, October",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "ext_st_eu27_2020sitc"
+   ],
+   "chart_ids": [],
+   "period": "2026-10"
+  },
+  {
+   "id": "2026-12-16-job-vacancies",
+   "date": "2026-12-16",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Job vacancies, Q3 2026",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "jvs_q_r21"
+   ],
+   "chart_ids": [
+    "job-vacancy-rate"
+   ],
+   "period": "2026-Q3"
+  },
+  {
+   "id": "2026-12-16-bankruptcies",
+   "date": "2026-12-16",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Business registrations and bankruptcies",
+   "publisher": "Eurostat",
+   "tier": 3,
+   "datasets": [
+    "sts_rb_q"
+   ],
+   "chart_ids": [
+    "business-demography"
+   ],
+   "period": null
+  },
+  {
+   "id": "2026-12-17-hicp-final",
+   "date": "2026-12-17",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Inflation (HICP), final, November",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "prc_hicp_minr",
+    "prc_hicp_ctr",
+    "prc_hicp_ct",
+    "prc_hicp_fpd",
+    "prc_hicp_inw",
+    "HICP"
+   ],
+   "chart_ids": [
+    "hicp-headline-core",
+    "ecb-underlying",
+    "europe-at-a-glance",
+    "hicp-administered",
+    "hicp-bank",
+    "hicp-components",
+    "hicp-constant-tax",
+    "hicp-contributions",
+    "hicp-countries",
+    "hicp-country-heatmap",
+    "intl-inflation",
+    "intl-overview",
+    "hicp-flash-final",
+    "hicp-3m-annualised"
+   ],
+   "period": "2026-11"
+  },
+  {
+   "id": "2026-12-17-labour-costs",
+   "date": "2026-12-17",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Labour cost index, Q3 2026",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "lc_lci_r2_q",
+    "ei_lmlc_q"
+   ],
+   "chart_ids": [],
+   "period": "2026-Q3"
+  },
+  {
+   "id": "2026-12-17-ppp",
+   "date": "2026-12-17",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Purchasing power parities",
+   "publisher": "Eurostat",
+   "tier": 3,
+   "datasets": [
+    "prc_ppp_ind"
+   ],
+   "chart_ids": [],
+   "period": null
+  },
+  {
+   "id": "2026-12-17-ecb-decision",
+   "date": "2026-12-17",
+   "time": "14:15",
+   "tz": "Europe/Brussels",
+   "title": "ECB monetary policy decision (press conference 14:45)",
+   "publisher": "ECB",
+   "tier": 1,
+   "datasets": [
+    "FM"
+   ],
+   "chart_ids": [
+    "policy-rates",
+    "estr-vs-dfr",
+    "rate-path-forwards",
+    "spf-rate-path"
+   ],
+   "period": null
+  },
+  {
+   "id": "2026-12-17-ecb-projections",
+   "date": "2026-12-17",
+   "time": "14:45",
+   "tz": "Europe/Brussels",
+   "title": "Eurosystem staff macroeconomic projections",
+   "publisher": "ECB",
+   "tier": 2,
+   "datasets": [
+    "MPD"
+   ],
+   "chart_ids": [
+    "staff-projections-growth",
+    "staff-projections-inflation"
+   ],
+   "period": null
+  },
+  {
+   "id": "2026-12-18-balance-of-payments",
+   "date": "2026-12-18",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Balance of payments, October",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "bop_c6_m",
+    "bop_c6_q"
+   ],
+   "chart_ids": [],
+   "period": "2026-10"
+  },
+  {
+   "id": "2026-12-18-construction",
+   "date": "2026-12-18",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Production in construction, October",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "sts_copr_m"
+   ],
+   "chart_ids": [
+    "construction-output",
+    "monthly-activity-table"
+   ],
+   "period": "2026-10"
+  },
+  {
+   "id": "2026-12-21-consumer-confidence-flash",
+   "date": "2026-12-21",
+   "time": "16:00",
+   "tz": "Europe/Brussels",
+   "title": "Consumer confidence, flash estimate, December",
+   "publisher": "European Commission",
+   "tier": 2,
+   "datasets": [],
+   "chart_ids": [],
+   "period": "2026-12"
+  }
+ ]
+}

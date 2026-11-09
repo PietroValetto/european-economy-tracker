@@ -1,0 +1,218 @@
+# European Economy Tracker: data builds and Pages deploy.
+#
+# Three schedules (all times UTC; GitHub cron has no time zones, Brussels is UTC+1 in winter and
+# UTC+2 from the last Sunday of March to the last Sunday of October):
+#
+#   daily    05:00 every day        06:00 Brussels in winter, 07:00 in summer. Full build, calendar,
+#                                   contract check, tests; commit store/, site/data/, outbox/.
+#   poll     every 5 min, weekdays  Release mornings. Euro indicators come out at 11:00 Brussels, so
+#                                   the window is 10:55-11:40 Brussels: 09:55-10:40 UTC in winter
+#                                   months, 08:55-09:40 UTC in summer months. March and October run
+#                                   both sets (the DST switch falls inside them) and a time gate skips
+#                                   the run that is too early. eet.release exits 0 only if a publisher
+#                                   stamp moved; then the affected modules are rebuilt, checked and
+#                                   committed, and the data notes go to outbox/alerts/.
+#   markets  16:30 weekdays         Afternoon run: rebuild the financial and ecb modules (yields and
+#                                   FX after 16:00 Brussels), plus anything eet.release finds for the
+#                                   day's afternoon events (ECB decision at 14:15, EC flash consumer
+#                                   confidence at 16:00).
+#
+# workflow_dispatch runs any mode by hand. Pushes to main that touch site/ only redeploy Pages.
+# The deploy job runs only when the repository is public; while it is private it is skipped.
+
+name: Build
+
+on:
+  schedule:
+    - cron: "0 5 * * *"                              # daily
+    - cron: "55 9 * 1-3,10-12 1-5"                   # poll, winter (CET)
+    - cron: "0,5,10,15,20,25,30,35,40 10 * 1-3,10-12 1-5"
+    - cron: "55 8 * 3-10 1-5"                        # poll, summer (CEST)
+    - cron: "0,5,10,15,20,25,30,35,40 9 * 3-10 1-5"
+    - cron: "30 16 * * 1-5"                          # markets
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "daily (full build), poll (release check), markets (financial + ecb), deploy (Pages only)"
+        type: choice
+        options: [daily, poll, markets, deploy]
+        default: daily
+      date:
+        description: "poll/markets: calendar date to check, YYYY-MM-DD (default: today in Brussels)"
+        required: false
+        default: ""
+  push:
+    branches: [main]
+    paths: ["site/**", "!site/data/**"]
+
+permissions:
+  contents: read
+
+# One data run at a time; a queued run waits instead of cancelling the one in progress.
+concurrency:
+  group: eet-data
+  cancel-in-progress: false
+
+env:
+  PYTHONUNBUFFERED: "1"
+  TZ: UTC
+
+jobs:
+  update:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    permissions:
+      contents: write
+    outputs:
+      deploy: ${{ steps.commit.outputs.committed == 'true' || steps.plan.outputs.mode == 'deploy' }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Plan
+        id: plan
+        env:
+          SCHEDULE: ${{ github.event.schedule }}
+          INPUT_MODE: ${{ inputs.mode }}
+        run: |
+          case "$SCHEDULE" in
+            "0 5 * * *") mode=daily ;;
+            "30 16 * * 1-5") mode=markets ;;
+            "") mode="${INPUT_MODE:-daily}" ;;
+            *) mode=poll ;;
+          esac
+          go=true
+          if [ "$mode" = poll ] && [ -n "$SCHEDULE" ]; then
+            # Release window gate: 10:50-11:54 Brussels. In March and October one of the two cron sets
+            # is an hour off; the gate skips it (it costs a one-minute no-op run).
+            hm=$(TZ=Europe/Brussels date +%H%M)
+            if [ "$hm" -lt 1050 ] || [ "$hm" -gt 1154 ]; then
+              echo "Brussels time $hm is outside the release window; skipping."
+              go=false
+            fi
+          fi
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+          echo "go=$go" >> "$GITHUB_OUTPUT"
+          echo "Mode: $mode (go=$go)"
+
+      - uses: actions/checkout@v4
+        if: steps.plan.outputs.go == 'true' && steps.plan.outputs.mode != 'deploy'
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        if: steps.plan.outputs.go == 'true' && steps.plan.outputs.mode != 'deploy'
+        with:
+          python-version: "3.12"
+
+      - name: Tests
+        if: steps.plan.outputs.go == 'true' && steps.plan.outputs.mode == 'daily'
+        working-directory: pipeline
+        run: python -m unittest discover -s tests
+
+      # ---- daily -----------------------------------------------------------------------------
+      - name: Full build
+        if: steps.plan.outputs.go == 'true' && steps.plan.outputs.mode == 'daily'
+        working-directory: pipeline
+        run: python -m eet.build
+
+      - name: Calendar
+        if: steps.plan.outputs.go == 'true' && steps.plan.outputs.mode == 'daily'
+        working-directory: pipeline
+        run: python -m eet.calendar
+
+      # ---- poll and markets: release detection -------------------------------------------------
+      - name: Release check
+        id: release
+        if: steps.plan.outputs.go == 'true' && (steps.plan.outputs.mode == 'poll' || steps.plan.outputs.mode == 'markets')
+        working-directory: pipeline
+        env:
+          DATE: ${{ inputs.date }}
+        run: |
+          set +e
+          python -m eet.release ${DATE:+--date "$DATE"}
+          code=$?
+          set -e
+          echo "exit code $code"
+          if [ "$code" -ne 0 ] && [ "$code" -ne 3 ]; then exit "$code"; fi
+          # eet.release wrote changed=, modules=, releases= to GITHUB_OUTPUT
+
+      - name: Rebuild changed modules
+        if: steps.plan.outputs.go == 'true' && (steps.release.outputs.changed == 'true' || steps.plan.outputs.mode == 'markets')
+        working-directory: pipeline
+        env:
+          MODULES: ${{ steps.release.outputs.modules }}
+          MODE: ${{ steps.plan.outputs.mode }}
+        run: |
+          mods="$MODULES"
+          if [ "$MODE" = markets ]; then mods="financial,ecb${mods:+,$mods}"; fi
+          args=""
+          for m in $(echo "$mods" | tr ',' '\n' | sort -u); do args="$args --only $m"; done
+          echo "python -m eet.build$args"
+          python -m eet.build $args
+
+      - name: Data notes
+        if: steps.plan.outputs.go == 'true' && steps.release.outputs.changed == 'true'
+        working-directory: pipeline
+        run: python -m eet.release --alerts || [ $? -eq 3 ]
+
+      # ---- all data modes ------------------------------------------------------------------------
+      - name: Contract check
+        if: steps.plan.outputs.go == 'true' && (steps.plan.outputs.mode == 'daily' || steps.release.outputs.changed == 'true' || steps.plan.outputs.mode == 'markets')
+        working-directory: pipeline
+        run: python -m eet.check
+
+      - name: Commit
+        id: commit
+        if: steps.plan.outputs.go == 'true' && (steps.plan.outputs.mode == 'daily' || steps.release.outputs.changed == 'true' || steps.plan.outputs.mode == 'markets')
+        env:
+          MODE: ${{ steps.plan.outputs.mode }}
+          RELEASES: ${{ steps.release.outputs.releases }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          git config user.name "eet-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p outbox/alerts
+          git add store site/data outbox
+          if git diff --cached --quiet; then
+            echo "Nothing to commit."
+            echo "committed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          msg="Data: $MODE run $(date -u +%Y-%m-%dT%H:%MZ)${RELEASES:+ ($RELEASES)}"
+          git commit -q -m "$msg" -m "GitHub Actions run ${{ github.run_id }}: $RUN_URL"
+          for i in 1 2 3; do
+            git pull -q --rebase origin main && git push -q origin HEAD:main && break
+            sleep $((i * 10))
+          done
+          echo "committed=true" >> "$GITHUB_OUTPUT"
+          echo "$msg"
+
+  deploy:
+    needs: update
+    # Skipped while the repository is private; starts working once it is public and Pages uses
+    # "GitHub Actions" as its source (Settings > Pages).
+    if: >-
+      always() && github.event.repository.private == false &&
+      (github.event_name == 'push' || needs.update.outputs.deploy == 'true')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+          sparse-checkout: site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4

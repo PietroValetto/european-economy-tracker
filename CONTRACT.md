@@ -137,7 +137,7 @@ Field rules:
 | File | Content |
 |---|---|
 | `methods.json` | `{"entries": [{"id", "title", "what", "transform", "sources": [{"name","dataset","url"}], "frequency", "caveats", "original", "updated"}]}`, one entry per chart (`methods_id`) |
-| `calendar.json` | `{"built_at", "events": [{"date": "2026-11-13", "time": "11:00", "tz": "Europe/Brussels", "title", "publisher", "tier": 1, "datasets": ["namq_10_gdp"], "chart_ids": [...]}]}`, from today to +45 days |
+| `calendar.json` | `{"built_at", "events": [{"date": "2026-11-13", "time": "11:00", "tz": "Europe/Brussels", "title", "publisher", "tier": 1, "datasets": ["namq_10_gdp"], "chart_ids": [...]}]}`, from today to +45 days. Events also carry `id` and `period`; the file carries `from` and `to` |
 | `snapshot.csv` | Flat table of every strip value, for reuse in newsletters |
 | `lfs/<analysis_id>.json` | Future: results of Pietro's local LFS analyses, same bundle shape as charts, `original: true`, plus `"lfs_vintage"`. Not built now |
 

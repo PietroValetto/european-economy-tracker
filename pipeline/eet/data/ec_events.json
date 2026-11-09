@@ -1,0 +1,36 @@
+{
+  "about": "European Commission (DG ECFIN) release dates that are not in the Eurostat calendar. Hand-maintained: the business and consumer survey dates come from the annual publication-dates PDF; add next year's when DG ECFIN publishes it (usually in December). Forecast dates are announced only a few weeks ahead: leave date null until they are, and null entries are skipped.",
+  "tz": "Europe/Brussels",
+  "surveys": {
+    "source": "https://ec.europa.eu/economy_finance/db_indicators/surveys/documents/calendar/Publication%20dates%202026.pdf",
+    "checked": "2026-11-09",
+    "flash_consumer_confidence": {
+      "time": "16:00",
+      "datasets": [],
+      "dates": {
+        "2026-01": "2026-01-22", "2026-02": "2026-02-19", "2026-03": "2026-03-23", "2026-04": "2026-04-22",
+        "2026-05": "2026-05-21", "2026-06": "2026-06-22", "2026-07": "2026-07-23", "2026-08": "2026-08-21",
+        "2026-09": "2026-09-22", "2026-10": "2026-10-22", "2026-11": "2026-11-20", "2026-12": "2026-12-21"
+      }
+    },
+    "business_and_consumer_surveys": {
+      "time": "11:00",
+      "datasets": ["ei_bssi_m_r2", "ei_bsco_m"],
+      "dates": {
+        "2026-01": "2026-01-29", "2026-02": "2026-02-26", "2026-03": "2026-03-30", "2026-04": "2026-04-29",
+        "2026-05": "2026-05-28", "2026-06": "2026-06-29", "2026-07": "2026-07-30", "2026-08": "2026-08-28",
+        "2026-09": "2026-09-29", "2026-10": "2026-10-29", "2026-11": "2026-11-27", "2026-12": "2027-01-07"
+      }
+    }
+  },
+  "forecasts": {
+    "source": "https://economy-finance.ec.europa.eu/economic-forecasts_en",
+    "checked": "2026-11-09",
+    "time": "11:00",
+    "datasets": [],
+    "editions": [
+      {"edition": "Spring 2026", "date": "2026-05-21", "note": "published"},
+      {"edition": "Autumn 2026", "date": null, "note": "announced for November 2026; exact date not published as of 2026-11-09 (Autumn 2025 came out on 17 November 2025)"}
+    ]
+  }
+}
