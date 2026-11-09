@@ -1,0 +1,414 @@
+{
+ "schema": 1,
+ "built_at": "2026-11-09T15:23:21Z",
+ "pages": [
+  {
+   "id": "gdp",
+   "title": "GDP and growth",
+   "path": "gdp/",
+   "description": "Output in the euro area and the largest economies: quarterly growth, its components and the outlook.",
+   "sections": []
+  },
+  {
+   "id": "labour",
+   "title": "Jobs",
+   "path": "labour/",
+   "description": "Employment, unemployment, vacancies and job postings across the euro area.",
+   "sections": []
+  },
+  {
+   "id": "wages",
+   "title": "Wages",
+   "path": "wages/",
+   "description": "Negotiated wages, the ECB wage tracker, labour costs and productivity.",
+   "sections": []
+  },
+  {
+   "id": "inflation",
+   "title": "Inflation",
+   "path": "inflation/",
+   "description": "Consumer prices in the euro area: headline, core, services and the ECB's underlying measures.",
+   "sections": [
+    {
+     "id": "headline",
+     "title": "Headline and core",
+     "intro": "Headline inflation is the ECB's target measure; core leaves out energy, food, alcohol and tobacco.",
+     "charts": [
+      "hicp-headline-core",
+      "hicp-3m-annualised"
+     ],
+     "tables": [
+      "hicp-bank",
+      "hicp-flash-final"
+     ]
+    },
+    {
+     "id": "components",
+     "title": "What is driving it",
+     "intro": "Energy, food, goods and services, and how much each adds to the headline rate.",
+     "charts": [
+      "hicp-components",
+      "hicp-contributions",
+      "hicp-constant-tax"
+     ],
+     "tables": []
+    },
+    {
+     "id": "underlying",
+     "title": "Underlying inflation",
+     "intro": "The ECB's own gauges of the trend once one-off price swings are stripped out.",
+     "charts": [
+      "ecb-underlying"
+     ],
+     "tables": []
+    },
+    {
+     "id": "countries",
+     "title": "Across the euro area",
+     "intro": "The common currency hides large gaps between member states.",
+     "charts": [
+      "hicp-countries",
+      "hicp-country-heatmap"
+     ],
+     "tables": []
+    },
+    {
+     "id": "expectations",
+     "title": "Inflation expectations",
+     "intro": "What professional forecasters and households expect inflation to be.",
+     "charts": [
+      "inflation-expectations-spf",
+      "inflation-expectations-consumers",
+      "consumer-price-expectations"
+     ],
+     "tables": []
+    }
+   ]
+  },
+  {
+   "id": "financial",
+   "title": "Financial conditions",
+   "path": "financial/",
+   "description": "Bond yields and spreads, financial stress, the euro, and the cost and growth of credit.",
+   "sections": [
+    {
+     "id": "rates",
+     "title": "Government bond yields",
+     "intro": "The euro area yield curve, and what each government pays to borrow for ten years.",
+     "charts": [
+      "yields-aaa",
+      "yield-curve-slope",
+      "yields-by-country",
+      "spreads-vs-bund"
+     ],
+     "tables": []
+    },
+    {
+     "id": "stress",
+     "title": "Financial stress",
+     "intro": "The ECB's composite indicator of systemic stress across money, bond, equity and currency markets.",
+     "charts": [
+      "ciss",
+      "ciss-countries"
+     ],
+     "tables": []
+    },
+    {
+     "id": "fx",
+     "title": "The euro",
+     "intro": "The euro against the dollar and against a basket of trading partners.",
+     "charts": [
+      "eur-usd",
+      "euro-effective-rate"
+     ],
+     "tables": []
+    },
+    {
+     "id": "credit",
+     "title": "Money and credit",
+     "intro": "What households and firms pay to borrow, and how fast money and bank lending are growing.",
+     "charts": [
+      "lending-rates",
+      "money-credit"
+     ],
+     "tables": []
+    },
+    {
+     "id": "markets",
+     "title": "Markets at a glance",
+     "intro": "Latest readings against a week and a month ago.",
+     "charts": [],
+     "tables": [
+      "markets-table"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ecb",
+   "title": "The ECB",
+   "path": "ecb/",
+   "description": "Policy rates, what forecasters and the bond curve expect, staff projections, the balance sheet and bank lending.",
+   "sections": [
+    {
+     "id": "rates",
+     "title": "Policy rates",
+     "intro": "The deposit facility rate has been the ECB's policy rate since 2024; €STR is the overnight market rate it steers.",
+     "charts": [
+      "policy-rates",
+      "estr-vs-dfr"
+     ],
+     "tables": []
+    },
+    {
+     "id": "path",
+     "title": "Where rates are heading",
+     "intro": "No free source publishes market pricing of future ECB decisions; these are the closest free proxies.",
+     "charts": [
+      "rate-path-forwards",
+      "spf-rate-path"
+     ],
+     "tables": []
+    },
+    {
+     "id": "projections",
+     "title": "Staff projections",
+     "intro": "The macroeconomic projections ECB and Eurosystem staff publish each quarter, round by round.",
+     "charts": [
+      "staff-projections-inflation",
+      "staff-projections-growth"
+     ],
+     "tables": []
+    },
+    {
+     "id": "balance-sheet",
+     "title": "Balance sheet",
+     "intro": "The size of the Eurosystem's consolidated balance sheet.",
+     "charts": [
+      "eurosystem-balance-sheet"
+     ],
+     "tables": []
+    },
+    {
+     "id": "lending",
+     "title": "Bank lending survey",
+     "intro": "What euro area banks report about their credit standards and the demand for loans.",
+     "charts": [
+      "bls-firms",
+      "bls-housing"
+     ],
+     "tables": []
+    }
+   ]
+  },
+  {
+   "id": "fiscal",
+   "title": "Public finances",
+   "path": "fiscal/",
+   "description": "Government deficits and debt, country by country, and the EU fiscal rules.",
+   "sections": []
+  },
+  {
+   "id": "international",
+   "title": "International",
+   "path": "international/",
+   "description": "The euro area next to the United States, the United Kingdom, Japan and other large economies.",
+   "sections": []
+  },
+  {
+   "id": "europe",
+   "title": "Only in Europe",
+   "path": "europe/",
+   "description": "Indicators with no US counterpart: fragmentation, energy and the European Commission's surveys.",
+   "sections": []
+  },
+  {
+   "id": "calendar",
+   "title": "Release calendar",
+   "path": "calendar/",
+   "description": "Upcoming releases from Eurostat, the ECB and the European Commission.",
+   "sections": []
+  },
+  {
+   "id": "methods",
+   "title": "Methods",
+   "path": "methods/",
+   "description": "How every chart is built: sources, transforms and caveats.",
+   "sections": []
+  },
+  {
+   "id": "about",
+   "title": "About",
+   "path": "about/",
+   "description": "What the European Economy Tracker is and who makes it.",
+   "sections": []
+  }
+ ],
+ "strip": [
+  {
+   "id": "gdp-qq",
+   "label": "GDP growth",
+   "value": 0.4,
+   "unit": "% q/q",
+   "period": "2026-Q3",
+   "previous": 0.6,
+   "decimals": 1,
+   "good_direction": "up",
+   "chart_id": "gdp-growth",
+   "page": "gdp",
+   "flag": null
+  },
+  {
+   "id": "unemployment",
+   "label": "Unemployment rate",
+   "value": 6.5,
+   "unit": "%",
+   "period": "2026-09",
+   "previous": 6.5,
+   "decimals": 1,
+   "good_direction": "down",
+   "chart_id": "unemployment-rate",
+   "page": "labour",
+   "flag": null
+  },
+  {
+   "id": "hicp",
+   "label": "Inflation",
+   "value": 4.0,
+   "unit": "% y/y",
+   "period": "2026-10",
+   "previous": 3.8,
+   "decimals": 1,
+   "good_direction": "none",
+   "chart_id": "hicp-headline-core",
+   "page": "inflation",
+   "flag": "e"
+  },
+  {
+   "id": "hicp-core",
+   "label": "Core inflation",
+   "value": 2.6,
+   "unit": "% y/y",
+   "period": "2026-10",
+   "previous": 2.5,
+   "decimals": 1,
+   "good_direction": "none",
+   "chart_id": "hicp-headline-core",
+   "page": "inflation",
+   "flag": "e"
+  },
+  {
+   "id": "dfr",
+   "label": "ECB deposit rate",
+   "value": 2.5,
+   "unit": "%",
+   "period": "2026-09-16",
+   "previous": 2.25,
+   "decimals": 2,
+   "good_direction": "none",
+   "chart_id": "policy-rates",
+   "page": "ecb",
+   "flag": null
+  },
+  {
+   "id": "yield-10y",
+   "label": "10-year yield (AAA)",
+   "value": 3.29,
+   "unit": "%",
+   "period": "2026-11-06",
+   "previous": 3.29,
+   "decimals": 2,
+   "good_direction": "none",
+   "chart_id": "yields-aaa",
+   "page": "financial",
+   "flag": null
+  },
+  {
+   "id": "eur-usd",
+   "label": "EUR/USD",
+   "value": 1.1193,
+   "unit": "US$ per €",
+   "period": "2026-11-09",
+   "previous": 1.1165,
+   "decimals": 4,
+   "good_direction": "none",
+   "chart_id": "eur-usd",
+   "page": "financial",
+   "flag": null
+  },
+  {
+   "id": "esi",
+   "label": "Economic sentiment",
+   "value": 96.9,
+   "unit": "index, long-run average = 100",
+   "period": "2026-10",
+   "previous": 97.5,
+   "decimals": 1,
+   "good_direction": "up",
+   "chart_id": "economic-sentiment",
+   "page": "europe",
+   "flag": null
+  },
+  {
+   "id": "wages",
+   "label": "Negotiated wages",
+   "value": 2.4,
+   "unit": "% y/y",
+   "period": "2026-Q2",
+   "previous": 2.6,
+   "decimals": 1,
+   "good_direction": "none",
+   "chart_id": "wage-growth",
+   "page": "wages",
+   "flag": null
+  },
+  {
+   "id": "job-vacancies",
+   "label": "Job vacancy rate",
+   "value": 2.1,
+   "unit": "%",
+   "period": "2026-Q2",
+   "previous": 2.2,
+   "decimals": 1,
+   "good_direction": "none",
+   "chart_id": "job-vacancy-rate",
+   "page": "labour",
+   "flag": null
+  },
+  {
+   "id": "gov-debt",
+   "label": "Government debt",
+   "value": 88.8,
+   "unit": "% of GDP",
+   "period": "2026-Q2",
+   "previous": 88.4,
+   "decimals": 1,
+   "good_direction": "down",
+   "chart_id": "gov-debt",
+   "page": "fiscal",
+   "flag": "p"
+  },
+  {
+   "id": "job-postings",
+   "label": "Job postings (Indeed)",
+   "value": 104.4,
+   "unit": "index, Feb 2020 = 100",
+   "period": "2026-10-30",
+   "previous": 104.5,
+   "decimals": 1,
+   "good_direction": "up",
+   "chart_id": "indeed-postings",
+   "page": "labour",
+   "flag": null
+  }
+ ],
+ "countries": [
+  "DE",
+  "FR",
+  "IT",
+  "ES",
+  "NL",
+  "PL"
+ ],
+ "failed": []
+}

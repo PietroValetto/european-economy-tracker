@@ -98,6 +98,10 @@ Field rules:
 - Optional `series[].curve`: `"step-after"` for policy rates and other step series (default: linear).
 - Categorical bars (for example debt by country): `points` may use category labels instead of periods (`[["Italy", 137.1], ...]`), with an optional bundle-level `"highlight": "IT"` naming the one bar drawn in amber.
 - Table `columns[].format` is one of `pct`, `pp`, `index`, `level`, `eur_bn`, `change` (`pp` and `change` are shown signed). Rows may carry `"decimals"`.
+- Table columns may also use format `text`. Table rows may carry `"period"`; when a row's period differs from the table's, the pipeline appends it to the label ("Supercore (Sep 2026)"). Markets-table rows may carry `change_unit`, `decimals`, `period`.
+- `latest.periods` (series key to period) is emitted when the series of one chart end on different periods.
+- `frequency` is one of `A`, `Q`, `M`, `W`, `D`. Weekly points are dated to the reference day (`YYYY-MM-DD`).
+- Bundles always carry `decimals` and `format`. Heatmaps also carry `row_keys` (geo codes in row order).
 - `original: true` marks a measure the tracker computes itself (it shows an "Original" tag and links to its methods entry).
 - `data_updated` is the publisher's own update stamp (Eurostat `updated`, ECB `Last-Modified`). `built_at` is the pipeline run time as an ISO timestamp in `UTC` (suffix `Z`).
 
@@ -136,6 +140,14 @@ Field rules:
 | `calendar.json` | `{"built_at", "events": [{"date": "2026-11-13", "time": "11:00", "tz": "Europe/Brussels", "title", "publisher", "tier": 1, "datasets": ["namq_10_gdp"], "chart_ids": [...]}]}`, from today to +45 days |
 | `snapshot.csv` | Flat table of every strip value, for reuse in newsletters |
 | `lfs/<analysis_id>.json` | Future: results of Pietro's local LFS analyses, same bundle shape as charts, `original: true`, plus `"lfs_vintage"`. Not built now |
+
+## 5b. Vintage store (`store/`)
+
+One CSV per series (`store/<series_id>.csv`: period, value, flag, first_seen, last_seen). A row is
+appended only when the value or flag of a period changes; `last_seen` stays empty while a value is
+current and is filled when it is revised. `store/_meta.json` keeps per-series fetch metadata
+(publisher update stamp, URL, fetch time). How to add a series or a chart:
+`pipeline/eet/registry/README.md`.
 
 ## 6. Website rules (`site/`)
 

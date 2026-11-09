@@ -1,0 +1,614 @@
+{
+ "entries": [
+  {
+   "id": "bls-firms",
+   "title": "Bank lending to firms",
+   "what": "Weighted net percentage of banks reporting tighter credit standards, and higher loan demand, over the past three months.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "ECB (BLS)",
+     "dataset": "BLS",
+     "url": "https://data.ecb.europa.eu/data/datasets/BLS/BLS.Q.U2.ALL.O.E.Z.B3.ZZ.D.WFNET"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "A positive standards reading means tightening; a positive demand reading means rising demand.",
+   "original": false,
+   "updated": "2026-10-27T09:00:00+0000"
+  },
+  {
+   "id": "bls-housing",
+   "title": "Bank lending for house purchase",
+   "what": "Weighted net percentage of banks reporting tighter credit standards, and higher demand, for mortgages over the past three months.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "ECB (BLS)",
+     "dataset": "BLS",
+     "url": "https://data.ecb.europa.eu/data/datasets/BLS/BLS.Q.U2.ALL.Z.H.H.B3.ZZ.D.WFNET"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "",
+   "original": false,
+   "updated": "2026-10-27T09:00:00+0000"
+  },
+  {
+   "id": "ciss",
+   "title": "Systemic stress in euro area markets",
+   "what": "The ECB's CISS combines stress measures from money, bond, equity, financial intermediary and foreign exchange markets, weighted by how correlated they are.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "ECB (CISS)",
+     "dataset": "CISS",
+     "url": "https://data.ecb.europa.eu/data/datasets/CISS/CISS.D.U2.Z0Z.4F.EC.SS_CIN.IDX"
+    }
+   ],
+   "frequency": "D",
+   "caveats": "A higher reading means more stress; the scale is bounded between 0 and 1.",
+   "original": false,
+   "updated": "2026-11-09T13:03:01+0000"
+  },
+  {
+   "id": "ciss-countries",
+   "title": "Financial stress by country",
+   "what": "The ECB's country-level CISS for the four largest euro area economies.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "ECB (CISS)",
+     "dataset": "CISS",
+     "url": "https://data.ecb.europa.eu/data/datasets/CISS/CISS.D.DE.Z0Z.4F.EC.SS_CIN.IDX"
+    }
+   ],
+   "frequency": "D",
+   "caveats": "",
+   "original": false,
+   "updated": "2026-11-09T13:03:01+0000"
+  },
+  {
+   "id": "consumer-price-expectations",
+   "title": "Consumers' view of prices over the next year",
+   "what": "Balance of consumers expecting prices to rise faster minus those expecting them to rise slower or fall, seasonally adjusted.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (ei_bsco_m)",
+     "dataset": "ei_bsco_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/ei_bsco_m/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "A qualitative balance, not a rate of inflation.",
+   "original": false,
+   "updated": "2026-10-29T11:00:00+0100"
+  },
+  {
+   "id": "ecb-underlying",
+   "title": "The ECB's measures of underlying inflation",
+   "what": "The underlying inflation measures the ECB computes from the HICP.",
+   "transform": "As published by the ECB, except domestic inflation: 12-month change of the ECB index.",
+   "sources": [
+    {
+     "name": "Eurostat (prc_hicp_minr)",
+     "dataset": "prc_hicp_minr",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table"
+    },
+    {
+     "name": "ECB (HICP)",
+     "dataset": "HICP",
+     "url": "https://data.ecb.europa.eu/data/datasets/HICP/HICP.M.U2.N.DOM000.4F0.INX"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "These measures are published about two weeks after the flash HICP and only for the euro area.",
+   "original": false,
+   "updated": "2026-11-04T11:00:00+0100"
+  },
+  {
+   "id": "estr-vs-dfr",
+   "title": "Overnight rates follow the deposit rate",
+   "what": "The volume-weighted overnight unsecured rate banks pay (€STR) against the ECB deposit rate.",
+   "transform": "Deposit facility rate: step",
+   "sources": [
+    {
+     "name": "ECB (FM)",
+     "dataset": "FM",
+     "url": "https://data.ecb.europa.eu/data/datasets/FM/FM.B.U2.EUR.4F.KR.DFR.LEV"
+    },
+    {
+     "name": "ECB (EST)",
+     "dataset": "EST",
+     "url": "https://data.ecb.europa.eu/data/datasets/EST/EST.B.EU000A2X2A25.WT"
+    }
+   ],
+   "frequency": "D",
+   "caveats": "€STR trades a few basis points below the deposit rate because of excess liquidity.",
+   "original": false,
+   "updated": "2026-11-09T07:05:03+0000"
+  },
+  {
+   "id": "eur-usd",
+   "title": "The euro against the dollar",
+   "what": "The ECB's daily euro foreign exchange reference rate against the US dollar, set around 14:10 CET.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "ECB (EXR)",
+     "dataset": "EXR",
+     "url": "https://data.ecb.europa.eu/data/datasets/EXR/EXR.D.USD.EUR.SP00.A"
+    }
+   ],
+   "frequency": "D",
+   "caveats": "A rise means a stronger euro.",
+   "original": false,
+   "updated": "2026-11-09T14:57:03+0000"
+  },
+  {
+   "id": "euro-effective-rate",
+   "title": "The euro against its trading partners",
+   "what": "Trade-weighted average of the euro against the currencies of 41 trading partners, monthly average.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "ECB (EXR)",
+     "dataset": "EXR",
+     "url": "https://data.ecb.europa.eu/data/datasets/EXR/EXR.M.E03.EUR.EN00.A"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "A rise means a stronger euro.",
+   "original": false,
+   "updated": "2026-11-02T12:21:54+0000"
+  },
+  {
+   "id": "eurosystem-balance-sheet",
+   "title": "The Eurosystem balance sheet",
+   "what": "Total assets in the Eurosystem's consolidated weekly financial statement.",
+   "transform": "EUR millions divided by 1,000. Weekly periods are dated to the Friday of the ISO week.",
+   "sources": [
+    {
+     "name": "ECB (ILM)",
+     "dataset": "ILM",
+     "url": "https://data.ecb.europa.eu/data/datasets/ILM/ILM.W.U2.C.T000000.Z5.Z01"
+    }
+   ],
+   "frequency": "W",
+   "caveats": "Quarter-end revaluations of gold and foreign currency cause small jumps.",
+   "original": false,
+   "updated": "2026-11-03T14:22:06+0000"
+  },
+  {
+   "id": "hicp-3m-annualised",
+   "title": "Recent momentum in prices",
+   "what": "Change over the latest three months in the ECB's seasonally adjusted HICP indices, compounded to an annual rate.",
+   "transform": "((index_t / index_{t-3}) ^ 4 - 1) x 100 on the seasonally adjusted index (ECB HICP flow, adjustment Y, provider 4F0).",
+   "sources": [
+    {
+     "name": "ECB (HICP)",
+     "dataset": "HICP",
+     "url": "https://data.ecb.europa.eu/data/datasets/HICP/HICP.M.U2.Y.XEF000.4F0.INX"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Seasonal adjustment is the ECB's; short-horizon rates are volatile and are revised when the seasonal factors are re-estimated.",
+   "original": true,
+   "updated": "2026-11-04T10:06:25+0000"
+  },
+  {
+   "id": "hicp-bank",
+   "title": "Inflation at different horizons",
+   "what": "Headline, core and services inflation over 1, 3, 6 and 12 months, and the ECB's underlying inflation measures.",
+   "transform": "n-month annualised: ((SA index_t / SA index_{t-n}) ^ (12 / n) - 1) x 100. Domestic inflation: 12-month change of the ECB's domestic inflation index.",
+   "sources": [
+    {
+     "name": "Eurostat (prc_hicp_minr)",
+     "dataset": "prc_hicp_minr",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table"
+    },
+    {
+     "name": "ECB (HICP)",
+     "dataset": "HICP",
+     "url": "https://data.ecb.europa.eu/data/datasets/HICP/HICP.M.U2.N.PCCI00.4F0.3MM"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "",
+   "original": true,
+   "updated": "2026-11-04T10:06:25+0000"
+  },
+  {
+   "id": "hicp-components",
+   "title": "Inflation by main component",
+   "what": "Annual inflation in the four main HICP aggregates.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (prc_hicp_minr)",
+     "dataset": "prc_hicp_minr",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "",
+   "original": false,
+   "updated": "2026-11-04T11:00:00+0100"
+  },
+  {
+   "id": "hicp-constant-tax",
+   "title": "Inflation with and without tax changes",
+   "what": "The HICP recomputed with tax rates held constant, which shows how much VAT and excise changes move the headline rate.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (prc_hicp_ct)",
+     "dataset": "prc_hicp_ct",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_ct/default/table"
+    },
+    {
+     "name": "Eurostat (prc_hicp_minr)",
+     "dataset": "prc_hicp_minr",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Constant-tax data are published with the final HICP only.",
+   "original": false,
+   "updated": "2026-11-04T11:00:00+0100"
+  },
+  {
+   "id": "hicp-contributions",
+   "title": "What adds up to headline inflation",
+   "what": "Eurostat's contributions of energy, food, non-energy industrial goods and services to annual euro area inflation, with the headline rate.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (prc_hicp_ctr)",
+     "dataset": "prc_hicp_ctr",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_ctr/default/table"
+    },
+    {
+     "name": "Eurostat (prc_hicp_minr)",
+     "dataset": "prc_hicp_minr",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Published with the final HICP, so the latest flash month has no contributions yet.",
+   "original": false,
+   "updated": "2026-11-04T11:00:00+0100"
+  },
+  {
+   "id": "hicp-countries",
+   "title": "Inflation in the largest economies",
+   "what": "Annual HICP inflation in Germany, France, Italy, Spain, the Netherlands and Poland, with the euro area.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (prc_hicp_minr)",
+     "dataset": "prc_hicp_minr",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "",
+   "original": false,
+   "updated": "2026-11-04T11:00:00+0100"
+  },
+  {
+   "id": "hicp-country-heatmap",
+   "title": "Inflation across all euro area members",
+   "what": "Annual HICP inflation in each of the 21 euro area member states, month by month.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (prc_hicp_minr)",
+     "dataset": "prc_hicp_minr",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "",
+   "original": false,
+   "updated": "2026-11-04T11:00:00+0100"
+  },
+  {
+   "id": "hicp-flash-final",
+   "title": "Flash estimate and final release",
+   "what": "Eurostat's flash estimate of headline inflation next to the final figure published about two weeks later.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (prc_hicp_fpd)",
+     "dataset": "prc_hicp_fpd",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_fpd/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "The flash estimate is published on the last working day of the month or the first of the next; the final release follows mid-month.",
+   "original": false,
+   "updated": "2026-11-04T11:00:00+0100"
+  },
+  {
+   "id": "hicp-headline-core",
+   "title": "Headline and core inflation",
+   "what": "Annual rate of change of the euro area HICP and of the HICP excluding energy, food, alcohol and tobacco, as published by Eurostat.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (prc_hicp_minr)",
+     "dataset": "prc_hicp_minr",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "HICP excludes owner-occupied housing costs. Since January 2026 the index follows ECOICOP version 2 (prc_hicp_minr); the euro area series is the fixed EA21 composition.",
+   "original": false,
+   "updated": "2026-11-04T11:00:00+0100"
+  },
+  {
+   "id": "inflation-expectations-consumers",
+   "title": "What households expect",
+   "what": "Median of households' quantitative inflation expectations in the ECB Consumer Expectations Survey, euro area aggregate of the 11 survey countries.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "ECB (CES)",
+     "dataset": "CES",
+     "url": "https://data.ecb.europa.eu/data/datasets/CES/CES.M.Z18.ALL.T.C1120.NUM_VAR.WM"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Households' expectations sit well above measured inflation on average; watch the direction rather than the level.",
+   "original": false,
+   "updated": "2026-10-23T08:00:00+0000"
+  },
+  {
+   "id": "inflation-expectations-spf",
+   "title": "What professional forecasters expect",
+   "what": "Mean point forecasts of euro area HICP inflation in the ECB's quarterly Survey of Professional Forecasters.",
+   "transform": "Rolling-horizon series are re-indexed from target month to survey round: target month minus the horizon gives the reference month; the round is the next January, April, July or October survey.",
+   "sources": [
+    {
+     "name": "ECB (SPF)",
+     "dataset": "SPF",
+     "url": "https://data.ecb.europa.eu/data/datasets/SPF/SPF.M.U2.HICP.POINT.P12M.Q.AVG"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "",
+   "original": false,
+   "updated": "2026-10-30T08:50:00+0000"
+  },
+  {
+   "id": "lending-rates",
+   "title": "What it costs to borrow from banks",
+   "what": "The ECB's composite cost-of-borrowing indicators for new bank loans to households for house purchase and to non-financial corporations.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "ECB (MIR)",
+     "dataset": "MIR",
+     "url": "https://data.ecb.europa.eu/data/datasets/MIR/MIR.M.U2.B.A2I.AM.R.A.2240.EUR.N"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Averages across very different national markets: fixed-rate mortgages dominate in Germany and France, variable rates in Spain, Italy and Portugal.",
+   "original": false,
+   "updated": "2026-11-02T09:00:00+0000"
+  },
+  {
+   "id": "markets-table",
+   "title": "Markets at a glance",
+   "what": "Latest values of the main free daily euro area market series and their changes over a week and a month.",
+   "transform": "Value on the latest date against the last value on or before 7 and 30 calendar days earlier.",
+   "sources": [
+    {
+     "name": "ECB (CISS)",
+     "dataset": "CISS",
+     "url": "https://data.ecb.europa.eu/data/datasets/CISS/CISS.D.U2.Z0Z.4F.EC.SS_CIN.IDX"
+    },
+    {
+     "name": "ECB (EST)",
+     "dataset": "EST",
+     "url": "https://data.ecb.europa.eu/data/datasets/EST/EST.B.EU000A2X2A25.WT"
+    },
+    {
+     "name": "ECB (EXR)",
+     "dataset": "EXR",
+     "url": "https://data.ecb.europa.eu/data/datasets/EXR/EXR.D.USD.EUR.SP00.A"
+    },
+    {
+     "name": "ECB (YC)",
+     "dataset": "YC",
+     "url": "https://data.ecb.europa.eu/data/datasets/YC/YC.B.U2.EUR.4F.G_N_A.SV_C_YM.SR_10Y"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "",
+   "original": false,
+   "updated": "2026-11-09T15:19:20+0000"
+  },
+  {
+   "id": "money-credit",
+   "title": "Money and bank lending growth",
+   "what": "Annual growth of the broad money aggregate M3 and of bank loans to households and to non-financial corporations.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "ECB (BSI)",
+     "dataset": "BSI",
+     "url": "https://data.ecb.europa.eu/data/datasets/BSI/BSI.M.U2.Y.U.A20T.A.I.U2.2250.Z01.A"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Loans are adjusted for sales, securitisation and cash pooling (ECB definition).",
+   "original": false,
+   "updated": "2026-10-27T09:00:00+0000"
+  },
+  {
+   "id": "policy-rates",
+   "title": "ECB policy rates",
+   "what": "The three key ECB interest rates since 1999 and the overnight €STR.",
+   "transform": "ECB change-date series expanded to steps (old value the day before each change, new value on the day), extended to the build date.",
+   "sources": [
+    {
+     "name": "ECB (FM)",
+     "dataset": "FM",
+     "url": "https://data.ecb.europa.eu/data/datasets/FM/FM.B.U2.EUR.4F.KR.DFR.LEV"
+    },
+    {
+     "name": "ECB (EST)",
+     "dataset": "EST",
+     "url": "https://data.ecb.europa.eu/data/datasets/EST/EST.B.EU000A2X2A25.WT"
+    }
+   ],
+   "frequency": "D",
+   "caveats": "Since March 2024 the MRO-DFR spread is 15 basis points; the DFR is the policy rate.",
+   "original": false,
+   "updated": "2026-11-09T07:05:03+0000"
+  },
+  {
+   "id": "rate-path-forwards",
+   "title": "What the bond curve implies for short rates",
+   "what": "Instantaneous forward rates 6 months, 1 year and 2 years ahead on the ECB's AAA government bond yield curve, against the deposit facility rate.",
+   "transform": "Deposit facility rate: step",
+   "sources": [
+    {
+     "name": "ECB (FM)",
+     "dataset": "FM",
+     "url": "https://data.ecb.europa.eu/data/datasets/FM/FM.B.U2.EUR.4F.KR.DFR.LEV"
+    },
+    {
+     "name": "ECB (YC)",
+     "dataset": "YC",
+     "url": "https://data.ecb.europa.eu/data/datasets/YC/YC.B.U2.EUR.4F.G_N_A.SV_C_YM.IF_1Y"
+    }
+   ],
+   "frequency": "D",
+   "caveats": "A rough proxy. Market-implied ECB paths (€STR OIS, Euribor and €STR futures) are licensed data and are not used.",
+   "original": false,
+   "updated": "2026-11-09T11:00:00+0000"
+  },
+  {
+   "id": "spf-rate-path",
+   "title": "What forecasters assume for the policy rate",
+   "what": "The mean policy-rate assumption respondents to the ECB's SPF give 3, 6, 9 and 12 months ahead, for the four most recent rounds.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "ECB (FM)",
+     "dataset": "FM",
+     "url": "https://data.ecb.europa.eu/data/datasets/FM/FM.B.U2.EUR.4F.KR.DFR.LEV"
+    },
+    {
+     "name": "ECB (SPF)",
+     "dataset": "SPF",
+     "url": "https://data.ecb.europa.eu/data/datasets/SPF"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "A survey of assumptions, quarterly; not market pricing.",
+   "original": false,
+   "updated": "2026-10-30T08:50:00+0000"
+  },
+  {
+   "id": "spreads-vs-bund",
+   "title": "Spreads over the German Bund",
+   "what": "The extra yield investors demand to hold each government's 10-year bonds rather than Germany's.",
+   "transform": "Country 10-year yield minus the German 10-year yield, monthly averages (Eurostat irt_lt_mcby_m).",
+   "sources": [
+    {
+     "name": "Eurostat (irt_lt_mcby_m)",
+     "dataset": "irt_lt_mcby_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/irt_lt_mcby_m/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Monthly averages; intra-month spikes are smoothed out.",
+   "original": true,
+   "updated": "2026-10-13T11:00:00+0200"
+  },
+  {
+   "id": "staff-projections-growth",
+   "title": "Staff projections for growth",
+   "what": "The real GDP growth path in the four most recent staff projection rounds.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "ECB (MPD)",
+     "dataset": "MPD",
+     "url": "https://data.ecb.europa.eu/data/datasets/MPD"
+    }
+   ],
+   "frequency": "A",
+   "caveats": "",
+   "original": false,
+   "updated": "2026-09-10T13:48:39+0000"
+  },
+  {
+   "id": "staff-projections-inflation",
+   "title": "Staff projections for inflation",
+   "what": "The HICP inflation path in the four most recent ECB (March, September) and Eurosystem (June, December) staff projection rounds.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "ECB (MPD)",
+     "dataset": "MPD",
+     "url": "https://data.ecb.europa.eu/data/datasets/MPD"
+    }
+   ],
+   "frequency": "A",
+   "caveats": "Projections are conditional on market assumptions for rates, oil and the exchange rate at the cut-off date.",
+   "original": false,
+   "updated": "2026-09-10T13:48:39+0000"
+  },
+  {
+   "id": "yield-curve-slope",
+   "title": "Slope of the yield curve",
+   "what": "Difference between the 10-year and 2-year spot yields on the AAA euro area curve.",
+   "transform": "10-year yield minus 2-year yield on the same day.",
+   "sources": [],
+   "frequency": "D",
+   "caveats": "",
+   "original": false,
+   "updated": "2026-11-09T11:00:00+0000"
+  },
+  {
+   "id": "yields-aaa",
+   "title": "Euro area government bond yields",
+   "what": "Spot yields at 2 and 10 years on the ECB's estimated yield curve for AAA-rated euro area central government bonds (Svensson model), daily.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "ECB (YC)",
+     "dataset": "YC",
+     "url": "https://data.ecb.europa.eu/data/datasets/YC/YC.B.U2.EUR.4F.G_N_A.SV_C_YM.SR_10Y"
+    }
+   ],
+   "frequency": "D",
+   "caveats": "A fitted curve, not a single bond. The AAA set changes when ratings change.",
+   "original": false,
+   "updated": "2026-11-09T11:00:00+0000"
+  },
+  {
+   "id": "yields-by-country",
+   "title": "Ten-year yields by country",
+   "what": "Ten-year benchmark government bond yields used for the EMU convergence criterion, monthly averages.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (irt_lt_mcby_m)",
+     "dataset": "irt_lt_mcby_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/irt_lt_mcby_m/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Monthly averages of daily yields, so the latest month lags market moves.",
+   "original": false,
+   "updated": "2026-10-13T11:00:00+0200"
+  }
+ ]
+}
