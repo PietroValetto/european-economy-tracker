@@ -1,27 +1,177 @@
 {
  "schema": 1,
- "built_at": "2026-11-09T15:23:21Z",
+ "built_at": "2026-11-09T16:31:19Z",
  "pages": [
   {
    "id": "gdp",
    "title": "GDP and growth",
    "path": "gdp/",
    "description": "Output in the euro area and the largest economies: quarterly growth, its components and the outlook.",
-   "sections": []
+   "sections": [
+    {
+     "id": "growth",
+     "title": "Growth and its components",
+     "intro": "Quarterly real GDP and how much consumption, investment, government, inventories and trade added to it.",
+     "charts": [
+      "gdp-growth",
+      "gdp-contributions"
+     ],
+     "tables": [
+      "gdp-table"
+     ]
+    },
+    {
+     "id": "levels",
+     "title": "Output since the pandemic",
+     "intro": "The level of real GDP against the last quarter before the pandemic.",
+     "charts": [
+      "gdp-level",
+      "gdp-level-countries"
+     ],
+     "tables": []
+    },
+    {
+     "id": "countries",
+     "title": "Across the euro area",
+     "intro": "Quarterly growth in every member state. Ireland's multinational accounting can move the euro area figure on its own.",
+     "charts": [
+      "gdp-country-heatmap"
+     ],
+     "tables": []
+    },
+    {
+     "id": "monthly",
+     "title": "Monthly activity",
+     "intro": "Industry, retail, services and construction: the monthly data that come before GDP.",
+     "charts": [
+      "industrial-production",
+      "retail-sales",
+      "services-turnover",
+      "construction-output"
+     ],
+     "tables": [
+      "monthly-activity-table"
+     ]
+    }
+   ]
   },
   {
    "id": "labour",
    "title": "Jobs",
    "path": "labour/",
    "description": "Employment, unemployment, vacancies and job postings across the euro area.",
-   "sections": []
+   "sections": [
+    {
+     "id": "unemployment",
+     "title": "Unemployment",
+     "intro": "The ILO unemployment rate is the one monthly, harmonised labour market number for the euro area.",
+     "charts": [
+      "unemployment-rate",
+      "unemployment-countries",
+      "sahm-rule",
+      "long-term-unemployment"
+     ],
+     "tables": [
+      "labour-rates-table"
+     ]
+    },
+    {
+     "id": "employment",
+     "title": "Employment",
+     "intro": "Employment is counted quarterly, from the national accounts and the Labour Force Survey.",
+     "charts": [
+      "employment-growth",
+      "employment-level",
+      "employment-rates",
+      "employment-expectations"
+     ],
+     "tables": []
+    },
+    {
+     "id": "slack",
+     "title": "Slack and job quality",
+     "intro": "Unemployment misses people who want more hours or would work but are not searching.",
+     "charts": [
+      "labour-slack",
+      "job-quality",
+      "labour-flows"
+     ],
+     "tables": []
+    },
+    {
+     "id": "vacancies",
+     "title": "Vacancies and job postings",
+     "intro": "Official vacancies are quarterly and late; Indeed's postings move daily.",
+     "charts": [
+      "job-vacancy-rate",
+      "beveridge-curve",
+      "indeed-postings"
+     ],
+     "tables": []
+    },
+    {
+     "id": "national",
+     "title": "National monthly data",
+     "intro": "There is no monthly payroll count for the euro area. These national monthly series come out weeks before Eurostat's quarterly numbers, each on its own national definition.",
+     "charts": [
+      "national-employment-growth",
+      "national-unemployment-rates",
+      "germany-vacancies-kurzarbeit",
+      "france-payroll-employment",
+      "poland-enterprise-sector"
+     ],
+     "tables": []
+    }
+   ]
   },
   {
    "id": "wages",
    "title": "Wages",
    "path": "wages/",
    "description": "Negotiated wages, the ECB wage tracker, labour costs and productivity.",
-   "sections": []
+   "sections": [
+    {
+     "id": "pay",
+     "title": "Pay growth",
+     "intro": "There is no monthly earnings survey for the euro area: these are the measures that exist, from collective agreements, labour costs and the national accounts.",
+     "charts": [
+      "wage-growth"
+     ],
+     "tables": [
+      "wages-table"
+     ]
+    },
+    {
+     "id": "tracker",
+     "title": "Where wages are heading",
+     "intro": "The ECB's tracker is built from agreements already signed, so it runs ahead of the data. Indeed's posted wages are a second, independent read.",
+     "charts": [
+      "ecb-wage-tracker",
+      "indeed-wage-tracker"
+     ],
+     "tables": []
+    },
+    {
+     "id": "costs",
+     "title": "Labour costs and productivity",
+     "intro": "Unit labour costs are pay per worker divided by output per worker: what wages mean for prices.",
+     "charts": [
+      "labour-cost-index",
+      "unit-labour-costs",
+      "productivity"
+     ],
+     "tables": []
+    },
+    {
+     "id": "real",
+     "title": "Real wages",
+     "intro": "Pay growth after inflation.",
+     "charts": [
+      "real-wages"
+     ],
+     "tables": []
+    }
+   ]
   },
   {
    "id": "inflation",
@@ -206,21 +356,199 @@
    "title": "Public finances",
    "path": "fiscal/",
    "description": "Government deficits and debt, country by country, and the EU fiscal rules.",
-   "sections": []
+   "sections": [
+    {
+     "id": "debt",
+     "title": "Government debt",
+     "intro": "Gross debt under the Maastricht definition; the EU's reference value is 60% of GDP.",
+     "charts": [
+      "gov-debt",
+      "gov-debt-countries",
+      "gov-debt-heatmap"
+     ],
+     "tables": []
+    },
+    {
+     "id": "deficit",
+     "title": "Deficits",
+     "intro": "Net borrowing of all levels of government; the reference value is a deficit of 3% of GDP.",
+     "charts": [
+      "gov-balance",
+      "gov-deficit-countries",
+      "gov-primary-balance",
+      "gov-revenue-expenditure"
+     ],
+     "tables": []
+    },
+    {
+     "id": "interest",
+     "title": "The cost of debt",
+     "intro": "What governments pay in interest, and whether growth outruns the interest rate.",
+     "charts": [
+      "gov-interest-countries",
+      "gov-interest-ea",
+      "gov-r-minus-g"
+     ],
+     "tables": []
+    },
+    {
+     "id": "forecasts",
+     "title": "The Commission's forecast",
+     "intro": "The European Commission's latest published forecast for deficits and debt.",
+     "charts": [
+      "gov-forecast-deficit",
+      "gov-forecast-debt"
+     ],
+     "tables": []
+    },
+    {
+     "id": "countries",
+     "title": "Country by country",
+     "intro": "The latest annual figures for every member state.",
+     "charts": [],
+     "tables": [
+      "fiscal-table"
+     ]
+    }
+   ]
   },
   {
    "id": "international",
    "title": "International",
    "path": "international/",
    "description": "The euro area next to the United States, the United Kingdom, Japan and other large economies.",
-   "sections": []
+   "sections": [
+    {
+     "id": "overview",
+     "title": "At a glance",
+     "intro": "The latest headline numbers for the largest economies.",
+     "charts": [],
+     "tables": [
+      "intl-overview"
+     ]
+    },
+    {
+     "id": "growth",
+     "title": "Growth",
+     "intro": "Real GDP in the euro area and the other large economies.",
+     "charts": [
+      "intl-gdp-growth",
+      "intl-gdp-level"
+     ],
+     "tables": []
+    },
+    {
+     "id": "prices-jobs",
+     "title": "Inflation and jobs",
+     "intro": "Consumer prices and unemployment, economy by economy.",
+     "charts": [
+      "intl-inflation",
+      "intl-unemployment"
+     ],
+     "tables": []
+    },
+    {
+     "id": "rates-fx",
+     "title": "Interest rates and currencies",
+     "intro": "Policy rates, long-term yields and exchange rates against the dollar.",
+     "charts": [
+      "intl-policy-rates",
+      "intl-10y-yields",
+      "intl-fx-usd"
+     ],
+     "tables": []
+    },
+    {
+     "id": "external",
+     "title": "Trade with the world",
+     "intro": "The euro area's current account and goods trade, and the current accounts of its members.",
+     "charts": [
+      "ea-current-account",
+      "ea-trade-balance",
+      "ea-exports-imports",
+      "current-account-countries"
+     ],
+     "tables": []
+    }
+   ]
   },
   {
    "id": "europe",
    "title": "Only in Europe",
    "path": "europe/",
    "description": "Indicators with no US counterpart: fragmentation, energy and the European Commission's surveys.",
-   "sections": []
+   "sections": [
+    {
+     "id": "glance",
+     "title": "Europe at a glance",
+     "intro": "Growth, jobs, prices, public finances and borrowing costs in every euro area country.",
+     "charts": [],
+     "tables": [
+      "europe-at-a-glance"
+     ]
+    },
+    {
+     "id": "surveys",
+     "title": "Business and consumer surveys",
+     "intro": "The European Commission's monthly surveys: the earliest free read on the cycle.",
+     "charts": [
+      "economic-sentiment",
+      "sentiment-components",
+      "esi-countries",
+      "capacity-utilisation"
+     ],
+     "tables": []
+    },
+    {
+     "id": "fragmentation",
+     "title": "Fragmentation",
+     "intro": "TARGET balances: where money moves inside the euro area's payment system.",
+     "charts": [
+      "target2-balances"
+     ],
+     "tables": []
+    },
+    {
+     "id": "housing",
+     "title": "Housing",
+     "intro": "House prices across the euro area.",
+     "charts": [
+      "house-prices",
+      "house-prices-countries"
+     ],
+     "tables": []
+    },
+    {
+     "id": "households",
+     "title": "Households",
+     "intro": "How much households save, and how wealth is shared.",
+     "charts": [
+      "household-saving-rate",
+      "wealth-top10"
+     ],
+     "tables": []
+    },
+    {
+     "id": "business",
+     "title": "Business dynamics",
+     "intro": "New businesses and bankruptcies.",
+     "charts": [
+      "business-demography"
+     ],
+     "tables": []
+    },
+    {
+     "id": "energy",
+     "title": "Energy and regulated prices",
+     "intro": "What households pay for electricity and gas, and the prices set or steered by governments.",
+     "charts": [
+      "electricity-prices",
+      "gas-prices",
+      "hicp-administered"
+     ],
+     "tables": []
+    }
+   ]
   },
   {
    "id": "calendar",

@@ -1,0 +1,29 @@
+{
+  "odata.metadata":"https://opendata.cbs.nl/ODataApi/OData/80590ned/$metadata#Cbs.OData.WebAPI.TypedDataSet&$select=Perioden,Seizoengecorrigeerd_4,Seizoengecorrigeerd_8","value":[
+    {
+      "Perioden":"2026MM01","Seizoengecorrigeerd_4":9843.0,"Seizoengecorrigeerd_8":4.0
+    },{
+      "Perioden":"2026MM02","Seizoengecorrigeerd_4":9849.0,"Seizoengecorrigeerd_8":4.1
+    },{
+      "Perioden":"2026MM03","Seizoengecorrigeerd_4":9850.0,"Seizoengecorrigeerd_8":4.0
+    },{
+      "Perioden":"2026KW01","Seizoengecorrigeerd_4":9847.0,"Seizoengecorrigeerd_8":4.0
+    },{
+      "Perioden":"2026MM04","Seizoengecorrigeerd_4":9853.0,"Seizoengecorrigeerd_8":3.9
+    },{
+      "Perioden":"2026MM05","Seizoengecorrigeerd_4":9829.0,"Seizoengecorrigeerd_8":3.9
+    },{
+      "Perioden":"2026MM06","Seizoengecorrigeerd_4":9831.0,"Seizoengecorrigeerd_8":3.8
+    },{
+      "Perioden":"2026KW02","Seizoengecorrigeerd_4":9839.0,"Seizoengecorrigeerd_8":3.9
+    },{
+      "Perioden":"2026MM07","Seizoengecorrigeerd_4":9821.0,"Seizoengecorrigeerd_8":4.0
+    },{
+      "Perioden":"2026MM08","Seizoengecorrigeerd_4":9827.0,"Seizoengecorrigeerd_8":4.0
+    },{
+      "Perioden":"2026MM09","Seizoengecorrigeerd_4":9831.0,"Seizoengecorrigeerd_8":4.0
+    },{
+      "Perioden":"2026KW03","Seizoengecorrigeerd_4":9826.0,"Seizoengecorrigeerd_8":4.0
+    }
+  ]
+}

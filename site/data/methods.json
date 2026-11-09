@@ -1,6 +1,28 @@
 {
  "entries": [
   {
+   "id": "beveridge-curve",
+   "title": "The Beveridge curve",
+   "what": "The relation between unemployment and vacancies since 2010.",
+   "transform": "Unemployment: quarterly mean of the monthly seasonally adjusted rate (une_rt_m). Vacancies: jvs_q_r21, B-T, SA.",
+   "sources": [
+    {
+     "name": "Eurostat (jvs_q_r21)",
+     "dataset": "jvs_q_r21",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/jvs_q_r21/default/table"
+    },
+    {
+     "name": "Eurostat (une_rt_m)",
+     "dataset": "une_rt_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "The vacancy rate covers firms in industry, construction and services; the unemployment rate covers the whole labour force.",
+   "original": true,
+   "updated": "2026-11-05T23:00:00+0100"
+  },
+  {
    "id": "bls-firms",
    "title": "Bank lending to firms",
    "what": "Weighted net percentage of banks reporting tighter credit standards, and higher loan demand, over the past three months.",
@@ -33,6 +55,40 @@
    "caveats": "",
    "original": false,
    "updated": "2026-10-27T09:00:00+0000"
+  },
+  {
+   "id": "business-demography",
+   "title": "New businesses and bankruptcies",
+   "what": "Quarterly indices of new business registrations and of bankruptcy declarations, euro area.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (sts_rb_q)",
+     "dataset": "sts_rb_q",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/sts_rb_q/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "Bankruptcy procedures differ by country; the index shows the trend, not a bankruptcy rate.",
+   "original": false,
+   "updated": "2026-11-07T11:00:00+0100"
+  },
+  {
+   "id": "capacity-utilisation",
+   "title": "How hard factories are running",
+   "what": "Firms' answers to the quarterly industry survey question on their current level of capacity utilisation, as a percentage of full capacity, seasonally adjusted.",
+   "transform": "As published; the reference line is the 1990-2019 mean, computed by the tracker.",
+   "sources": [
+    {
+     "name": "Eurostat (ei_bsin_q_r2)",
+     "dataset": "ei_bsin_q_r2",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/ei_bsin_q_r2/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "Survey-based and quarterly (January, April, July, October).",
+   "original": false,
+   "updated": "2026-10-29T11:00:00+0100"
   },
   {
    "id": "ciss",
@@ -69,6 +125,23 @@
    "updated": "2026-11-09T13:03:01+0000"
   },
   {
+   "id": "construction-output",
+   "title": "Construction output",
+   "what": "Monthly change in the volume of output of buildings and civil engineering.",
+   "transform": "As published: m/m from the seasonally and calendar adjusted index (SCA, PCH_PRE); y/y from the calendar adjusted index (CA, PCH_SM).",
+   "sources": [
+    {
+     "name": "Eurostat (sts_copr_m)",
+     "dataset": "sts_copr_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/sts_copr_m/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Construction is volatile and weather-dependent; the first estimate is often revised.",
+   "original": false,
+   "updated": "2026-11-07T11:00:00+0100"
+  },
+  {
    "id": "consumer-price-expectations",
    "title": "Consumers' view of prices over the next year",
    "what": "Balance of consumers expecting prices to rise faster minus those expecting them to rise slower or fall, seasonally adjusted.",
@@ -84,6 +157,74 @@
    "caveats": "A qualitative balance, not a rate of inflation.",
    "original": false,
    "updated": "2026-10-29T11:00:00+0100"
+  },
+  {
+   "id": "current-account-countries",
+   "title": "Current accounts across the euro area",
+   "what": "Each member state's current account balance with the rest of the world as a share of GDP, averaged over the latest four quarters.",
+   "transform": "Four-quarter moving average of the unadjusted quarterly ratio (Eurostat bop_gdp6_q).",
+   "sources": [
+    {
+     "name": "Eurostat (bop_gdp6_q)",
+     "dataset": "bop_gdp6_q",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/bop_gdp6_q/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "Country balances include trade with other euro area members; the euro area aggregate does not. Ireland and Luxembourg are distorted by multinational accounting.",
+   "original": false,
+   "updated": "2026-10-29T11:00:00+0100"
+  },
+  {
+   "id": "ea-current-account",
+   "title": "The euro area current account",
+   "what": "The euro area's current account with countries outside it, and its four components, summed over the latest 12 months.",
+   "transform": "Sum of the latest 12 monthly balances (Eurostat ei_bpm6ca_m, not seasonally adjusted), EUR millions divided by 1,000.",
+   "sources": [
+    {
+     "name": "Eurostat (ei_bpm6ca_m)",
+     "dataset": "ei_bpm6ca_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/ei_bpm6ca_m/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Monthly balance of payments data are revised substantially; the 12-month sum removes seasonality but not revisions.",
+   "original": true,
+   "updated": "2026-10-28T23:00:00+0100"
+  },
+  {
+   "id": "ea-exports-imports",
+   "title": "Euro area exports and imports of goods",
+   "what": "Monthly value of extra-euro area exports and imports of goods, seasonally adjusted.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (ei_etea_m)",
+     "dataset": "ei_etea_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/ei_etea_m/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Values, not volumes: energy prices move imports a lot.",
+   "original": false,
+   "updated": "2026-10-16T11:00:00+0200"
+  },
+  {
+   "id": "ea-trade-balance",
+   "title": "Euro area trade in goods",
+   "what": "Monthly balance of the euro area's trade in goods with non-member countries (exports minus imports), seasonally adjusted, from the euro indicators release.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (ei_etea_m)",
+     "dataset": "ei_etea_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/ei_etea_m/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Customs-based trade statistics (international trade in goods), not the balance of payments goods balance, which differs by merchanting and goods sent for processing.",
+   "original": false,
+   "updated": "2026-10-16T11:00:00+0200"
   },
   {
    "id": "ecb-underlying",
@@ -106,6 +247,142 @@
    "caveats": "These measures are published about two weeks after the flash HICP and only for the euro area.",
    "original": false,
    "updated": "2026-11-04T11:00:00+0100"
+  },
+  {
+   "id": "ecb-wage-tracker",
+   "title": "The ECB wage tracker",
+   "what": "The ECB's wage tracker: annual growth of negotiated wages implied by collective agreements in force or already signed, with and without one-off payments.",
+   "transform": "As published (EWT.M.U2.N.WT.INWS._T.4F0.GY, one-off payments smoothed, and EWT.M.U2.N.WT.INWR._T.4F0.GY). The smoothed line is split at the current month by the tracker.",
+   "sources": [
+    {
+     "name": "ECB (EWT)",
+     "dataset": "EWT",
+     "url": "https://data.ecb.europa.eu/data/datasets/EWT/EWT.M.U2.N.WT.INWS._T.4F0.GY"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Built from collective agreements in a sample of large euro area countries, not from pay actually received; wage drift and workers outside agreements are not covered.",
+   "original": false,
+   "updated": "2026-11-04T09:00:00+0000"
+  },
+  {
+   "id": "economic-sentiment",
+   "title": "Economic sentiment",
+   "what": "The European Commission's Economic Sentiment Indicator: a weighted composite of confidence in industry (40%), services (30%), consumers (20%), construction and retail trade (5% each), scaled to a long-run average of 100 and a standard deviation of 10.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (ei_bssi_m_r2)",
+     "dataset": "ei_bssi_m_r2",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/ei_bssi_m_r2/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "A survey of expectations and assessments, not a measure of output; it leads GDP turning points but can miss levels.",
+   "original": false,
+   "updated": "2026-10-29T11:00:00+0100"
+  },
+  {
+   "id": "electricity-prices",
+   "title": "What households pay for electricity",
+   "what": "The average price households pay for electricity in the medium consumption band, including network charges, levies and VAT.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (nrg_pc_204)",
+     "dataset": "nrg_pc_204",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/nrg_pc_204/default/table"
+    }
+   ],
+   "frequency": "A",
+   "caveats": "Prices are averages over the half-year and include taxes and support measures, which differ by country.",
+   "original": false,
+   "updated": "2026-10-19T23:00:00+0200"
+  },
+  {
+   "id": "employment-expectations",
+   "title": "What employers plan",
+   "what": "Managers' employment plans for the next three months in industry, services, retail and construction, combined into one index.",
+   "transform": "As published (ei_bsee_m_r2, BS-EEI-I).",
+   "sources": [
+    {
+     "name": "Eurostat (ei_bsee_m_r2)",
+     "dataset": "ei_bsee_m_r2",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/ei_bsee_m_r2/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "A survey of intentions, published before the month ends; it leads employment by a few months but not one for one.",
+   "original": false,
+   "updated": "2026-10-29T11:00:00+0100"
+  },
+  {
+   "id": "employment-growth",
+   "title": "Employment growth",
+   "what": "Growth of total employment in the euro area, domestic concept, from the quarterly national accounts.",
+   "transform": "As published (namq_10_pe, EMP_DC, PCH_PRE_PER and PCH_SM_PER).",
+   "sources": [
+    {
+     "name": "Eurostat (namq_10_pe)",
+     "dataset": "namq_10_pe",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_pe/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "Counts persons, not jobs or hours; hours per worker have fallen since 2019.",
+   "original": false,
+   "updated": "2026-11-03T11:00:00+0100"
+  },
+  {
+   "id": "employment-level",
+   "title": "People in work",
+   "what": "Total employment in the euro area (domestic concept).",
+   "transform": "Thousand persons divided by 1,000.",
+   "sources": [
+    {
+     "name": "Eurostat (namq_10_pe)",
+     "dataset": "namq_10_pe",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_pe/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "The EA21 aggregate is backcast for the whole period with today's 21 members.",
+   "original": false,
+   "updated": "2026-11-03T11:00:00+0100"
+  },
+  {
+   "id": "employment-rates",
+   "title": "Share of people in work",
+   "what": "Employment rate of people aged 20 to 64 (the EU 2030 target measure) and of prime-age adults.",
+   "transform": "As published (lfsi_emp_q, EMP_LFS, PC_POP, SA).",
+   "sources": [
+    {
+     "name": "Eurostat (lfsi_emp_q)",
+     "dataset": "lfsi_emp_q",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/lfsi_emp_q/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "The EU target of 78% applies to the EU27, shown here against the euro area rate.",
+   "original": false,
+   "updated": "2026-11-06T23:00:00+0100"
+  },
+  {
+   "id": "esi-countries",
+   "title": "Sentiment in the largest economies",
+   "what": "The Economic Sentiment Indicator for Germany, France, Italy, Spain, the Netherlands and Poland, with the euro area.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (ei_bssi_m_r2)",
+     "dataset": "ei_bssi_m_r2",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/ei_bssi_m_r2/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "",
+   "original": false,
+   "updated": "2026-10-29T11:00:00+0100"
   },
   {
    "id": "estr-vs-dfr",
@@ -164,6 +441,48 @@
    "updated": "2026-11-02T12:21:54+0000"
   },
   {
+   "id": "europe-at-a-glance",
+   "title": "Europe at a glance",
+   "what": "Real GDP growth, unemployment, HICP inflation, government debt, the budget balance and the 10-year spread over the Bund for the euro area, every member state and Poland.",
+   "transform": "As published. Spread = country 10-year yield minus the German 10-year yield in the same month.",
+   "sources": [
+    {
+     "name": "Eurostat (gov_10dd_edpt1)",
+     "dataset": "gov_10dd_edpt1",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table"
+    },
+    {
+     "name": "Eurostat (gov_10q_ggdebt)",
+     "dataset": "gov_10q_ggdebt",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10q_ggdebt/default/table"
+    },
+    {
+     "name": "Eurostat (namq_10_gdp)",
+     "dataset": "namq_10_gdp",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table"
+    },
+    {
+     "name": "Eurostat (une_rt_m)",
+     "dataset": "une_rt_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m/default/table"
+    },
+    {
+     "name": "Eurostat (prc_hicp_minr)",
+     "dataset": "prc_hicp_minr",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table"
+    },
+    {
+     "name": "Eurostat (irt_lt_mcby_m)",
+     "dataset": "irt_lt_mcby_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/irt_lt_mcby_m/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Columns refer to different periods (quarterly, monthly, annual); read across a row with care.",
+   "original": false,
+   "updated": "2026-11-05T23:00:00+0100"
+  },
+  {
    "id": "eurosystem-balance-sheet",
    "title": "The Eurosystem balance sheet",
    "what": "Total assets in the Eurosystem's consolidated weekly financial statement.",
@@ -181,6 +500,415 @@
    "updated": "2026-11-03T14:22:06+0000"
   },
   {
+   "id": "fiscal-table",
+   "title": "Public finances by country",
+   "what": "Balance, primary balance, interest and gross debt for each euro area member in the latest EDP year, the latest quarterly debt ratio and the Commission's forecast for the next year.",
+   "transform": "Primary balance = net lending + interest payable. Everything else as published.",
+   "sources": [
+    {
+     "name": "European Commission (FDMS_UBLGE)",
+     "dataset": "FDMS_UBLGE",
+     "url": "https://economy-finance.ec.europa.eu/economic-forecast-and-surveys/economic-forecasts_en"
+    },
+    {
+     "name": "European Commission (FDMS_UDGG)",
+     "dataset": "FDMS_UDGG",
+     "url": "https://economy-finance.ec.europa.eu/economic-forecast-and-surveys/economic-forecasts_en"
+    },
+    {
+     "name": "Eurostat (gov_10dd_edpt1)",
+     "dataset": "gov_10dd_edpt1",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table"
+    },
+    {
+     "name": "Eurostat (gov_10q_ggdebt)",
+     "dataset": "gov_10q_ggdebt",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10q_ggdebt/default/table"
+    }
+   ],
+   "frequency": "A",
+   "caveats": "Annual figures are from the latest EDP notification (April or October).",
+   "original": false,
+   "updated": "2026-10-21T11:00:00+0200"
+  },
+  {
+   "id": "france-payroll-employment",
+   "title": "France: private payroll employment",
+   "what": "Growth of private-sector payroll employment in France from INSEE's quarterly flash estimate.",
+   "transform": "% change of the seasonally adjusted level on the previous quarter and on a year earlier.",
+   "sources": [
+    {
+     "name": "INSEE (BDM 001796854)",
+     "dataset": "",
+     "url": "https://www.insee.fr/en/statistiques/serie/001796854"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "Counts jobs, not persons, and excludes the public sector and the self-employed.",
+   "original": false,
+   "updated": "2026-10-30T12:00:00+0100"
+  },
+  {
+   "id": "gas-prices",
+   "title": "What households pay for gas",
+   "what": "The average price households pay for natural gas in the medium consumption band, including network charges, levies and VAT.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (nrg_pc_202)",
+     "dataset": "nrg_pc_202",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/nrg_pc_202/default/table"
+    }
+   ],
+   "frequency": "A",
+   "caveats": "Prices include taxes and support measures, which differ by country.",
+   "original": false,
+   "updated": "2026-10-19T11:00:00+0200"
+  },
+  {
+   "id": "gdp-contributions",
+   "title": "What drove growth",
+   "what": "Eurostat's contributions of household and government consumption, investment, inventories and net exports to quarterly real GDP growth.",
+   "transform": "As published (namq_10_gdp, unit CON_PPCH_PRE).",
+   "sources": [
+    {
+     "name": "Eurostat (namq_10_gdp)",
+     "dataset": "namq_10_gdp",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "Inventories include the statistical discrepancy in several countries. Irish intellectual property investment and its imports move investment and net exports in opposite directions.",
+   "original": false,
+   "updated": "2026-11-05T23:00:00+0100"
+  },
+  {
+   "id": "gdp-country-heatmap",
+   "title": "Growth across all euro area members",
+   "what": "Quarter-on-quarter real GDP growth in each of the 21 euro area members, the euro area and the euro area excluding Ireland.",
+   "transform": "As published for countries and the euro area (CLV_PCH_PRE). Excluding Ireland: % change of (EA21 level minus IE level), chain-linked 2020 euros.",
+   "sources": [
+    {
+     "name": "Eurostat (namq_10_gdp)",
+     "dataset": "namq_10_gdp",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "The excluding-Ireland row is an approximation computed by the tracker (chain-linked levels are not strictly additive).",
+   "original": true,
+   "updated": "2026-11-05T23:00:00+0100"
+  },
+  {
+   "id": "gdp-growth",
+   "title": "Euro area GDP growth",
+   "what": "Quarterly growth of euro area real GDP (chain-linked volumes), fixed EA21 composition.",
+   "transform": "As published by Eurostat (namq_10_gdp, units CLV_PCH_PRE and CLV_PCH_SM).",
+   "sources": [
+    {
+     "name": "Eurostat (namq_10_gdp)",
+     "dataset": "namq_10_gdp",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "Ireland's GDP, driven by multinationals' accounting, can move the euro area figure by 0.1 to 0.2 points in a quarter; see the euro area excluding Ireland row in the country heatmap.",
+   "original": false,
+   "updated": "2026-11-05T23:00:00+0100"
+  },
+  {
+   "id": "gdp-level",
+   "title": "Output against its pre-pandemic level",
+   "what": "The level of euro area real GDP relative to the fourth quarter of 2019, with and without Ireland.",
+   "transform": "Chain-linked volumes (2020 euros) rebased to 2019-Q4 = 100. Excluding Ireland: euro area level minus the Irish level, then rebased.",
+   "sources": [
+    {
+     "name": "Eurostat (namq_10_gdp)",
+     "dataset": "namq_10_gdp",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "Chain-linked levels are not strictly additive, so the excluding-Ireland line is an approximation.",
+   "original": true,
+   "updated": "2026-11-05T23:00:00+0100"
+  },
+  {
+   "id": "gdp-level-countries",
+   "title": "Output in the largest economies",
+   "what": "Real GDP in Germany, France, Italy, Spain, the Netherlands and Poland relative to 2019-Q4.",
+   "transform": "Chain-linked volumes rebased to 2019-Q4 = 100.",
+   "sources": [
+    {
+     "name": "Eurostat (namq_10_gdp)",
+     "dataset": "namq_10_gdp",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "The latest quarter is a flash estimate for the countries that publish one; others end a quarter earlier.",
+   "original": false,
+   "updated": "2026-11-05T23:00:00+0100"
+  },
+  {
+   "id": "gdp-table",
+   "title": "GDP by expenditure component",
+   "what": "Latest quarter-on-quarter and year-on-year growth and the last four quarters, for GDP and its main expenditure components.",
+   "transform": "As published (CLV_PCH_PRE and CLV_PCH_SM).",
+   "sources": [
+    {
+     "name": "Eurostat (namq_10_gdp)",
+     "dataset": "namq_10_gdp",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Exports and imports include trade between euro area members.",
+   "original": false,
+   "updated": "2026-11-05T23:00:00+0100"
+  },
+  {
+   "id": "germany-vacancies-kurzarbeit",
+   "title": "Germany: vacancies and short-time work",
+   "what": "Two German administrative counts with no euro area counterpart: posts reported vacant to the Federal Employment Agency and workers on cyclical short-time work.",
+   "transform": "As published by the Bundesbank (BBDL1), converted to thousands.",
+   "sources": [
+    {
+     "name": "Bundesbank (BBDL1), from Destatis and the Federal Employment Agency",
+     "dataset": "",
+     "url": "https://www.bundesbank.de/en/statistics/time-series-databases"
+    },
+    {
+     "name": "Bundesbank (BBDL1), from Destatis and the Federal Employment Agency",
+     "dataset": "",
+     "url": "https://www.bundesbank.de/en/statistics/time-series-databases"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "The 2020 short-time work peak (about 6 million) dwarfs later values; use the window buttons. Italy's cassa integrazione and Spain's ERTE are not yet in the tracker.",
+   "original": false,
+   "updated": "2026-10-30T10:11:21+0100"
+  },
+  {
+   "id": "gov-balance",
+   "title": "Euro area government balance",
+   "what": "Quarterly net lending or borrowing of general government in the euro area, seasonally and calendar adjusted, as a share of quarterly GDP.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (gov_10q_ggnfa)",
+     "dataset": "gov_10q_ggnfa",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10q_ggnfa/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "Quarterly balances are noisier than the annual EDP figures; one-off transactions (bank support, EU fund timing) can move a single quarter.",
+   "original": false,
+   "updated": "2026-10-21T11:00:00+0200"
+  },
+  {
+   "id": "gov-debt",
+   "title": "Euro area government debt",
+   "what": "Consolidated gross debt of general government (central, state, local government and social security funds) at nominal value, as a share of GDP over the latest four quarters.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (gov_10q_ggdebt)",
+     "dataset": "gov_10q_ggdebt",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10q_ggdebt/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "Gross debt: government financial assets are not netted out. The euro area series is the fixed EA21 composition back to 2000.",
+   "original": false,
+   "updated": "2026-10-21T11:00:00+0200"
+  },
+  {
+   "id": "gov-debt-countries",
+   "title": "Government debt by country",
+   "what": "Maastricht gross debt of each member state's general government in the latest year of the EDP notification, with the euro area.",
+   "transform": "As published (annual EDP notification); latest year that at least 60% of countries report.",
+   "sources": [
+    {
+     "name": "Eurostat (gov_10dd_edpt1)",
+     "dataset": "gov_10dd_edpt1",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table"
+    }
+   ],
+   "frequency": "A",
+   "caveats": "Annual data from the April and October notifications; quarterly figures are on the euro area chart above.",
+   "original": false,
+   "updated": "2026-10-21T11:00:00+0200"
+  },
+  {
+   "id": "gov-debt-heatmap",
+   "title": "Debt across the euro area over ten years",
+   "what": "Maastricht gross debt in each of the 21 euro area members, year by year, for the last ten years.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (gov_10dd_edpt1)",
+     "dataset": "gov_10dd_edpt1",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table"
+    }
+   ],
+   "frequency": "A",
+   "caveats": "",
+   "original": false,
+   "updated": "2026-10-21T11:00:00+0200"
+  },
+  {
+   "id": "gov-deficit-countries",
+   "title": "Government balance by country",
+   "what": "Each member state's general government balance in the latest year of the EDP notification.",
+   "transform": "As published (annual EDP notification); latest year that at least 60% of countries report.",
+   "sources": [
+    {
+     "name": "Eurostat (gov_10dd_edpt1)",
+     "dataset": "gov_10dd_edpt1",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table"
+    }
+   ],
+   "frequency": "A",
+   "caveats": "The 3% line is the Treaty reference value; under the 2024 rules the excessive deficit procedure also depends on net expenditure paths, which are not shown.",
+   "original": false,
+   "updated": "2026-10-21T11:00:00+0200"
+  },
+  {
+   "id": "gov-forecast-debt",
+   "title": "The Commission's debt forecast",
+   "what": "Eurostat's annual euro area government debt ratio and the European Commission's latest published forecast.",
+   "transform": "As for the deficit forecast.",
+   "sources": [
+    {
+     "name": "European Commission (FDMS_UDGG)",
+     "dataset": "FDMS_UDGG",
+     "url": "https://economy-finance.ec.europa.eu/economic-forecast-and-surveys/economic-forecasts_en"
+    },
+    {
+     "name": "Eurostat (gov_10dd_edpt1)",
+     "dataset": "gov_10dd_edpt1",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table"
+    }
+   ],
+   "frequency": "A",
+   "caveats": "Forecasts assume unchanged policies.",
+   "original": false,
+   "updated": "2026-10-21T11:00:00+0200"
+  },
+  {
+   "id": "gov-forecast-deficit",
+   "title": "The Commission's deficit forecast",
+   "what": "Eurostat's annual euro area government balance and the European Commission's latest published forecast (spring or autumn economic forecast).",
+   "transform": "Forecast years are those after the latest year of the Eurostat EDP series; the forecast's own estimate for that year is shown to join the lines.",
+   "sources": [
+    {
+     "name": "European Commission (FDMS_UBLGE)",
+     "dataset": "FDMS_UBLGE",
+     "url": "https://economy-finance.ec.europa.eu/economic-forecast-and-surveys/economic-forecasts_en"
+    },
+    {
+     "name": "Eurostat (gov_10dd_edpt1)",
+     "dataset": "gov_10dd_edpt1",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table"
+    }
+   ],
+   "frequency": "A",
+   "caveats": "Forecasts assume unchanged policies (only measures adopted or credibly announced). The Commission's euro area aggregate can differ slightly from Eurostat's EA21.",
+   "original": false,
+   "updated": "2026-10-21T11:00:00+0200"
+  },
+  {
+   "id": "gov-interest-countries",
+   "title": "Interest bills by country",
+   "what": "Interest payable by each general government (ESA 2010 D.41), latest year of the EDP notification.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (gov_10dd_edpt1)",
+     "dataset": "gov_10dd_edpt1",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table"
+    }
+   ],
+   "frequency": "A",
+   "caveats": "Accrual basis, before swaps; inflation-linked bonds add the indexation of principal to interest.",
+   "original": false,
+   "updated": "2026-10-21T11:00:00+0200"
+  },
+  {
+   "id": "gov-interest-ea",
+   "title": "The euro area's interest bill",
+   "what": "Interest payable by euro area governments, quarterly, smoothed over four quarters.",
+   "transform": "Four-quarter moving average of the unadjusted quarterly ratio to GDP (Eurostat publishes no seasonally adjusted interest series).",
+   "sources": [
+    {
+     "name": "Eurostat (gov_10q_ggnfa)",
+     "dataset": "gov_10q_ggnfa",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10q_ggnfa/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "The average of four quarterly ratios approximates, but is not identical to, the ratio of annual sums.",
+   "original": false,
+   "updated": "2026-10-21T11:00:00+0200"
+  },
+  {
+   "id": "gov-primary-balance",
+   "title": "Balance before interest",
+   "what": "The primary balance (the budget balance excluding interest payments) of the euro area governments, with the headline balance and the interest bill.",
+   "transform": "Primary balance = net lending (B9) + interest payable (D41), both from the annual EDP notification (gov_10dd_edpt1).",
+   "sources": [
+    {
+     "name": "Eurostat (gov_10dd_edpt1)",
+     "dataset": "gov_10dd_edpt1",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table"
+    }
+   ],
+   "frequency": "A",
+   "caveats": "Interest is on an accrual basis (ESA 2010), so it moves slowly as old debt is refinanced.",
+   "original": true,
+   "updated": "2026-10-21T11:00:00+0200"
+  },
+  {
+   "id": "gov-r-minus-g",
+   "title": "Interest rates against growth",
+   "what": "The annual average 10-year government bond yield (EMU convergence series) minus the growth of nominal GDP in the same year: the snowball term of debt dynamics.",
+   "transform": "r - g = 10-year yield (irt_lt_mcby_a, annual average) minus the % change of GDP at current prices on a year earlier (nama_10_gdp, CP_MEUR). Euro area: the Eurostat 'EA' yield and EA21 GDP.",
+   "sources": [
+    {
+     "name": "Eurostat (nama_10_gdp)",
+     "dataset": "nama_10_gdp",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table"
+    },
+    {
+     "name": "Eurostat (irt_lt_mcby_a)",
+     "dataset": "irt_lt_mcby_a",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/irt_lt_mcby_a/default/table"
+    }
+   ],
+   "frequency": "A",
+   "caveats": "An original indicator, not an official measure. The relevant rate for debt dynamics is the effective (implicit) interest rate on the whole stock, which moves far more slowly than the 10-year yield; use this chart for direction, not to compute debt paths.",
+   "original": true,
+   "updated": "2026-11-05T23:00:00+0100"
+  },
+  {
+   "id": "gov-revenue-expenditure",
+   "title": "Government revenue and spending",
+   "what": "Total revenue and total expenditure of general government in the euro area, quarterly, as a share of GDP.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (gov_10q_ggnfa)",
+     "dataset": "gov_10q_ggnfa",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10q_ggnfa/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "The gap between the two lines is the government balance.",
+   "original": false,
+   "updated": "2026-10-21T11:00:00+0200"
+  },
+  {
    "id": "hicp-3m-annualised",
    "title": "Recent momentum in prices",
    "what": "Change over the latest three months in the ECB's seasonally adjusted HICP indices, compounded to an annual rate.",
@@ -196,6 +924,23 @@
    "caveats": "Seasonal adjustment is the ECB's; short-horizon rates are volatile and are revised when the seasonal factors are re-estimated.",
    "original": true,
    "updated": "2026-11-04T10:06:25+0000"
+  },
+  {
+   "id": "hicp-administered",
+   "title": "Prices set by governments",
+   "what": "Inflation in the HICP items whose prices are fully or mainly set or steered by governments or regulators (for example some energy tariffs, public transport, health and education fees), and in the rest of the basket.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (prc_hicp_minr)",
+     "dataset": "prc_hicp_minr",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Which items count as administered differs by country and changes over time (prc_hicp_admp).",
+   "original": false,
+   "updated": "2026-11-04T11:00:00+0100"
   },
   {
    "id": "hicp-bank",
@@ -349,6 +1094,138 @@
    "updated": "2026-11-04T11:00:00+0100"
   },
   {
+   "id": "house-prices",
+   "title": "House prices",
+   "what": "Annual change in the prices of all dwellings bought by households (new and existing), and in the owner-occupied housing price index, which also covers the costs of owning a home.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (prc_hpi_q)",
+     "dataset": "prc_hpi_q",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hpi_q/default/table"
+    },
+    {
+     "name": "Eurostat (prc_hpi_ooq)",
+     "dataset": "prc_hpi_ooq",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hpi_ooq/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "Quarterly, published about three months after the quarter. Owner-occupied housing is not in the HICP.",
+   "original": false,
+   "updated": "2026-10-01T11:00:00+0200"
+  },
+  {
+   "id": "house-prices-countries",
+   "title": "House prices in the largest economies",
+   "what": "Annual house price inflation in Germany, France, Italy, Spain, the Netherlands and Poland, with the euro area.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (prc_hpi_q)",
+     "dataset": "prc_hpi_q",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hpi_q/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "",
+   "original": false,
+   "updated": "2026-10-01T11:00:00+0200"
+  },
+  {
+   "id": "household-saving-rate",
+   "title": "How much households save",
+   "what": "Gross saving of households and non-profit institutions serving households as a share of their gross disposable income (adjusted for the change in pension entitlements).",
+   "transform": "As published; the reference line is the 2015-2019 mean, computed by the tracker.",
+   "sources": [
+    {
+     "name": "Eurostat (nasq_10_ki)",
+     "dataset": "nasq_10_ki",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/nasq_10_ki/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "Gross saving includes the money households put into housing investment and pensions.",
+   "original": false,
+   "updated": "2026-10-28T11:00:00+0100"
+  },
+  {
+   "id": "indeed-postings",
+   "title": "Job postings on Indeed",
+   "what": "Indeed Hiring Lab's index of the number of job postings on Indeed, euro area and five largest countries.",
+   "transform": "As published (seven-day trailing average of the daily seasonally adjusted index); country lines show every seventh day.",
+   "sources": [
+    {
+     "name": "Indeed Hiring Lab",
+     "dataset": "DE",
+     "url": "https://github.com/hiring-lab/job_postings_tracker"
+    },
+    {
+     "name": "Indeed Hiring Lab",
+     "dataset": "EA",
+     "url": "https://github.com/hiring-lab/job_postings_tracker"
+    },
+    {
+     "name": "Indeed Hiring Lab",
+     "dataset": "ES",
+     "url": "https://github.com/hiring-lab/job_postings_tracker"
+    },
+    {
+     "name": "Indeed Hiring Lab",
+     "dataset": "FR",
+     "url": "https://github.com/hiring-lab/job_postings_tracker"
+    },
+    {
+     "name": "Indeed Hiring Lab",
+     "dataset": "IT",
+     "url": "https://github.com/hiring-lab/job_postings_tracker"
+    },
+    {
+     "name": "Indeed Hiring Lab",
+     "dataset": "NL",
+     "url": "https://github.com/hiring-lab/job_postings_tracker"
+    }
+   ],
+   "frequency": "D",
+   "caveats": "Postings on one website, not vacancies; Indeed's market share and posting practices differ by country and change over time. CC BY 4.0, Indeed Hiring Lab.",
+   "original": false,
+   "updated": null
+  },
+  {
+   "id": "indeed-wage-tracker",
+   "title": "Wages in job ads",
+   "what": "Indeed Hiring Lab's tracker of wages advertised in job postings: the median year-on-year change in posted pay for the same job title, region and salary type.",
+   "transform": "As published (posted_wage_growth_yoy_3moavg), multiplied by 100.",
+   "sources": [
+    {
+     "name": "Indeed Hiring Lab wage tracker",
+     "dataset": "",
+     "url": "https://github.com/hiring-lab/indeed-wage-tracker"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Pay offered to new hires in online ads, not pay of all workers; it tends to lead negotiated wages. CC BY 4.0, Indeed Hiring Lab.",
+   "original": false,
+   "updated": null
+  },
+  {
+   "id": "industrial-production",
+   "title": "Industrial production",
+   "what": "Monthly change in the volume of output of mining, manufacturing and energy supply.",
+   "transform": "As published: m/m from the seasonally and calendar adjusted index (SCA, PCH_PRE); y/y from the calendar adjusted index (CA, PCH_SM).",
+   "sources": [
+    {
+     "name": "Eurostat (sts_inpr_m)",
+     "dataset": "sts_inpr_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/sts_inpr_m/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Irish pharmaceutical and contract manufacturing swing the euro area index from month to month.",
+   "original": false,
+   "updated": "2026-11-07T11:00:00+0100"
+  },
+  {
    "id": "inflation-expectations-consumers",
    "title": "What households expect",
    "what": "Median of households' quantitative inflation expectations in the ECB Consumer Expectations Survey, euro area aggregate of the 11 survey countries.",
@@ -383,6 +1260,334 @@
    "updated": "2026-10-30T08:50:00+0000"
   },
   {
+   "id": "intl-10y-yields",
+   "title": "Ten-year government bond yields",
+   "what": "Ten-year benchmark government bond yields, monthly averages: the euro area from Eurostat (EMU convergence-criterion yield for the euro area), the others from the OECD.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "OECD (financial indicators)",
+     "dataset": "OECD.SDD.STES,DSD_STES@DF_FINMARK,",
+     "url": "https://data-explorer.oecd.org/"
+    },
+    {
+     "name": "Eurostat (irt_lt_mcby_m)",
+     "dataset": "irt_lt_mcby_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/irt_lt_mcby_m/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "The euro area yield is a GDP-weighted average of member states' yields, not a single bond; the financial conditions page has the AAA curve and country spreads.",
+   "original": false,
+   "updated": "2026-10-13T11:00:00+0200"
+  },
+  {
+   "id": "intl-fx-usd",
+   "title": "Currencies against the dollar",
+   "what": "The value of the euro, pound, yen and renminbi in US dollars, indexed to the 2019 average.",
+   "transform": "BIS monthly averages of national currency per US dollar, inverted (dollars per unit) and divided by their 2019 mean, times 100.",
+   "sources": [
+    {
+     "name": "BIS (WS_XRU)",
+     "dataset": "WS_XRU",
+     "url": "https://data.bis.org/topics/WS_XRU"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Bilateral rates against one currency; the euro's trade-weighted rate is on the financial conditions page.",
+   "original": true,
+   "updated": null
+  },
+  {
+   "id": "intl-gdp-growth",
+   "title": "Growth in the large economies",
+   "what": "Year-on-year growth of real GDP, seasonally adjusted, euro area (Eurostat, EA21) and the US, UK, Japan and China (OECD).",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (namq_10_gdp)",
+     "dataset": "namq_10_gdp",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table"
+    },
+    {
+     "name": "OECD (quarterly national accounts)",
+     "dataset": "OECD.SDD.NAD,DSD_NAMAIN1@DF_QNA_EXPENDITURE_GROWTH_OECD,",
+     "url": "https://data-explorer.oecd.org/"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "The euro area flash for the latest quarter can be revised; China's GDP is the official figure.",
+   "original": false,
+   "updated": "2026-11-05T23:00:00+0100"
+  },
+  {
+   "id": "intl-gdp-level",
+   "title": "The transatlantic gap",
+   "what": "Real GDP of the euro area and the US (and the UK and Japan), each indexed to its own level in the last quarter before the pandemic.",
+   "transform": "Chain-linked volumes (Eurostat CLV20_MEUR for the euro area; OECD national-currency constant-price levels for the others) divided by their 2019-Q4 value, times 100.",
+   "sources": [
+    {
+     "name": "Eurostat (namq_10_gdp)",
+     "dataset": "namq_10_gdp",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table"
+    },
+    {
+     "name": "OECD (quarterly national accounts)",
+     "dataset": "OECD.SDD.NAD,DSD_NAMAIN1@DF_QNA,",
+     "url": "https://data-explorer.oecd.org/"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "Measures growth since 2019, not living standards: population grew faster in the US, so the gap per person is smaller than this chart suggests.",
+   "original": true,
+   "updated": "2026-11-05T23:00:00+0100"
+  },
+  {
+   "id": "intl-inflation",
+   "title": "Inflation in the large economies",
+   "what": "Annual consumer price inflation: the euro area HICP and national consumer price indices for the US, UK, Japan and China.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "BIS (WS_LONG_CPI)",
+     "dataset": "WS_LONG_CPI",
+     "url": "https://data.bis.org/topics/WS_LONG_CPI"
+    },
+    {
+     "name": "Eurostat (prc_hicp_minr)",
+     "dataset": "prc_hicp_minr",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "The OECD's euro area CPI stops at December 2025 (the ECOICOP 2 switch), so the euro area line is Eurostat's HICP. The UK series is the CPI, the US the CPI-U.",
+   "original": false,
+   "updated": "2026-11-04T11:00:00+0100"
+  },
+  {
+   "id": "intl-overview",
+   "title": "The large economies at a glance",
+   "what": "Real GDP growth on a year earlier, consumer price inflation, the unemployment rate, the central bank policy rate and the 10-year government bond yield in the euro area, the US, the UK, Japan and China.",
+   "transform": "Latest published value of each series. Column headers give the most recent period; the notes list cells on an older period and how many days old each column is.",
+   "sources": [
+    {
+     "name": "BIS (WS_LONG_CPI)",
+     "dataset": "WS_LONG_CPI",
+     "url": "https://data.bis.org/topics/WS_LONG_CPI"
+    },
+    {
+     "name": "BIS (WS_CBPOL)",
+     "dataset": "WS_CBPOL",
+     "url": "https://data.bis.org/topics/WS_CBPOL"
+    },
+    {
+     "name": "Eurostat (namq_10_gdp)",
+     "dataset": "namq_10_gdp",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table"
+    },
+    {
+     "name": "Eurostat (prc_hicp_minr)",
+     "dataset": "prc_hicp_minr",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table"
+    },
+    {
+     "name": "OECD (quarterly national accounts)",
+     "dataset": "OECD.SDD.NAD,DSD_NAMAIN1@DF_QNA_EXPENDITURE_GROWTH_OECD,",
+     "url": "https://data-explorer.oecd.org/"
+    },
+    {
+     "name": "OECD (harmonised unemployment rates)",
+     "dataset": "OECD.SDD.TPS,DSD_LFS@DF_IALFS_UNE_M,",
+     "url": "https://data-explorer.oecd.org/"
+    },
+    {
+     "name": "OECD (financial indicators)",
+     "dataset": "OECD.SDD.STES,DSD_STES@DF_FINMARK,",
+     "url": "https://data-explorer.oecd.org/"
+    },
+    {
+     "name": "Eurostat (une_rt_m)",
+     "dataset": "une_rt_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m/default/table"
+    },
+    {
+     "name": "Eurostat (irt_lt_mcby_m)",
+     "dataset": "irt_lt_mcby_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/irt_lt_mcby_m/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "National definitions differ: inflation is the HICP for the euro area and national CPIs elsewhere; China's GDP and CPI are official figures with a different methodology.",
+   "original": false,
+   "updated": "2026-11-05T23:00:00+0100"
+  },
+  {
+   "id": "intl-policy-rates",
+   "title": "Central bank policy rates",
+   "what": "The policy rate of each central bank at the end of every month, as compiled by the BIS.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "BIS (WS_CBPOL)",
+     "dataset": "WS_CBPOL",
+     "url": "https://data.bis.org/topics/WS_CBPOL"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Policy rates are not comparable across countries as levels of stance; compare them with each economy's inflation.",
+   "original": false,
+   "updated": null
+  },
+  {
+   "id": "intl-unemployment",
+   "title": "Unemployment in the large economies",
+   "what": "ILO-based unemployment rates: the euro area from Eurostat, the US, UK and Japan from the OECD's harmonised series.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "OECD (harmonised unemployment rates)",
+     "dataset": "OECD.SDD.TPS,DSD_LFS@DF_IALFS_UNE_M,",
+     "url": "https://data-explorer.oecd.org/"
+    },
+    {
+     "name": "Eurostat (une_rt_m)",
+     "dataset": "une_rt_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "The UK figure is a three-month average and arrives later. China publishes no comparable rate.",
+   "original": false,
+   "updated": "2026-11-05T23:00:00+0100"
+  },
+  {
+   "id": "job-quality",
+   "title": "Temporary contracts and involuntary part-time",
+   "what": "Share of employees on temporary contracts and of workers in part-time jobs who want to work more.",
+   "transform": "As published (lfsi_pt_q).",
+   "sources": [
+    {
+     "name": "Eurostat (lfsi_pt_q)",
+     "dataset": "lfsi_pt_q",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/lfsi_pt_q/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "Temporary-contract shares depend heavily on national labour law (Spain's 2022 reform cut its share sharply).",
+   "original": false,
+   "updated": "2026-11-06T23:00:00+0100"
+  },
+  {
+   "id": "job-vacancy-rate",
+   "title": "Job vacancies",
+   "what": "Vacant posts as a share of occupied plus vacant posts.",
+   "transform": "As published (jvs_q_r21, nace_r2_1 B-T, JVR, SA).",
+   "sources": [
+    {
+     "name": "Eurostat (jvs_q_r21)",
+     "dataset": "jvs_q_r21",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/jvs_q_r21/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "Published about 75 days after the quarter. Agriculture is excluded and some countries do not cover the public sector or small firms.",
+   "original": false,
+   "updated": "2026-09-15T11:00:00+0200"
+  },
+  {
+   "id": "labour-cost-index",
+   "title": "Hourly labour costs",
+   "what": "Growth of hourly labour costs: wages and salaries and the total including employers' social contributions.",
+   "transform": "As published (lc_lci_r2_q, PCH_SM, SCA).",
+   "sources": [
+    {
+     "name": "Eurostat (lc_lci_r2_q)",
+     "dataset": "lc_lci_r2_q",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/lc_lci_r2_q/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "Not composition-fixed like the US Employment Cost Index; shifts in the mix of jobs and in hours move it.",
+   "original": false,
+   "updated": "2026-09-16T11:00:00+0200"
+  },
+  {
+   "id": "labour-flows",
+   "title": "Moving in and out of work",
+   "what": "Labour Force Survey flows: the share of last quarter's unemployed who are now employed and of last quarter's employed who are now unemployed.",
+   "transform": "As published (lfsi_long_q, SA).",
+   "sources": [
+    {
+     "name": "Eurostat (lfsi_long_q)",
+     "dataset": "lfsi_long_q",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/lfsi_long_q/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "Worker flows from a survey, not employer-reported hires and separations as in JOLTS.",
+   "original": false,
+   "updated": "2026-09-15T23:00:00+0200"
+  },
+  {
+   "id": "labour-rates-table",
+   "title": "Labour market rates",
+   "what": "The latest value of the main labour market rates, a quarter earlier and a year earlier.",
+   "transform": "As published; the Sahm-rule row is computed by the tracker.",
+   "sources": [
+    {
+     "name": "Eurostat (ei_bsee_m_r2)",
+     "dataset": "ei_bsee_m_r2",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/ei_bsee_m_r2/default/table"
+    },
+    {
+     "name": "Eurostat (lfsi_emp_q)",
+     "dataset": "lfsi_emp_q",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/lfsi_emp_q/default/table"
+    },
+    {
+     "name": "Eurostat (jvs_q_r21)",
+     "dataset": "jvs_q_r21",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/jvs_q_r21/default/table"
+    },
+    {
+     "name": "Eurostat (lfsi_sla_q)",
+     "dataset": "lfsi_sla_q",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/lfsi_sla_q/default/table"
+    },
+    {
+     "name": "Eurostat (une_ltu_q)",
+     "dataset": "une_ltu_q",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/une_ltu_q/default/table"
+    },
+    {
+     "name": "Eurostat (une_rt_m)",
+     "dataset": "une_rt_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Rows end in different months or quarters; each label states its period.",
+   "original": false,
+   "updated": "2026-11-06T23:00:00+0100"
+  },
+  {
+   "id": "labour-slack",
+   "title": "Labour market slack",
+   "what": "Eurostat's labour market slack: the unemployed plus three groups with unmet demand for work, as a share of the extended labour force. The closest European analogue of the US U-6 rate.",
+   "transform": "As published (lfsi_sla_q, PC_ELF).",
+   "sources": [
+    {
+     "name": "Eurostat (lfsi_sla_q)",
+     "dataset": "lfsi_sla_q",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/lfsi_sla_q/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "The denominator is the labour force plus the two inactive groups, so the unemployed share here is lower than the headline unemployment rate.",
+   "original": false,
+   "updated": "2026-11-06T23:00:00+0100"
+  },
+  {
    "id": "lending-rates",
    "title": "What it costs to borrow from banks",
    "what": "The ECB's composite cost-of-borrowing indicators for new bank loans to households for house purchase and to non-financial corporations.",
@@ -398,6 +1603,23 @@
    "caveats": "Averages across very different national markets: fixed-rate mortgages dominate in Germany and France, variable rates in Spain, Italy and Portugal.",
    "original": false,
    "updated": "2026-11-02T09:00:00+0000"
+  },
+  {
+   "id": "long-term-unemployment",
+   "title": "Long-term unemployment",
+   "what": "Share of the unemployed who have been looking for work for a year or more, and the long-term unemployment rate.",
+   "transform": "As published (une_ltu_q, LTU, SA).",
+   "sources": [
+    {
+     "name": "Eurostat (une_ltu_q)",
+     "dataset": "une_ltu_q",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/une_ltu_q/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "The European threshold is 12 months, against 27 weeks in the US statistics.",
+   "original": false,
+   "updated": "2026-11-06T23:00:00+0100"
   },
   {
    "id": "markets-table",
@@ -449,6 +1671,119 @@
    "updated": "2026-10-27T09:00:00+0000"
   },
   {
+   "id": "monthly-activity-table",
+   "title": "Monthly activity at a glance",
+   "what": "Latest month-on-month and year-on-year change in the four monthly activity indicators.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (sts_copr_m)",
+     "dataset": "sts_copr_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/sts_copr_m/default/table"
+    },
+    {
+     "name": "Eurostat (sts_inpr_m)",
+     "dataset": "sts_inpr_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/sts_inpr_m/default/table"
+    },
+    {
+     "name": "Eurostat (sts_trtu_m)",
+     "dataset": "sts_trtu_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/sts_trtu_m/default/table"
+    },
+    {
+     "name": "Eurostat (sts_setu_m)",
+     "dataset": "sts_setu_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/sts_setu_m/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "The four indicators are released on different days, so their latest months can differ.",
+   "original": false,
+   "updated": "2026-11-09T11:00:00+0100"
+  },
+  {
+   "id": "national-employment-growth",
+   "title": "Monthly employment counts, country by country",
+   "what": "Year-on-year change in the monthly national employment counts of Germany, Italy, the Netherlands and Poland.",
+   "transform": "Germany, Italy, Netherlands: % change of the seasonally adjusted level on the same month a year earlier. Poland: GUS index (same month a year earlier = 100) minus 100, which GUS computes on a comparable sample of firms.",
+   "sources": [
+    {
+     "name": "Bundesbank (BBDL1), from Destatis and the Federal Employment Agency",
+     "dataset": "",
+     "url": "https://www.bundesbank.de/en/statistics/time-series-databases"
+    },
+    {
+     "name": "ISTAT (150_875)",
+     "dataset": "",
+     "url": "https://esploradati.istat.it/databrowser/"
+    },
+    {
+     "name": "CBS (80590ned)",
+     "dataset": "",
+     "url": "https://opendata.cbs.nl/statline/#/CBS/nl/dataset/80590ned/table"
+    },
+    {
+     "name": "GUS (Statistics Poland), enterprise sector",
+     "dataset": "",
+     "url": "https://dbw.stat.gov.pl/"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "German monthly employment follows the national-accounts concept (like Eurostat's namq_10_pe); Italian and Dutch figures are survey estimates with sampling error of tens of thousands a month; Polish data cover about 6.4 million of 17.5 million employed. ISTAT revises past months with every release (edition).",
+   "original": false,
+   "updated": "2026-10-30T10:11:21+0100"
+  },
+  {
+   "id": "national-unemployment-rates",
+   "title": "Monthly unemployment rates, national releases",
+   "what": "The national monthly unemployment rates as first published by the Federal Employment Agency, ISTAT and CBS.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Bundesbank (BBDL1), from Destatis and the Federal Employment Agency",
+     "dataset": "",
+     "url": "https://www.bundesbank.de/en/statistics/time-series-databases"
+    },
+    {
+     "name": "ISTAT (151_874)",
+     "dataset": "",
+     "url": "https://esploradati.istat.it/databrowser/"
+    },
+    {
+     "name": "CBS (80590ned)",
+     "dataset": "",
+     "url": "https://opendata.cbs.nl/statline/#/CBS/nl/dataset/80590ned/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Eurostat's une_rt_m carries harmonised rates for every country a few days to weeks later; use it for comparisons across countries.",
+   "original": false,
+   "updated": "2026-10-30T10:11:21+0100"
+  },
+  {
+   "id": "poland-enterprise-sector",
+   "title": "Poland: jobs and pay in the enterprise sector",
+   "what": "GUS's monthly year-on-year indices of employment and of the average gross wage in the enterprise sector.",
+   "transform": "GUS index (same month a year earlier = 100) minus 100.",
+   "sources": [
+    {
+     "name": "GUS (Statistics Poland), enterprise sector",
+     "dataset": "",
+     "url": "https://dbw.stat.gov.pl/"
+    },
+    {
+     "name": "GUS (Statistics Poland), enterprise sector",
+     "dataset": "",
+     "url": "https://dbw.stat.gov.pl/"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "The survey covers about 6.4 million workers (firms with more than nine persons); the sample of firms changes every January.",
+   "original": false,
+   "updated": null
+  },
+  {
    "id": "policy-rates",
    "title": "ECB policy rates",
    "what": "The three key ECB interest rates since 1999 and the overnight €STR.",
@@ -471,6 +1806,23 @@
    "updated": "2026-11-09T07:05:03+0000"
   },
   {
+   "id": "productivity",
+   "title": "Labour productivity",
+   "what": "Growth of real GDP per person employed and per hour worked.",
+   "transform": "As published (namq_10_lp_ulc, RLPR_PER and RLPR_HW, PCH_SM).",
+   "sources": [
+    {
+     "name": "Eurostat (namq_10_lp_ulc)",
+     "dataset": "namq_10_lp_ulc",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_lp_ulc/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "Whole-economy productivity, including the public sector, where output is measured mostly by inputs. Short-time work in 2020 made per-person and per-hour productivity diverge.",
+   "original": false,
+   "updated": "2026-11-03T11:00:00+0100"
+  },
+  {
    "id": "rate-path-forwards",
    "title": "What the bond curve implies for short rates",
    "what": "Instantaneous forward rates 6 months, 1 year and 2 years ahead on the ECB's AAA government bond yield curve, against the deposit facility rate.",
@@ -491,6 +1843,106 @@
    "caveats": "A rough proxy. Market-implied ECB paths (€STR OIS, Euribor and €STR futures) are licensed data and are not used.",
    "original": false,
    "updated": "2026-11-09T11:00:00+0000"
+  },
+  {
+   "id": "real-wages",
+   "title": "Real wage growth",
+   "what": "Negotiated wages and compensation per employee after inflation.",
+   "transform": "((1 + nominal growth) / (1 + HICP inflation) - 1) x 100, where HICP inflation is the % change of the quarterly average HICP index (prc_hicp_minr, EA21) on a year earlier.",
+   "sources": [
+    {
+     "name": "Eurostat (namq_10_gdp)",
+     "dataset": "namq_10_gdp",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table"
+    },
+    {
+     "name": "Eurostat (namq_10_pe)",
+     "dataset": "namq_10_pe",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_pe/default/table"
+    },
+    {
+     "name": "Eurostat (prc_hicp_minr)",
+     "dataset": "prc_hicp_minr",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table"
+    },
+    {
+     "name": "ECB (INW)",
+     "dataset": "INW",
+     "url": "https://data.ecb.europa.eu/data/datasets/INW/INW.Q.U2.N.INWR.000000.4F0.GY.IX"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "HICP is a consumer price index; deflating by the GDP deflator instead gives the real cost to employers, which moved differently in the 2022 energy shock.",
+   "original": true,
+   "updated": "2026-11-05T23:00:00+0100"
+  },
+  {
+   "id": "retail-sales",
+   "title": "Retail sales volumes",
+   "what": "Monthly change in the deflated turnover of retail trade (NACE G47).",
+   "transform": "As published: m/m from the seasonally and calendar adjusted index (SCA, PCH_PRE); y/y from the calendar adjusted index (CA, PCH_SM).",
+   "sources": [
+    {
+     "name": "Eurostat (sts_trtu_m)",
+     "dataset": "sts_trtu_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/sts_trtu_m/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Retail covers about a third of household consumption; it excludes cars, fuel stations are included.",
+   "original": false,
+   "updated": "2026-11-06T11:00:00+0100"
+  },
+  {
+   "id": "sahm-rule",
+   "title": "A recession signal from unemployment",
+   "what": "Three-month average of the euro area unemployment rate minus its lowest three-month average over the previous twelve months.",
+   "transform": "SR_t = mean(u_t, u_t-1, u_t-2) - min over k = 1..12 of mean(u_t-k, u_t-k-1, u_t-k-2), on the seasonally adjusted monthly rate (une_rt_m).",
+   "sources": [
+    {
+     "name": "Eurostat (une_rt_m)",
+     "dataset": "une_rt_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "A house application of Claudia Sahm's US rule, not an official indicator. Monthly unemployment is revised, which can move the indicator after the fact.",
+   "original": true,
+   "updated": "2026-11-05T23:00:00+0100"
+  },
+  {
+   "id": "sentiment-components",
+   "title": "Confidence by sector",
+   "what": "The five sector confidence indicators behind the ESI: balances of positive minus negative answers to the survey questions for each sector.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "Eurostat (ei_bssi_m_r2)",
+     "dataset": "ei_bssi_m_r2",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/ei_bssi_m_r2/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Balances are not comparable in level across sectors; compare each with its own history.",
+   "original": false,
+   "updated": "2026-10-29T11:00:00+0100"
+  },
+  {
+   "id": "services-turnover",
+   "title": "Services turnover",
+   "what": "Monthly change in the turnover of transport, accommodation, information, real estate, professional and support services.",
+   "transform": "As published: m/m from the seasonally and calendar adjusted index (SCA, PCH_PRE); y/y from the calendar adjusted index (CA, PCH_SM).",
+   "sources": [
+    {
+     "name": "Eurostat (sts_setu_m)",
+     "dataset": "sts_setu_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/sts_setu_m/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Turnover is in current prices: part of the growth is inflation. Eurostat publishes no euro area volume index for services. The latest month is often flagged i (see Eurostat metadata).",
+   "original": false,
+   "updated": "2026-11-09T11:00:00+0100"
   },
   {
    "id": "spf-rate-path",
@@ -564,6 +2016,160 @@
    "caveats": "Projections are conditional on market assumptions for rates, oil and the exchange rate at the cut-off date.",
    "original": false,
    "updated": "2026-09-10T13:48:39+0000"
+  },
+  {
+   "id": "target2-balances",
+   "title": "TARGET balances",
+   "what": "Each national central bank's net claim on (or liability to) the Eurosystem arising from cross-border payments in TARGET, the euro area's payment system.",
+   "transform": "EUR millions divided by 1,000.",
+   "sources": [
+    {
+     "name": "ECB (TGB)",
+     "dataset": "TGB",
+     "url": "https://data.ecb.europa.eu/data/datasets/TGB"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Balances also grow with central bank asset purchases settled across borders, so a widening is not by itself capital flight.",
+   "original": false,
+   "updated": "2026-11-02T09:00:00+0000"
+  },
+  {
+   "id": "unemployment-countries",
+   "title": "Unemployment in the largest economies",
+   "what": "ILO unemployment rate in Germany, France, Italy, Spain, the Netherlands and Poland.",
+   "transform": "As published (une_rt_m).",
+   "sources": [
+    {
+     "name": "Eurostat (une_rt_m)",
+     "dataset": "une_rt_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Spain's rate is structurally higher; compare changes rather than levels across countries.",
+   "original": false,
+   "updated": "2026-11-05T23:00:00+0100"
+  },
+  {
+   "id": "unemployment-rate",
+   "title": "Euro area unemployment",
+   "what": "ILO unemployment rate of the euro area (EA21) for all ages and for people under 25.",
+   "transform": "As published (une_rt_m, SA, PC_ACT).",
+   "sources": [
+    {
+     "name": "Eurostat (une_rt_m)",
+     "dataset": "une_rt_m",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Youth unemployment rates are high partly because many young people are students and not in the labour force: the denominator is small.",
+   "original": false,
+   "updated": "2026-11-05T23:00:00+0100"
+  },
+  {
+   "id": "unit-labour-costs",
+   "title": "Unit labour costs",
+   "what": "Nominal unit labour costs: compensation per employee relative to real output per person (or per hour).",
+   "transform": "As published (namq_10_lp_ulc, NULC_PER and NULC_HW, PCH_SM).",
+   "sources": [
+    {
+     "name": "Eurostat (namq_10_lp_ulc)",
+     "dataset": "namq_10_lp_ulc",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_lp_ulc/default/table"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "A rise means labour costs grow faster than productivity; firms either pass it on into prices or absorb it in margins.",
+   "original": false,
+   "updated": "2026-11-03T11:00:00+0100"
+  },
+  {
+   "id": "wage-growth",
+   "title": "Wage growth in the euro area",
+   "what": "Three measures of pay growth: wages agreed in collective agreements, compensation per employee from the national accounts, and hourly wages and salaries from the labour cost index.",
+   "transform": "Negotiated wages: as published by the ECB (INW, y/y). Compensation per employee: compensation of employees (namq_10_gdp, D1, current prices) divided by employees (namq_10_pe, SAL_DC), % change on a year earlier. LCI: as published (lc_lci_r2_q, D11, PCH_SM).",
+   "sources": [
+    {
+     "name": "Eurostat (namq_10_gdp)",
+     "dataset": "namq_10_gdp",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table"
+    },
+    {
+     "name": "Eurostat (namq_10_pe)",
+     "dataset": "namq_10_pe",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_pe/default/table"
+    },
+    {
+     "name": "Eurostat (lc_lci_r2_q)",
+     "dataset": "lc_lci_r2_q",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/lc_lci_r2_q/default/table"
+    },
+    {
+     "name": "ECB (INW)",
+     "dataset": "INW",
+     "url": "https://data.ecb.europa.eu/data/datasets/INW/INW.Q.U2.N.INWR.000000.4F0.GY.IX"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "Negotiated wages include one-off payments, which made 2024 jump. The labour cost index is per hour, so changes in hours worked move it.",
+   "original": false,
+   "updated": "2026-11-05T23:00:00+0100"
+  },
+  {
+   "id": "wages-table",
+   "title": "Pay measures at a glance",
+   "what": "The latest reading of each pay, labour cost and productivity measure.",
+   "transform": "As in the charts above; real rows are computed by the tracker.",
+   "sources": [
+    {
+     "name": "ECB (EWT)",
+     "dataset": "EWT",
+     "url": "https://data.ecb.europa.eu/data/datasets/EWT/EWT.M.U2.N.WT.INWS._T.4F0.GY"
+    },
+    {
+     "name": "Indeed Hiring Lab wage tracker",
+     "dataset": "",
+     "url": "https://github.com/hiring-lab/indeed-wage-tracker"
+    },
+    {
+     "name": "Eurostat (lc_lci_r2_q)",
+     "dataset": "lc_lci_r2_q",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/lc_lci_r2_q/default/table"
+    },
+    {
+     "name": "ECB (INW)",
+     "dataset": "INW",
+     "url": "https://data.ecb.europa.eu/data/datasets/INW/INW.Q.U2.N.INWR.000000.4F0.GY.IX"
+    },
+    {
+     "name": "Eurostat (namq_10_lp_ulc)",
+     "dataset": "namq_10_lp_ulc",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_lp_ulc/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "The wage tracker row shows the current month of a forward-looking series.",
+   "original": false,
+   "updated": "2026-11-05T23:00:00+0100"
+  },
+  {
+   "id": "wealth-top10",
+   "title": "How concentrated wealth is",
+   "what": "The ECB's Distributional Wealth Accounts: the share of total household net wealth owned by the top decile of households, by country.",
+   "transform": "As published.",
+   "sources": [
+    {
+     "name": "ECB (DWA)",
+     "dataset": "DWA",
+     "url": "https://data.ecb.europa.eu/data/datasets/DWA"
+    }
+   ],
+   "frequency": "Q",
+   "caveats": "Experimental statistics: survey data (HFCS) aligned to national accounts totals, with modelled top tails. Cross-country levels are less reliable than changes over time.",
+   "original": false,
+   "updated": "2026-08-24T09:00:33+0000"
   },
   {
    "id": "yield-curve-slope",
