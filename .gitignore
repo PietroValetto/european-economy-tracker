@@ -1,0 +1,10 @@
+pipeline/.cache/
+__pycache__/
+*.pyc
+.DS_Store
+lfs/microdata/
+lfs/**/*.csv
+lfs/**/*.sav
+lfs/**/*.dta
+lfs/**/*.parquet
+node_modules/
