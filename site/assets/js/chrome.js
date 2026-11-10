@@ -4,6 +4,9 @@
 import { PAGES, ROOT, SUBSTACK, FIXTURES, href } from './config.js';
 import { esc, fmtStamp } from './format.js';
 
+// Pietro's personal website: the tracker links back to it from the header, phone menu and footer.
+export const PERSONAL_SITE = 'https://pietrovaletto.github.io/';
+
 export const MARK_SVG = `<svg class="pe-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><g transform="translate(50,50) scale(0.75) translate(-50,-45)"><rect x="16" y="56" width="16" height="30" rx="8" fill="#1F8A5B"/><circle cx="24" cy="44" r="8" fill="#1F8A5B"/><rect x="42" y="40" width="16" height="46" rx="8" fill="#F0A93B"/><circle cx="50" cy="28" r="8" fill="#F0A93B"/><rect x="68" y="24" width="16" height="62" rx="8" fill="#1F8A5B"/><circle cx="76" cy="12" r="8" fill="#1F8A5B"/></g></svg>`;
 
 export function renderChrome(pageId) {
@@ -24,10 +27,13 @@ export function renderChrome(pageId) {
         ${MARK_SVG}
         <span class="brand-text"><span class="brand-name">European Economy Tracker</span><span class="brand-by">by Popular Economics</span></span>
       </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <div class="header-actions">
+        <a class="home-link" href="${PERSONAL_SITE}">Pietro Valetto <span aria-hidden="true">→</span></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      </div>
     </div>
     <nav id="site-nav" class="site-nav" aria-label="Pages">
-      <ul class="wrap nav-list">${links}</ul>
+      <ul class="wrap nav-list">${links}<li class="nav-meta nav-home"><a href="${PERSONAL_SITE}">Pietro Valetto's website →</a></li></ul>
     </nav>`;
 
   const btn = header.querySelector('.menu-toggle');
@@ -62,6 +68,7 @@ export function renderChrome(pageId) {
         <li><a href="${SUBSTACK}">Newsletter on Substack</a></li>
         <li><a href="${href('methods')}">Methods</a></li>
         <li><a href="${href('about')}">About</a></li>
+        <li><a href="${PERSONAL_SITE}">Pietro Valetto's website</a></li>
       </ul>
       <p class="footer-note">Data: Eurostat, ECB, European Commission and others. Built automatically; may contain errors.</p>
       <p class="footer-stamp" data-eet="footer-stamp"></p>
