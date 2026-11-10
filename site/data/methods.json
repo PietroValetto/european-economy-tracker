@@ -105,7 +105,7 @@
    "frequency": "D",
    "caveats": "A higher reading means more stress; the scale is bounded between 0 and 1.",
    "original": false,
-   "updated": "2026-11-09T13:03:01+0000"
+   "updated": "2026-11-10T15:06:06+0000"
   },
   {
    "id": "ciss-countries",
@@ -122,7 +122,7 @@
    "frequency": "D",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-09T13:03:01+0000"
+   "updated": "2026-11-10T15:06:06+0000"
   },
   {
    "id": "construction-output",
@@ -421,7 +421,7 @@
    "frequency": "D",
    "caveats": "A rise means a stronger euro.",
    "original": false,
-   "updated": "2026-11-09T14:57:03+0000"
+   "updated": "2026-11-10T14:59:41+0000"
   },
   {
    "id": "euro-effective-rate",
@@ -497,7 +497,7 @@
    "frequency": "W",
    "caveats": "Quarter-end revaluations of gold and foreign currency cause small jumps.",
    "original": false,
-   "updated": "2026-11-03T14:22:06+0000"
+   "updated": "2026-11-10T14:18:41+0000"
   },
   {
    "id": "fiscal-table",
@@ -1695,7 +1695,7 @@
    "frequency": "M",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-10T11:00:00+0000"
+   "updated": "2026-11-10T15:21:18+0000"
   },
   {
    "id": "money-credit",
