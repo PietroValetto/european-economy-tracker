@@ -78,25 +78,25 @@
   "url": "https://stats.bis.org/api/v1/data/WS_XRU/M.XM+GB+JP+CN..A/all?format=csv&startPeriod=2015-01"
  },
  "bls_firms_demand": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "1c6121cf1bc9",
   "updated": "2026-10-27T09:00:00+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/BLS/Q.U2.ALL.O.E.Z.B3.ZZ.D.WFNET?format=csvdata&detail=dataonly&startPeriod=2003-01"
  },
  "bls_firms_standards": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "8d0355540c26",
   "updated": "2026-10-27T09:00:00+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/BLS/Q.U2.ALL.O.E.Z.B3.ST.S.WFNET?format=csvdata&detail=dataonly&startPeriod=2003-01"
  },
  "bls_house_demand": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "1305ede68afa",
   "updated": "2026-10-27T09:00:00+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/BLS/Q.U2.ALL.Z.H.H.B3.ZZ.D.WFNET?format=csvdata&detail=dataonly&startPeriod=2003-01"
  },
  "bls_house_standards": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "3c2dd2a7f8be",
   "updated": "2026-10-27T09:00:00+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/BLS/Q.U2.ALL.Z.H.H.B3.ST.S.WFNET?format=csvdata&detail=dataonly&startPeriod=2003-01"
@@ -120,31 +120,31 @@
   "url": "https://data-api.ecb.europa.eu/service/data/CES/M.Z18.ALL.T.E2020.NUM_VAR.WM?format=csvdata&detail=dataonly"
  },
  "ciss_de": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "50005d0ead9c",
   "updated": "2026-11-09T13:03:01+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/CISS/D.DE.Z0Z.4F.EC.SS_CIN.IDX?format=csvdata&detail=dataonly&startPeriod=2015-01-01"
  },
  "ciss_ea": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "2a9a4dfa98f7",
   "updated": "2026-11-09T13:03:01+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/CISS/D.U2.Z0Z.4F.EC.SS_CIN.IDX?format=csvdata&detail=dataonly&startPeriod=1999-01-01"
  },
  "ciss_es": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "26e8a6df90a2",
   "updated": "2026-11-09T13:03:01+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/CISS/D.ES.Z0Z.4F.EC.SS_CIN.IDX?format=csvdata&detail=dataonly&startPeriod=2015-01-01"
  },
  "ciss_fr": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "ab3bf5d68eb5",
   "updated": "2026-11-09T13:03:01+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/CISS/D.FR.Z0Z.4F.EC.SS_CIN.IDX?format=csvdata&detail=dataonly&startPeriod=2015-01-01"
  },
  "ciss_it": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "78815103e7ee",
   "updated": "2026-11-09T13:03:01+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/CISS/D.IT.Z0Z.4F.EC.SS_CIN.IDX?format=csvdata&detail=dataonly&startPeriod=2015-01-01"
@@ -192,7 +192,7 @@
   "url": "https://api.statistiken.bundesbank.de/rest/data/BBDL1/M.DE.Y.VAC.VBA000.A0000.A00.D00.0.ABA.A?startPeriod=2005-01&format=csv&lang=en"
  },
  "dfr": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "32b6ab11b362",
   "updated": "2026-09-10T14:22:33+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.DFR.LEV?format=csvdata&detail=dataonly&startPeriod=1999-01-01"
@@ -528,7 +528,7 @@
   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ei_bssi_m_r2?geo=EA21&s_adj=SA&indic=BS-ESI-I&sinceTimePeriod=1985-01&format=JSON&lang=EN"
  },
  "estr": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "41b4972a65d4",
   "updated": "2026-11-09T07:05:03+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/EST/B.EU000A2X2A25.WT?format=csvdata&detail=dataonly&startPeriod=2019-10-01"
@@ -1188,13 +1188,13 @@
   "url": "https://data-api.ecb.europa.eu/service/data/TGB/M.DE+IT+ES+FR+NL.N.A094T.U2.EUR.E?format=csvdata&detail=dataonly&startPeriod=2000-01"
  },
  "eurosystem_assets": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "d57175a73126",
   "updated": "2026-11-03T14:22:06+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/ILM/W.U2.C.T000000.Z5.Z01?format=csvdata&detail=dataonly&startPeriod=1999-01-01"
  },
  "eurusd": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "d3ec5c8a5220",
   "updated": "2026-11-09T14:57:03+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A?format=csvdata&detail=dataonly&startPeriod=1999-01-01"
@@ -1866,19 +1866,19 @@
   "url": "https://bdm.insee.fr/series/sdmx/data/SERIES_BDM/001796854?startPeriod=2000-Q1"
  },
  "fwd_1y": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "30b9f7e00192",
   "updated": "2026-11-09T11:00:00+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/YC/B.U2.EUR.4F.G_N_A.SV_C_YM.IF_1Y?format=csvdata&detail=dataonly&startPeriod=2019-01-01"
  },
  "fwd_2y": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "9ad7194af858",
   "updated": "2026-11-09T11:00:00+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/YC/B.U2.EUR.4F.G_N_A.SV_C_YM.IF_2Y?format=csvdata&detail=dataonly&startPeriod=2019-01-01"
  },
  "fwd_6m": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "17d427106b4c",
   "updated": "2026-11-09T11:00:00+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/YC/B.U2.EUR.4F.G_N_A.SV_C_YM.IF_6M?format=csvdata&detail=dataonly&startPeriod=2019-01-01"
@@ -3078,13 +3078,13 @@
   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lc_lci_r2_q?geo=EA21&s_adj=SCA&unit=PCH_SM&nace_r2=B-S&lcstruct=D11&sinceTimePeriod=2001-Q1&format=JSON&lang=EN"
  },
  "loans_hh_growth": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "7963b2e377ac",
   "updated": "2026-10-27T09:00:00+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/BSI/M.U2.Y.U.A20T.A.I.U2.2250.Z01.A?format=csvdata&detail=dataonly&startPeriod=2004-01"
  },
  "loans_nfc_growth": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "69a429799c91",
   "updated": "2026-10-27T09:00:00+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/BSI/M.U2.Y.U.A20T.A.I.U2.2240.Z01.A?format=csvdata&detail=dataonly&startPeriod=2004-01"
@@ -3102,211 +3102,211 @@
   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/une_ltu_q?geo=EA21&indic_em=LTU&age=Y15-74&unit=PC_UNE&s_adj=SA&sex=T&sinceTimePeriod=2009-Q1&format=JSON&lang=EN"
  },
  "m3_growth": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "7da3885ee546",
   "updated": "2026-10-27T09:00:00+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/BSI/M.U2.Y.V.M30.X.I.U2.2300.Z01.A?format=csvdata&detail=dataonly&startPeriod=1999-01"
  },
  "mlf": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "65fcd2d155b7",
   "updated": "2026-09-10T14:22:33+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.MLFR.LEV?format=csvdata&detail=dataonly&startPeriod=1999-01-01"
  },
  "mpd_gdp__A23": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "be8412dd560c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.YER.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_gdp__A24": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "be8412dd560c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.YER.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_gdp__A25": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "be8412dd560c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.YER.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_gdp__G23": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "be8412dd560c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.YER.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_gdp__G24": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "be8412dd560c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.YER.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_gdp__G25": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "be8412dd560c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.YER.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_gdp__G26": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "be8412dd560c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.YER.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_gdp__S23": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "be8412dd560c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.YER.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_gdp__S24": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "be8412dd560c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.YER.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_gdp__S25": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "be8412dd560c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.YER.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_gdp__S26": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "be8412dd560c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.YER.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_gdp__W23": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "be8412dd560c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.YER.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_gdp__W24": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "be8412dd560c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.YER.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_gdp__W25": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "be8412dd560c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.YER.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_gdp__W26": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "be8412dd560c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.YER.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_hicp__A23": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "6973fbf0f83c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.HIC.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_hicp__A24": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "6973fbf0f83c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.HIC.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_hicp__A25": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "6973fbf0f83c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.HIC.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_hicp__G23": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "6973fbf0f83c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.HIC.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_hicp__G24": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "6973fbf0f83c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.HIC.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_hicp__G25": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "6973fbf0f83c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.HIC.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_hicp__G26": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "6973fbf0f83c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.HIC.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_hicp__S23": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "6973fbf0f83c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.HIC.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_hicp__S24": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "6973fbf0f83c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.HIC.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_hicp__S25": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "6973fbf0f83c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.HIC.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_hicp__S26": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "6973fbf0f83c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.HIC.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_hicp__W23": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "6973fbf0f83c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.HIC.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_hicp__W24": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "6973fbf0f83c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.HIC.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_hicp__W25": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "6973fbf0f83c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.HIC.A..0000?format=csvdata&detail=dataonly"
  },
  "mpd_hicp__W26": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "6973fbf0f83c",
   "updated": "2026-09-10T13:48:39+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MPD/A.U2.HIC.A..0000?format=csvdata&detail=dataonly"
  },
  "mro": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "225f8e885773",
   "updated": "2026-09-10T14:22:33+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.MRR_FR.LEV?format=csvdata&detail=dataonly&startPeriod=1999-01-01"
  },
  "neer": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "4d3dd9b9afbd",
   "updated": "2026-11-02T12:21:54+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/EXR/M.E03.EUR.EN00.A?format=csvdata&detail=dataonly&startPeriod=1999-01"
  },
  "neer_daily": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "ac31a0d9b8f1",
   "updated": "2026-11-09T15:19:20+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/EXR/D.E03.EUR.EN00.A?format=csvdata&detail=dataonly&startPeriod=2024-01-01"
@@ -3432,13 +3432,13 @@
   "url": "https://api-dbw.stat.gov.pl/api/1.1.0/variable/variable-data-section?id-zmienna=376&id-przekroj=12"
  },
  "rate_firms": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "b71794023e25",
   "updated": "2026-11-02T09:00:00+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MIR/M.U2.B.A2I.AM.R.A.2240.EUR.N?format=csvdata&detail=dataonly&startPeriod=2003-01"
  },
  "rate_mortgage": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "466634104719",
   "updated": "2026-11-02T09:00:00+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/MIR/M.U2.B.A2C.AM.R.A.2250.EUR.N?format=csvdata&detail=dataonly&startPeriod=2003-01"
@@ -3486,25 +3486,25 @@
   "url": "https://data-api.ecb.europa.eu/service/data/SPF/Q.U2.HICP.POINT.LT.Q.AVG?format=csvdata&detail=dataonly"
  },
  "spf_rate__P12M": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "3bcdb4960fc2",
   "updated": "2026-10-30T08:50:00+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/SPF/Q.U2.ASSU.IR.P3M+P6M+P9M+P12M.Q.AVG?format=csvdata&detail=dataonly&startPeriod=2020-Q1"
  },
  "spf_rate__P3M": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "3bcdb4960fc2",
   "updated": "2026-10-30T08:50:00+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/SPF/Q.U2.ASSU.IR.P3M+P6M+P9M+P12M.Q.AVG?format=csvdata&detail=dataonly&startPeriod=2020-Q1"
  },
  "spf_rate__P6M": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "3bcdb4960fc2",
   "updated": "2026-10-30T08:50:00+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/SPF/Q.U2.ASSU.IR.P3M+P6M+P9M+P12M.Q.AVG?format=csvdata&detail=dataonly&startPeriod=2020-Q1"
  },
  "spf_rate__P9M": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "3bcdb4960fc2",
   "updated": "2026-10-30T08:50:00+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/SPF/Q.U2.ASSU.IR.P3M+P6M+P9M+P12M.Q.AVG?format=csvdata&detail=dataonly&startPeriod=2020-Q1"
@@ -3594,55 +3594,55 @@
   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/une_rt_m?geo=EA21&s_adj=SA&sex=T&age=Y_LT25&unit=PC_ACT&sinceTimePeriod=2000-01&format=JSON&lang=EN"
  },
  "y10_country__AT": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "665876cb5149",
   "updated": "2026-10-13T11:00:00+0200",
   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/irt_lt_mcby_m?int_rt=MCBY&geo=DE&geo=FR&geo=IT&geo=ES&geo=NL&geo=PT&geo=EL&geo=BE&geo=AT&sinceTimePeriod=1999-01&format=JSON&lang=EN"
  },
  "y10_country__BE": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "665876cb5149",
   "updated": "2026-10-13T11:00:00+0200",
   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/irt_lt_mcby_m?int_rt=MCBY&geo=DE&geo=FR&geo=IT&geo=ES&geo=NL&geo=PT&geo=EL&geo=BE&geo=AT&sinceTimePeriod=1999-01&format=JSON&lang=EN"
  },
  "y10_country__DE": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "665876cb5149",
   "updated": "2026-10-13T11:00:00+0200",
   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/irt_lt_mcby_m?int_rt=MCBY&geo=DE&geo=FR&geo=IT&geo=ES&geo=NL&geo=PT&geo=EL&geo=BE&geo=AT&sinceTimePeriod=1999-01&format=JSON&lang=EN"
  },
  "y10_country__EL": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "665876cb5149",
   "updated": "2026-10-13T11:00:00+0200",
   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/irt_lt_mcby_m?int_rt=MCBY&geo=DE&geo=FR&geo=IT&geo=ES&geo=NL&geo=PT&geo=EL&geo=BE&geo=AT&sinceTimePeriod=1999-01&format=JSON&lang=EN"
  },
  "y10_country__ES": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "665876cb5149",
   "updated": "2026-10-13T11:00:00+0200",
   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/irt_lt_mcby_m?int_rt=MCBY&geo=DE&geo=FR&geo=IT&geo=ES&geo=NL&geo=PT&geo=EL&geo=BE&geo=AT&sinceTimePeriod=1999-01&format=JSON&lang=EN"
  },
  "y10_country__FR": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "665876cb5149",
   "updated": "2026-10-13T11:00:00+0200",
   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/irt_lt_mcby_m?int_rt=MCBY&geo=DE&geo=FR&geo=IT&geo=ES&geo=NL&geo=PT&geo=EL&geo=BE&geo=AT&sinceTimePeriod=1999-01&format=JSON&lang=EN"
  },
  "y10_country__IT": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "665876cb5149",
   "updated": "2026-10-13T11:00:00+0200",
   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/irt_lt_mcby_m?int_rt=MCBY&geo=DE&geo=FR&geo=IT&geo=ES&geo=NL&geo=PT&geo=EL&geo=BE&geo=AT&sinceTimePeriod=1999-01&format=JSON&lang=EN"
  },
  "y10_country__NL": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "665876cb5149",
   "updated": "2026-10-13T11:00:00+0200",
   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/irt_lt_mcby_m?int_rt=MCBY&geo=DE&geo=FR&geo=IT&geo=ES&geo=NL&geo=PT&geo=EL&geo=BE&geo=AT&sinceTimePeriod=1999-01&format=JSON&lang=EN"
  },
  "y10_country__PT": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "665876cb5149",
   "updated": "2026-10-13T11:00:00+0200",
   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/irt_lt_mcby_m?int_rt=MCBY&geo=DE&geo=FR&geo=IT&geo=ES&geo=NL&geo=PT&geo=EL&geo=BE&geo=AT&sinceTimePeriod=1999-01&format=JSON&lang=EN"
@@ -3780,19 +3780,19 @@
   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/irt_lt_mcby_m?int_rt=MCBY&geo=EA&geo=AT&geo=BE&geo=BG&geo=CY&geo=DE&geo=EL&geo=ES&geo=FI&geo=FR&geo=HR&geo=IE&geo=IT&geo=LT&geo=LU&geo=LV&geo=MT&geo=NL&geo=PT&geo=SI&geo=SK&geo=PL&sinceTimePeriod=2015-01&format=JSON&lang=EN"
  },
  "yc_aaa_10y": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "0d18af3cb3e2",
   "updated": "2026-11-09T11:00:00+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/YC/B.U2.EUR.4F.G_N_A.SV_C_YM.SR_10Y?format=csvdata&detail=dataonly&startPeriod=2004-09-01"
  },
  "yc_aaa_2y": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "0f25c182d5f6",
   "updated": "2026-11-09T11:00:00+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/YC/B.U2.EUR.4F.G_N_A.SV_C_YM.SR_2Y?format=csvdata&detail=dataonly&startPeriod=2004-09-01"
  },
  "yc_all_10y": {
-  "last_fetched": "2026-11-09",
+  "last_fetched": "2026-11-10",
   "spec": "766bcc8fa031",
   "updated": "2026-11-09T11:00:00+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/YC/B.U2.EUR.4F.G_N_C.SV_C_YM.SR_10Y?format=csvdata&detail=dataonly&startPeriod=2024-01-01"
