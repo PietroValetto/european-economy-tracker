@@ -4,7 +4,7 @@
 import { PAGES, ROOT, SUBSTACK, FIXTURES, href } from './config.js';
 import { esc, fmtStamp } from './format.js';
 
-// Pietro's personal website: the tracker links back to it from the header, phone menu and footer.
+// Pietro's personal website: linked from his name in the header's by-line and from the footer.
 export const PERSONAL_SITE = 'https://pietrovaletto.github.io/';
 
 export const MARK_SVG = `<svg class="pe-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><g transform="translate(50,50) scale(0.75) translate(-50,-45)"><rect x="16" y="56" width="16" height="30" rx="8" fill="#1F8A5B"/><circle cx="24" cy="44" r="8" fill="#1F8A5B"/><rect x="42" y="40" width="16" height="46" rx="8" fill="#F0A93B"/><circle cx="50" cy="28" r="8" fill="#F0A93B"/><rect x="68" y="24" width="16" height="62" rx="8" fill="#1F8A5B"/><circle cx="76" cy="12" r="8" fill="#1F8A5B"/></g></svg>`;
@@ -23,17 +23,17 @@ export function renderChrome(pageId) {
   header.innerHTML = `
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="wrap header-row">
-      <a class="brand" href="${href('home')}"${pageId === 'home' ? ' aria-current="page"' : ''}>
-        ${MARK_SVG}
-        <span class="brand-text"><span class="brand-name">European Economy Tracker</span><span class="brand-by">by Popular Economics</span></span>
-      </a>
-      <div class="header-actions">
-        <a class="home-link" href="${PERSONAL_SITE}">Pietro Valetto <span aria-hidden="true">→</span></a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <div class="brand">
+        <a class="brand-mark" href="${href('home')}" tabindex="-1" aria-hidden="true">${MARK_SVG}</a>
+        <span class="brand-text">
+          <a class="brand-name" href="${href('home')}"${pageId === 'home' ? ' aria-current="page"' : ''}>European Economy Tracker</a>
+          <span class="brand-by">by Popular Economics (<a href="${PERSONAL_SITE}">Pietro Valetto</a>)</span>
+        </span>
       </div>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     </div>
     <nav id="site-nav" class="site-nav" aria-label="Pages">
-      <ul class="wrap nav-list">${links}<li class="nav-meta nav-home"><a href="${PERSONAL_SITE}">Pietro Valetto's website →</a></li></ul>
+      <ul class="wrap nav-list">${links}</ul>
     </nav>`;
 
   const btn = header.querySelector('.menu-toggle');
