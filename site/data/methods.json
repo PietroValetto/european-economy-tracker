@@ -71,7 +71,7 @@
    "frequency": "Q",
    "caveats": "Bankruptcy procedures differ by country; the index shows the trend, not a bankruptcy rate.",
    "original": false,
-   "updated": "2026-11-07T11:00:00+0100"
+   "updated": "2026-11-10T11:00:00+0100"
   },
   {
    "id": "capacity-utilisation",
@@ -139,7 +139,7 @@
    "frequency": "M",
    "caveats": "Construction is volatile and weather-dependent; the first estimate is often revised.",
    "original": false,
-   "updated": "2026-11-07T11:00:00+0100"
+   "updated": "2026-11-10T11:00:00+0100"
   },
   {
    "id": "consumer-price-expectations",
@@ -404,7 +404,7 @@
    "frequency": "D",
    "caveats": "€STR trades a few basis points below the deposit rate because of excess liquidity.",
    "original": false,
-   "updated": "2026-11-09T07:05:03+0000"
+   "updated": "2026-11-10T07:05:28+0000"
   },
   {
    "id": "eur-usd",
@@ -1250,7 +1250,7 @@
    "frequency": "M",
    "caveats": "Irish pharmaceutical and contract manufacturing swing the euro area index from month to month.",
    "original": false,
-   "updated": "2026-11-07T11:00:00+0100"
+   "updated": "2026-11-10T11:00:00+0100"
   },
   {
    "id": "inflation-expectations-consumers",
@@ -1695,7 +1695,7 @@
    "frequency": "M",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-09T15:19:20+0000"
+   "updated": "2026-11-10T11:00:00+0000"
   },
   {
    "id": "money-credit",
@@ -1744,7 +1744,7 @@
    "frequency": "M",
    "caveats": "The four indicators are released on different days, so their latest months can differ.",
    "original": false,
-   "updated": "2026-11-09T11:00:00+0100"
+   "updated": "2026-11-10T11:00:00+0100"
   },
   {
    "id": "national-employment-growth",
@@ -1847,7 +1847,7 @@
    "frequency": "D",
    "caveats": "Since March 2024 the MRO-DFR spread is 15 basis points; the DFR is the policy rate.",
    "original": false,
-   "updated": "2026-11-09T07:05:03+0000"
+   "updated": "2026-11-10T07:05:28+0000"
   },
   {
    "id": "productivity",
@@ -1886,7 +1886,7 @@
    "frequency": "D",
    "caveats": "A rough proxy. Market-implied ECB paths (€STR OIS, Euribor and €STR futures) are licensed data and are not used.",
    "original": false,
-   "updated": "2026-11-09T11:00:00+0000"
+   "updated": "2026-11-10T11:00:00+0000"
   },
   {
    "id": "real-wages",
@@ -1935,7 +1935,7 @@
    "frequency": "M",
    "caveats": "Retail covers about a third of household consumption; it excludes cars, fuel stations are included.",
    "original": false,
-   "updated": "2026-11-06T11:00:00+0100"
+   "updated": "2026-11-10T11:00:00+0100"
   },
   {
    "id": "sahm-rule",
@@ -1986,7 +1986,7 @@
    "frequency": "M",
    "caveats": "Turnover is in current prices: part of the growth is inflation. Eurostat publishes no euro area volume index for services. The latest month is often flagged i (see Eurostat metadata).",
    "original": false,
-   "updated": "2026-11-09T11:00:00+0100"
+   "updated": "2026-11-10T11:00:00+0100"
   },
   {
    "id": "spf-rate-path",
@@ -2245,7 +2245,7 @@
    "frequency": "D",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-09T11:00:00+0000"
+   "updated": "2026-11-10T11:00:00+0000"
   },
   {
    "id": "yields-aaa",
@@ -2262,7 +2262,7 @@
    "frequency": "D",
    "caveats": "A fitted curve, not a single bond. The AAA set changes when ratings change.",
    "original": false,
-   "updated": "2026-11-09T11:00:00+0000"
+   "updated": "2026-11-10T11:00:00+0000"
   },
   {
    "id": "yields-by-country",

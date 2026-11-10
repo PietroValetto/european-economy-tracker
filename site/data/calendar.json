@@ -1,39 +1,8 @@
 {
- "built_at": "2026-11-09T17:48:06Z",
- "from": "2026-11-09",
- "to": "2026-12-24",
+ "built_at": "2026-11-10T13:27:25Z",
+ "from": "2026-11-10",
+ "to": "2026-12-25",
  "events": [
-  {
-   "id": "2026-11-09-services-production",
-   "date": "2026-11-09",
-   "time": "11:00",
-   "tz": "Europe/Brussels",
-   "title": "Services production, September",
-   "publisher": "Eurostat",
-   "tier": 2,
-   "datasets": [
-    "sts_sepr_m"
-   ],
-   "chart_ids": [],
-   "period": "2026-09"
-  },
-  {
-   "id": "2026-11-09-services-turnover",
-   "date": "2026-11-09",
-   "time": "11:00",
-   "tz": "Europe/Brussels",
-   "title": "Services turnover",
-   "publisher": "Eurostat",
-   "tier": 3,
-   "datasets": [
-    "sts_setu_m"
-   ],
-   "chart_ids": [
-    "monthly-activity-table",
-    "services-turnover"
-   ],
-   "period": null
-  },
   {
    "id": "2026-11-10-recovery-facility",
    "date": "2026-11-10",

@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "built_at": "2026-11-10T07:54:58Z",
+ "built_at": "2026-11-10T13:11:49Z",
  "pages": [
   {
    "id": "gdp",
@@ -643,9 +643,9 @@
   {
    "id": "yield-10y",
    "label": "10-year yield (AAA)",
-   "value": 3.29,
+   "value": 3.27,
    "unit": "%",
-   "period": "2026-11-06",
+   "period": "2026-11-09",
    "previous": 3.29,
    "decimals": 2,
    "good_direction": "none",

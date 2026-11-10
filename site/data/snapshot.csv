@@ -1,13 +1,13 @@
 id,label,value,unit,period,previous,decimals,good_direction,flag,chart_id,page,series,source,data_updated,built_at
-gdp-qq,GDP growth,0.4,% q/q,2026-Q3,0.6,1,up,,gdp-growth,gdp,gdp_qoq,Eurostat (namq_10_gdp),2026-11-05T23:00:00+0100,2026-11-10T07:54:58Z
-unemployment,Unemployment rate,6.5,%,2026-09,6.5,1,down,,unemployment-rate,labour,unemployment_rate,Eurostat (une_rt_m),2026-11-05T23:00:00+0100,2026-11-10T07:54:58Z
-hicp,Inflation,4.0,% y/y,2026-10,3.8,1,none,e,hicp-headline-core,inflation,hicp_headline,Eurostat (prc_hicp_minr),2026-11-04T11:00:00+0100,2026-11-10T07:54:58Z
-hicp-core,Core inflation,2.6,% y/y,2026-10,2.5,1,none,e,hicp-headline-core,inflation,hicp_core,Eurostat (prc_hicp_minr),2026-11-04T11:00:00+0100,2026-11-10T07:54:58Z
-dfr,ECB deposit rate,2.5,%,2026-09-16,2.25,2,none,,policy-rates,ecb,dfr,ECB (FM),2026-09-10T14:22:33+0000,2026-11-10T07:54:58Z
-yield-10y,10-year yield (AAA),3.29,%,2026-11-06,3.29,2,none,,yields-aaa,financial,yc_aaa_10y,ECB (YC),2026-11-09T11:00:00+0000,2026-11-10T07:54:58Z
-eur-usd,EUR/USD,1.1193,US$ per €,2026-11-09,1.1165,4,none,,eur-usd,financial,eurusd,ECB (EXR),2026-11-09T14:57:03+0000,2026-11-10T07:54:58Z
-esi,Economic sentiment,96.9,"index, long-run average = 100",2026-10,97.5,1,up,,economic-sentiment,europe,esi,Eurostat (ei_bssi_m_r2),2026-10-29T11:00:00+0100,2026-11-10T07:54:58Z
-wages,Negotiated wages,2.4,% y/y,2026-Q2,2.6,1,none,,wage-growth,wages,negotiated_wages,ECB (INW),2026-10-22T09:00:01+0000,2026-11-10T07:54:58Z
-job-vacancies,Job vacancy rate,2.1,%,2026-Q2,2.2,1,none,,job-vacancy-rate,labour,job_vacancy_rate,Eurostat (jvs_q_r21),2026-09-15T11:00:00+0200,2026-11-10T07:54:58Z
-gov-debt,Government debt,88.8,% of GDP,2026-Q2,88.4,1,down,p,gov-debt,fiscal,gov_debt,Eurostat (gov_10q_ggdebt),2026-10-21T11:00:00+0200,2026-11-10T07:54:58Z
-job-postings,Job postings (Indeed),104.4,"index, Feb 2020 = 100",2026-10-30,104.5,1,up,,indeed-postings,labour,indeed_postings_ea,Indeed Hiring Lab,,2026-11-10T07:54:58Z
+gdp-qq,GDP growth,0.4,% q/q,2026-Q3,0.6,1,up,,gdp-growth,gdp,gdp_qoq,Eurostat (namq_10_gdp),2026-11-05T23:00:00+0100,2026-11-10T13:11:49Z
+unemployment,Unemployment rate,6.5,%,2026-09,6.5,1,down,,unemployment-rate,labour,unemployment_rate,Eurostat (une_rt_m),2026-11-05T23:00:00+0100,2026-11-10T13:11:49Z
+hicp,Inflation,4.0,% y/y,2026-10,3.8,1,none,e,hicp-headline-core,inflation,hicp_headline,Eurostat (prc_hicp_minr),2026-11-04T11:00:00+0100,2026-11-10T13:11:49Z
+hicp-core,Core inflation,2.6,% y/y,2026-10,2.5,1,none,e,hicp-headline-core,inflation,hicp_core,Eurostat (prc_hicp_minr),2026-11-04T11:00:00+0100,2026-11-10T13:11:49Z
+dfr,ECB deposit rate,2.5,%,2026-09-16,2.25,2,none,,policy-rates,ecb,dfr,ECB (FM),2026-09-10T14:22:33+0000,2026-11-10T13:11:49Z
+yield-10y,10-year yield (AAA),3.27,%,2026-11-09,3.29,2,none,,yields-aaa,financial,yc_aaa_10y,ECB (YC),2026-11-10T11:00:00+0000,2026-11-10T13:11:49Z
+eur-usd,EUR/USD,1.1193,US$ per €,2026-11-09,1.1165,4,none,,eur-usd,financial,eurusd,ECB (EXR),2026-11-09T14:57:03+0000,2026-11-10T13:11:49Z
+esi,Economic sentiment,96.9,"index, long-run average = 100",2026-10,97.5,1,up,,economic-sentiment,europe,esi,Eurostat (ei_bssi_m_r2),2026-10-29T11:00:00+0100,2026-11-10T13:11:49Z
+wages,Negotiated wages,2.4,% y/y,2026-Q2,2.6,1,none,,wage-growth,wages,negotiated_wages,ECB (INW),2026-10-22T09:00:01+0000,2026-11-10T13:11:49Z
+job-vacancies,Job vacancy rate,2.1,%,2026-Q2,2.2,1,none,,job-vacancy-rate,labour,job_vacancy_rate,Eurostat (jvs_q_r21),2026-09-15T11:00:00+0200,2026-11-10T13:11:49Z
+gov-debt,Government debt,88.8,% of GDP,2026-Q2,88.4,1,down,p,gov-debt,fiscal,gov_debt,Eurostat (gov_10q_ggdebt),2026-10-21T11:00:00+0200,2026-11-10T13:11:49Z
+job-postings,Job postings (Indeed),104.4,"index, Feb 2020 = 100",2026-10-30,104.5,1,up,,indeed-postings,labour,indeed_postings_ea,Indeed Hiring Lab,,2026-11-10T13:11:49Z
