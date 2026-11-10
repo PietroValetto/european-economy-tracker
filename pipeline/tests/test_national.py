@@ -114,18 +114,31 @@ class FamilyFetchTests(unittest.TestCase):
             raise AssertionError(f"unexpected URL {url}")
         http._urlopen = fake
 
-    def test_family_detection_keeps_core_csv(self):
+    def test_family_is_the_source_name(self):
         plain = Series("x", "csv", dataset="https://example.org/data.csv")
         self.assertIsNone(sources.family(plain))
         self.assertEqual(sources.url_for(plain), "https://example.org/data.csv")
-        bb = Series("b", "csv", dataset=sources.BUNDESBANK + "BBDL1/M.DE.Y.VAC.VBA000.A0000.A00.D00.0.ABA.A",
+        # a plain csv series is never routed to a family by its URL prefix any more
+        self.assertIsNone(sources.family(Series("y", "csv", dataset=sources.BUNDESBANK + "BBDL1/X")))
+        bb = Series("b", "bundesbank", dataset=sources.BUNDESBANK + "BBDL1/M.DE.Y.VAC.VBA000.A0000.A00.D00.0.ABA.A",
                     start="2005-01")
         self.assertEqual(sources.family(bb), "bundesbank")
         self.assertIn("startPeriod=2005-01", sources.url_for(bb))
         self.assertIn("format=csv", sources.url_for(bb))
+        self.assertEqual(sources.source_text(bb), "Bundesbank")
+
+    def test_family_names_keep_the_store_hash(self):
+        """Renaming source "csv" to the family name must not restart a series' stored history."""
+        from eet import store
+        url = sources.BUNDESBANK + "BBDL1/M.DE.Y.VAC.VBA000.A0000.A00.D00.0.ABA.A"
+        self.assertEqual(store.spec_hash(Series("b", "bundesbank", dataset=url)),
+                         store.spec_hash(Series("b", "csv", dataset=url)))
+        reg = __import__("eet.registry", fromlist=["load"]).load()
+        fams = {s.source for s in reg.series.values() if sources.family(s)}
+        self.assertEqual(fams, {"bundesbank", "insee", "cbs", "istat", "gus", "indeed_wages"})
 
     def test_bundesbank_fetch_and_offline(self):
-        s = Series("de_kug", "csv", dataset=sources.BUNDESBANK + "BBDL1/M.DE.Y.LMP.LKA100.A0000.A02.D00.0.ABA.A",
+        s = Series("de_kug", "bundesbank", dataset=sources.BUNDESBANK + "BBDL1/M.DE.Y.LMP.LKA100.A0000.A02.D00.0.ABA.A",
                    start="2026-01")
         self.route([("BBDL1", fixture("bundesbank_kurzarbeit.csv"))])
         res = sources.fetch(s)
@@ -136,7 +149,7 @@ class FamilyFetchTests(unittest.TestCase):
         self.assertEqual(off.obs, res.obs)
 
     def test_cbs_url_and_stamp(self):
-        s = Series("nl_emp", "csv", dataset=sources.CBS + "80590ned",
+        s = Series("nl_emp", "cbs", dataset=sources.CBS + "80590ned",
                    filters={"Geslacht": "T001038", "Leeftijd": "52052   "}, value_col="Seizoengecorrigeerd_4",
                    start="2026-01")
         url = sources.url_for(s)
@@ -149,7 +162,7 @@ class FamilyFetchTests(unittest.TestCase):
         self.assertTrue(res.updated.startswith("2026-10-15"))
 
     def test_istat_discovers_newest_edition(self):
-        s = Series("it_emp", "csv",
+        s = Series("it_emp", "istat",
                    dataset=sources.ISTAT + "IT1,150_875,1.0/M.IT.EMP.Y.9.Y15-89.9.9.{EDITION}", start="2004-01")
         self.route([("lastNObservations", fixture("istat_editions.csv")),
                     ("9.9.2026M10G29?", fixture("istat_employment.csv"))])
@@ -163,13 +176,13 @@ class FamilyFetchTests(unittest.TestCase):
         self.assertEqual(sources.fetch(s, offline=True).updated, "2026-10-29T10:00:00+0100")
 
     def test_istat_needs_placeholder(self):
-        s = Series("it_x", "csv", dataset=sources.ISTAT + "IT1,150_875,1.0/M.IT.EMP")
+        s = Series("it_x", "istat", dataset=sources.ISTAT + "IT1,150_875,1.0/M.IT.EMP")
         with self.assertRaises(ValueError):
             sources.fetch(s)
 
     def test_gus_month_by_month_then_incremental(self):
         body = fixture("gus_375_2026_09.json")
-        s = Series("pl_emp", "csv", dataset=GUS_375, filters={"position": 6661598, "measure": 5}, start="2026-07")
+        s = Series("pl_emp", "gus", dataset=GUS_375, filters={"position": 6661598, "measure": 5}, start="2026-07")
         # Jul to Sep answer with the September body, October (id-okres 256) is not published yet
         self.route([("id-okres=256", 404), ("id-okres=25", body)])
         res = sources.fetch(s)
@@ -189,7 +202,7 @@ class FamilyFetchTests(unittest.TestCase):
         self.assertEqual(off.obs, res.obs)
 
     def test_gus_quota_keeps_partial_result(self):
-        s = Series("pl_wage", "csv", dataset=GUS_375, filters={"position": 6661598, "measure": 5}, start="2026-07")
+        s = Series("pl_wage", "gus", dataset=GUS_375, filters={"position": 6661598, "measure": 5}, start="2026-07")
         self.route([("id-okres=256", 404), ("id-okres=255", fixture("gus_375_2026_09.json")), ("id-okres=25", 429)])
         res = sources.fetch(s)
         self.assertEqual([p for p, _, _ in res.obs["pl_wage"]], ["2026-09"])
@@ -199,7 +212,7 @@ class FamilyFetchTests(unittest.TestCase):
             sources.fetch(Series(**{**s.__dict__, "id": "pl_other"}))
 
     def test_indeed_wages_panel(self):
-        s = Series("iwt", "csv",
+        s = Series("iwt", "indeed_wages",
                    dataset=sources.INDEED_WAGES + "main/posted-wage-growth-by-country.csv", split="jobcountry",
                    keep=lambda c: c in {"EA"}, scale=100, value_col="posted_wage_growth_yoy_3moavg")
         self.route([("indeed-wage-tracker", fixture("indeed_wages.csv"))])
@@ -208,14 +221,14 @@ class FamilyFetchTests(unittest.TestCase):
         self.assertAlmostEqual(res.obs["iwt__EA"][-1][1], 2.9608429)
 
     def test_insee_fetch(self):
-        s = Series("fr_payroll", "csv", dataset=sources.INSEE_BDM + "SERIES_BDM/001796854", start="2025-Q1")
+        s = Series("fr_payroll", "insee", dataset=sources.INSEE_BDM + "SERIES_BDM/001796854", start="2025-Q1")
         self.assertTrue(sources.url_for(s).endswith("001796854?startPeriod=2025-Q1"))
         self.route([("001796854", fixture("insee_payroll.xml"))])
         res = sources.fetch(s)
         self.assertEqual(res.obs["fr_payroll"][-1], ("2026-Q3", 20931.1, ""))
 
     def test_empty_family_result_raises(self):
-        s = Series("de_none", "csv", dataset=sources.BUNDESBANK + "BBDL1/M.DE.Y.X")
+        s = Series("de_none", "bundesbank", dataset=sources.BUNDESBANK + "BBDL1/M.DE.Y.X")
         header = b'\xef\xbb\xbf"",BBDL1.M.DE.Y.X,BBDL1.M.DE.Y.X_FLAGS\nunit,Anzahl,\n'
         self.route([("BBDL1", header)])
         with self.assertRaises(sources.EmptySeries):

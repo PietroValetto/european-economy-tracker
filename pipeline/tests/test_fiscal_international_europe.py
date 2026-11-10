@@ -54,8 +54,6 @@ class HelperTests(unittest.TestCase):
         out = international.usd_index(obs)
         base = (1 / 0.8 + 1.0) / 2
         self.assertAlmostEqual(out[2][1], 2.0 / base * 100)
-        self.assertEqual(international.clean_flags([("2020-01", 1.0, "A"), ("2020-02", 1.0, "p")]),
-                         [("2020-01", 1.0, ""), ("2020-02", 1.0, "p")])
 
 
 class CategoricalBarTests(unittest.TestCase):
@@ -89,6 +87,8 @@ class CategoricalBarTests(unittest.TestCase):
         ctx = ctx_with(data)
         b, _, _ = bundles.build_chart(ctx, ctx.reg.charts["electricity-prices"])
         self.assertEqual(b["latest"]["period"], "2026-S1")
+        self.assertEqual(b["frequency"], "S")
+        self.assertTrue(b["subtitle"].endswith("first half of 2026"))
         self.assertEqual(b["highlight"], "Italy")
         rep = check.Report()
         check.check_bundle(b, "electricity-prices.json", rep)
@@ -139,9 +139,21 @@ class HookTests(unittest.TestCase):
                 "hicp_headline": [("2026-10", 4.0, "e")], "bis_cpi__US": [("2026-09", 3.7, "A")]}
         ctx = ctx_with(data)
         b, _, _ = bundles.build_chart(ctx, ctx.reg.charts["intl-overview"])
-        self.assertIn("United Kingdom gdp Q2 2026", b["notes"])
-        self.assertEqual(b["columns"][0]["label"], "GDP, % y/y (Q3 2026)")
+        rows = {r["label"]: r["values"] for r in b["rows"]}
+        self.assertEqual(rows["GDP, % y/y"]["period"], "Q3 2026 (UK Q2 2026)")   # tie: the newest
+        self.assertEqual(rows["GDP, % y/y"]["lag"], "40 days")             # 30 Sep to 9 Nov
+        self.assertEqual(rows["Inflation, % y/y"]["period"], "Oct 2026 (US Sep 2026)")
+        data.update({"bis_cpi__GB": [("2026-09", 3.4, "")], "bis_cpi__JP": [("2026-09", 2.1, "")]})
+        b2, _, _ = bundles.build_chart(ctx_with(data), ctx.reg.charts["intl-overview"])
+        cpi = [r for r in b2["rows"] if r["label"] == "Inflation, % y/y"][0]["values"]
+        self.assertEqual(cpi["period"], "Sep 2026 (euro area Oct 2026)")       # most economies are on Sep
+        self.assertEqual(rows["Inflation, % y/y"]["US"], 3.7)
+        self.assertEqual([c["key"] for c in b["columns"]], ["EA", "US", "UK", "period", "lag"])
+        self.assertEqual(b["columns"][-1]["format"], "text")
         self.assertEqual(b["latest"]["period"], "2026-10")
+        rep = check.Report()
+        check.check_bundle(b, "intl-overview.json", rep)
+        self.assertEqual(rep.errors, [])
 
 
 class RegistryShapeTests(unittest.TestCase):

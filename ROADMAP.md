@@ -465,9 +465,83 @@ confirmed.
 
 ---
 
-## 11. Notes from the section agents
+## 11. Data extensions left by the section agents
 
-The GDP, labour, wages, national labour, fiscal, international and Europe sections are being built
-in parallel. Their agents were asked to leave follow-ups in `docs/notes/*.md`; that folder did not
-exist when this roadmap was written (9 November 2026). **To do: merge any `docs/notes/*.md` into
-the groups above, then delete the notes.**
+The GDP, labour, wages, national labour, fiscal, international and Europe sections were built on
+9 November 2026; their agents' follow-up notes (formerly `docs/notes/*.md`) are merged here and
+into sections 3, 4, 7 and 8 above. Every item was tried live on that date.
+
+### 11.1 National sources not yet in (feed 3.3 and 3.2)
+| Item | Why not yet | What it would take | Access | Effort |
+|---|---|---|---|---|
+| Spain, Social Security affiliation | PX-Web API paths on `w6.seg-social.es` (`/PXWeb/api/v1/es/`, `/PxWeb/api/v1/es/`, `/api/v1/es/`) all return 404; only the HTML interface answers | The xlsx/PX file behind the tables, or a datos.gob.es distribution; a new `ss` family (see 4.1) | free, files | M |
+| Spain, SEPE registered unemployment | Only a BIFF `.xls` file; the standard library cannot read it | A small BIFF reader, or the PDF twin | free, files | M |
+| Italy, cassa integrazione (CIG), INPS hires and separations | No monthly machine-readable endpoint found (CKAN has annual files only) | The INPS databrowser web service (research/04 section 1); would sit next to German Kurzarbeit | free, files | M |
+| France, monthly hires (URSSAF DPAE) | Dataset id not confirmed on open.urssaf.fr | Verify the Opendatasoft dataset; France has only INSEE's quarterly payroll flash today | free | S |
+| Euro area monthly jobs panel | The brief asked for side by side, not aggregated; without Spain coverage is about 47% | research/04 section 10.2 recipe once Spain is in (3.3) | free | L |
+
+### 11.2 Indicators to add
+| Item | Notes | Data | Effort |
+|---|---|---|---|
+| Industrial production excluding Ireland | `sts_inpr_m` has no EA-ex-IE aggregate; needs a value-added-weighted average of country indices | Eurostat | S |
+| Services volume index | `sts_setu_m` has only nominal turnover (`NETTUR`) for EA21; `VOL_SLS` is empty, so the chart says "nominal". Wait for Eurostat | Eurostat | none |
+| LFS flows before 2021 | SA EA21 flows in `lfsi_long_q` start 2021-Q2; NSA flows go back further but need our own seasonal adjustment | Eurostat | M |
+| Hours worked and hours per worker | `namq_10_a10_e` (`THS_HW`), `lfsi_ahw_q` | Eurostat | S |
+| Vacancies per unemployed; EC labour-shortage indicator | `jvs_q_r21` levels (not every country reports them); `ei_bsin_q_r2` (labour as a factor limiting production) | Eurostat | S |
+| Services capacity utilisation | Quarterly services survey in the EC BCS | Eurostat (`ei_bsse*`) | S |
+| GDP release vintages (revisions table) | `ei_na_q_vtg`; our own `store/` keeps vintages from now on | Eurostat | S |
+| House sales | `prc_hpi_hsnq` | Eurostat | S |
+| Household debt to income | `nasq_10_ki` or ECB QSA | Eurostat / ECB | S |
+| DWA bottom-50% share and Gini | Same ECB `DWA` flow as the top-10% chart (`...NWA.B50.PT.S.N`); the ECB answered 504 when tried on 9 Nov, so not added | ECB | S |
+| TARGET balances of the other NCBs and the ECB | Same `TGB` flow as the five shown | ECB | S |
+| Current accounts of the US, UK and Japan | OECD BoP | OECD | S |
+| China unemployment | No harmonised series at the OECD or BIS | none | none |
+| Euro area current account, ECB BOP flow (SA, % of GDP) | The BOP flow was blocked by the ECB WAF in the research; Eurostat `ei_bpm6ca_m` is used | ECB | S once reachable |
+| Debt maturity; Eurosystem holdings of government debt | `gov_10dd_rmd`, ECB GST, PSPP holdings | Eurostat / ECB | M |
+| Defence spending | COFOG `GF02` (`gov_10a_exp`) | Eurostat | S |
+| Archive of Commission forecast vintages | Redisstat serves only the latest vintage (Spring 2026 on 9 Nov); store each vintage on release day | DG ECFIN | S |
+| IMF comparisons (WEO forecasts, Fiscal Monitor debt for US/UK/JP) | No IMF source family yet; IMF rejects custom User-Agents | IMF (free) | M (feeds 7.7) |
+| Daily sovereign spreads | Licensed (MTS or a vendor); monthly spreads are in the Europe glance table and on the financial page | see 5.3 | S once licensed |
+| Wholesale energy (ENTSO-E, AGSI+, TTF); NGEU and EU fiscal-rules metrics | Keys or HTML-only sources | see 4.5, 4.6, 8.1, 8.2 | |
+
+Built in the integration pass on 9 November 2026 from data already stored: the effective
+interest rate on government debt (`gov-effective-rate`, fiscal) and real policy rates
+(`intl-real-policy-rates`, international).
+
+### 11.3 Source decisions and operating notes (keep when changing these sections)
+- **One source per series, recorded.** Country fiscal data are the annual EDP table
+  `gov_10dd_edpt1`; euro area quarterly data are `gov_10q_ggnfa` (SCA) and `gov_10q_ggdebt`.
+  Quarterly interest (`D41PAY`) is published unadjusted only, so it is shown as a four-quarter
+  average. Commission forecasts are Redisstat `FDMS_UBLGE` and `FDMS_UDGG`.
+- **r minus g** uses the annual 10-year convergence yield (`irt_lt_mcby_a`) minus nominal GDP
+  growth (`nama_10_gdp`, `CP_MEUR`) for EA, DE, FR, IT, ES; marked original.
+- **International.** Non-euro CPIs come from BIS `WS_LONG_CPI` (the OECD's Japan CPI stops at
+  2021-06, its euro area CPI at 2025-12). The euro area 10-year yield on the international page is
+  the OECD's `EA20` series, one month fresher than Eurostat's `irt_lt_mcby_m` (geo `EA`), which the
+  Europe page keeps. Current accounts by country use `bop_gdp6_q` (`bop_c6_q` has no euro area
+  aggregate and returns 413 unfiltered). Goods trade is `ei_etea_m`.
+- **Europe.** Administered prices are the special aggregates `AP` and `TOT_X_AP` of
+  `prc_hicp_minr` (`prc_hicp_admp` is only the annual item list). Household energy prices are
+  `nrg_pc_204` band DC and `nrg_pc_202` band D2, all taxes, half-yearly (`2026-S1`); Cyprus,
+  Finland and Malta publish no household gas price. DWA uses area `I10` as the euro area (`I9`
+  stops at 2025-Q4). TARGET balances are one ECB request with `+` inside one dimension.
+- **GUS quota.** The DBW API admits 100 calls per 15 minutes and needs one call per month per
+  variable: the `gus` family refetches the last 6 months on every run and backfills at most 48
+  missing months per series per run, newest first, so a fresh store fills the 2019-onward history
+  in two runs at least 15 minutes apart. A 429 mid-run keeps what was fetched.
+- **ISTAT.** The release edition is part of the key (`2026M10G29`); the `istat` family discovers
+  it on every run (20 to 40 s) and pauses 13 s between calls (5 a minute). The edition date is the
+  series' `data_updated`.
+- **CBS.** The monthly labour-force table is `80590ned`; the `83131NED` in research/04 is a price
+  table.
+- **Bundesbank BBDL1** mirrors Destatis employment and the BA's unemployment, vacancies and
+  Kurzarbeit with no login. Vacancies (`VBA000`) are in thousands; Kurzarbeit (`LKA100`) in
+  persons.
+- **Ireland.** The GDP heatmap and level chart carry an "excluding Ireland" line from
+  chain-linked levels (EA21 minus IE): not additive, so marked original and approximate.
+- **ECB wage tracker** already runs to 2027-09; the chart splits it at the build date and shows
+  the forward-looking part as context.
+- **Core gaps the section agents worked around** (categorical bars, text table columns,
+  half-years, BIS/OECD `A` flags, the `EA20` URL test, national source names, derived-series
+  provenance, failures and concurrent writes in partial builds) were fixed in the core on
+  9 November 2026; the workarounds are gone.

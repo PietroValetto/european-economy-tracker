@@ -143,7 +143,7 @@ class SiteFilesTests(unittest.TestCase):
         reg = make_registry()
         ctx = make_ctx(reg)
         failed = [{"id": "empty", "error": "no observations returned"}]
-        built, errors, strip = build.build_site(reg, ctx, sorted(reg.charts), failed, full=True, log=lambda *a: None)
+        built, errors, strip, _ = build.build_site(reg, ctx, sorted(reg.charts), failed, full=True, log=lambda *a: None)
         self.assertEqual(set(built), set(reg.charts))
         rep, n = check.run(self.tmp.name)
         self.assertEqual(rep.errors, [])
@@ -192,9 +192,15 @@ class SiteFilesTests(unittest.TestCase):
         check.check_bundle(b, "debt.json", rep)
         self.assertEqual(rep.errors, [])
         t = dict(b, id="tab", methods_id="tab", type="table", series=[], latest=None,
-                 columns=[{"key": "a", "label": "A", "format": "text"}], rows=[{"label": "x", "values": {"a": 1}, "flag": None}])
+                 columns=[{"key": "a", "label": "A", "format": "text"}, {"key": "n", "label": "N", "format": "pct"}],
+                 rows=[{"label": "x", "values": {"a": "Sep 2026", "n": 1.5}, "flag": None},
+                       {"label": "y", "values": {"a": None, "n": None}, "flag": None}])
         check.check_bundle(t, "tab.json", rep)
-        self.assertTrue(any("format 'text'" in e for e in rep.errors))
+        self.assertEqual(rep.errors, [])                      # text columns hold strings
+        bad = dict(t, rows=[{"label": "x", "values": {"a": 1, "n": "1.5"}, "flag": None}])
+        check.check_bundle(bad, "tab.json", rep)
+        self.assertTrue(any("text value a=1" in e for e in rep.errors))
+        self.assertTrue(any("value n='1.5' is not a number" in e for e in rep.errors))
 
 
 if __name__ == "__main__":

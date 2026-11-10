@@ -5,6 +5,8 @@ import { esc, fmtDay } from './format.js';
 import { setStamp } from './chrome.js';
 import { pageHeader, scrollToHash } from './page.js';
 
+const FREQ_NAMES = { A: 'Annual', S: 'Half-yearly', Q: 'Quarterly', M: 'Monthly', W: 'Weekly', D: 'Daily' };
+
 export async function renderMethods(main) {
   pageHeader(main, {
     kicker: 'European Economy Tracker',
@@ -42,7 +44,7 @@ export async function renderMethods(main) {
         ${e.what ? `<div><dt>What it shows</dt><dd>${esc(e.what)}</dd></div>` : ''}
         ${e.transform ? `<div><dt>How it is calculated</dt><dd>${esc(e.transform)}</dd></div>` : ''}
         ${sources ? `<div><dt>Source</dt><dd>${sources}</dd></div>` : ''}
-        ${e.frequency ? `<div><dt>Frequency</dt><dd>${esc(e.frequency)}</dd></div>` : ''}
+        ${e.frequency ? `<div><dt>Frequency</dt><dd>${esc(FREQ_NAMES[e.frequency] || e.frequency)}</dd></div>` : ''}
         ${e.caveats ? `<div><dt>Caveats</dt><dd>${esc(e.caveats)}</dd></div>` : ''}
         ${e.updated ? `<div><dt>Last updated</dt><dd>${esc(fmtDay(e.updated))}</dd></div>` : ''}
       </dl>

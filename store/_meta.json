@@ -3413,6 +3413,12 @@
   "updated": null,
   "url": "https://sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_FINMARK,/USA+GBR+JPN+CHN.M.IRLT.PA._Z._Z._Z._Z.N?format=csvfile&startPeriod=2000-01"
  },
+ "oecd_y10_ea": {
+  "last_fetched": "2026-11-09",
+  "spec": "86afa5d099ac",
+  "updated": null,
+  "url": "https://sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_FINMARK,/EA20.M.IRLT.PA._Z._Z._Z._Z.N?format=csvfile&startPeriod=2000-01"
+ },
  "pl_employment_index": {
   "last_fetched": "2026-11-09",
   "spec": "56c33f983527",

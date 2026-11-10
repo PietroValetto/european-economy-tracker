@@ -221,7 +221,6 @@ CHARTS = [
                   Ref("gdp_level_ea_ex_ie", "ex_ie", "Euro area excluding Ireland", "base", transform="rebase:2019-Q4")],
           start="2015-Q1", default_window="10y", reference_lines=[{"axis": "y", "value": 100, "label": "2019-Q4"}],
           original=True, source="Eurostat (namq_10_gdp)", source_url=NAMQ,
-          build=lambda ctx, chart: (ctx.obs("gdp_level__IE"), {})[1],
           what="The level of euro area real GDP relative to the fourth quarter of 2019, with and without Ireland.",
           transform_text="Chain-linked volumes (2020 euros) rebased to 2019-Q4 = 100. Excluding Ireland: euro area "
                          "level minus the Irish level, then rebased.",

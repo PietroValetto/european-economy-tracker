@@ -17,6 +17,14 @@ Live site (once the repository is public, see below): https://pietrovaletto.gith
 4. GitHub Actions rebuilds the data every morning, polls for new numbers on release mornings,
    refreshes markets in the afternoon, commits the results and deploys `site/` to GitHub Pages.
 
+Today: **113 chart bundles** (103 charts, including 3 heatmaps and 7 country strips, and 10 tables)
+on **13 pages**: home, nine data pages (GDP, labour, wages, inflation, financial conditions, the
+ECB, public finances, international, only in Europe), the release calendar, methods and about.
+They are built from 156 registry series (about 630 stored series once panels are split by
+country) and 37 derived series, with 12 key-indicator tiles on the home page. Sources: Eurostat, the ECB, the European
+Commission, the OECD, the BIS, Indeed Hiring Lab, and the national offices of Germany
+(Bundesbank), France (INSEE), Italy (ISTAT), the Netherlands (CBS) and Poland (GUS).
+
 See `CONTRACT.md` for the data and site contract and `ROADMAP.md` for what is planned but not built.
 
 ## Run locally
@@ -25,7 +33,7 @@ Everything runs from `pipeline/` with Python 3.11 or later (CI uses 3.12).
 
 ```bash
 cd pipeline
-python3 -m eet.build                         # full live build (about 10 minutes: the ECB API is slow)
+python3 -m eet.build                         # full live build (12 to 15 minutes: the ECB API is slow)
 python3 -m eet.build --only inflation        # one registry module; others are read from store/
 python3 -m eet.build --only financial --only ecb   # several modules in one run (repeat --only)
 python3 -m eet.build --offline               # no network: rebuild every bundle from store/
@@ -97,7 +105,7 @@ each, including retries on its random 504s):
 
 | Run | Runs a month | Minutes each | Minutes a month |
 |---|---|---|---|
-| Daily full build (about 130 series now, more as sections land) | 30 | 12 to 15 | 360 to 450 |
+| Daily full build (156 registry series) | 30 | 12 to 15 | 360 to 450 |
 | Release polls (10 a weekday in the window, plus the gated no-ops in March and October) | about 255 | 1 (2 on release days) | 255 to 300 |
 | Rebuilds after a detected release | about 15 | 3 to 4 | 45 to 60 |
 | Markets run | about 22 | 6 to 8 | 130 to 175 |

@@ -5,7 +5,7 @@ const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', '
 const MONTHS_LONG = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
   'September', 'October', 'November', 'December'];
 
-/** Parse a contract period (YYYY, YYYY-Qn, YYYY-MM, YYYY-MM-DD) into UTC start/end. */
+/** Parse a contract period (YYYY, YYYY-Sn, YYYY-Qn, YYYY-MM, YYYY-MM-DD) into UTC start/end. */
 export function periodBounds(p) {
   if (p == null) return null;
   const s = String(p);
@@ -13,6 +13,10 @@ export function periodBounds(p) {
   if ((m = /^(\d{4})$/.exec(s))) {
     const y = +m[1];
     return { kind: 'A', start: Date.UTC(y, 0, 1), end: Date.UTC(y + 1, 0, 1) };
+  }
+  if ((m = /^(\d{4})-S([12])$/.exec(s))) {
+    const y = +m[1], h = +m[2];
+    return { kind: 'S', start: Date.UTC(y, (h - 1) * 6, 1), end: Date.UTC(y, h * 6, 1) };
   }
   if ((m = /^(\d{4})-Q([1-4])$/.exec(s))) {
     const y = +m[1], q = +m[2];
@@ -38,7 +42,7 @@ export function periodX(p) {
   return b.kind === 'D' ? b.start : (b.start + b.end) / 2;
 }
 
-/** "Oct 2026", "Q3 2026", "2026", "6 Nov 2026". */
+/** "Oct 2026", "Q3 2026", "H1 2026", "2026", "6 Nov 2026". */
 export function periodLabel(p, { long = false } = {}) {
   const s = String(p);
   const b = periodBounds(s);
@@ -47,6 +51,7 @@ export function periodLabel(p, { long = false } = {}) {
   const y = d.getUTCFullYear();
   switch (b.kind) {
     case 'A': return String(y);
+    case 'S': return long ? `${s.slice(-1) === '1' ? 'First' : 'Second'} half of ${y}` : `H${s.slice(-1)} ${y}`;
     case 'Q': return `Q${s.slice(-1)} ${y}`;
     case 'M': return `${(long ? MONTHS_LONG : MONTHS)[d.getUTCMonth()]} ${y}`;
     default: return `${d.getUTCDate()} ${(long ? MONTHS_LONG : MONTHS)[d.getUTCMonth()]} ${y}`;
@@ -62,6 +67,7 @@ export function periodShort(p) {
   const yy = String(d.getUTCFullYear()).slice(2);
   if (b.kind === 'A') return String(d.getUTCFullYear());
   if (b.kind === 'Q') return `Q${s.slice(-1)} ${yy}`;
+  if (b.kind === 'S') return `H${s.slice(-1)} ${yy}`;
   if (b.kind === 'M') return `${MONTHS[d.getUTCMonth()]} ${yy}`;
   return `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]}`;
 }

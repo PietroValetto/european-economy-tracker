@@ -21,6 +21,7 @@ import json
 import os
 
 from . import paths
+from .spec import NATIONAL
 
 FIELDS = ["period", "value", "flag", "first_seen", "last_seen"]
 META = "_meta.json"
@@ -42,7 +43,10 @@ def fmt_value(v):
 
 def spec_hash(s):
     keep = getattr(s, "keep", None)
-    payload = json.dumps({"source": s.source, "dataset": s.dataset, "key": s.key, "filters": s.filters,
+    # national families were declared as source "csv" before they had their own names; hash them
+    # as before so switching the name does not restart their stored history
+    source = "csv" if s.source in NATIONAL else s.source
+    payload = json.dumps({"source": source, "dataset": s.dataset, "key": s.key, "filters": s.filters,
                           "split": s.split, "scale": s.scale, "keep": getattr(keep, "__name__", None)},
                          sort_keys=True, default=str)
     return hashlib.sha1(payload.encode()).hexdigest()[:12]
@@ -63,7 +67,7 @@ def read_rows(sid, root=None):
 def write_rows(sid, rows, root=None):
     os.makedirs(_dir(root), exist_ok=True)
     rows = sorted(rows, key=lambda r: (r["period"], r["first_seen"], r["last_seen"] == ""))
-    tmp = path_for(sid, root) + ".tmp"
+    tmp = f"{path_for(sid, root)}.{os.getpid()}.tmp"
     with open(tmp, "w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=FIELDS, lineterminator="\n")
         w.writeheader()
@@ -134,13 +138,21 @@ def load_meta(root=None):
         return json.load(fh)
 
 
-def save_meta(meta, root=None):
-    os.makedirs(_dir(root), exist_ok=True)
+def save_meta(meta, root=None, merge=True):
+    """Write ``store/_meta.json``. With ``merge`` (the default) the entries of ``meta`` are merged
+    into the file as it is on disk now, under the build lock, so a concurrent build that wrote other
+    series in the meantime keeps its entries. The file is replaced atomically."""
     p = os.path.join(_dir(root), META)
-    with open(p + ".tmp", "w", encoding="utf-8") as fh:
-        json.dump(meta, fh, indent=1, sort_keys=True)
-        fh.write("\n")
-    os.replace(p + ".tmp", p)
+    with paths.build_lock():
+        out = dict(meta)
+        if merge and os.path.exists(p):
+            try:
+                with open(p, encoding="utf-8") as fh:
+                    out = {**json.load(fh), **meta}
+            except ValueError:
+                out = dict(meta)
+        paths.atomic_write(p, json.dumps(out, indent=1, sort_keys=True) + "\n")
+    return out
 
 
 def children(parent, root=None):

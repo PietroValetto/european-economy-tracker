@@ -1,7 +1,7 @@
 """Period strings as the publishers write them, and the arithmetic the transforms need.
 
-Formats (CONTRACT section 3): ``YYYY`` annual, ``YYYY-Qn`` quarterly, ``YYYY-MM`` monthly,
-``YYYY-MM-DD`` daily or weekly. ECB weekly periods (``2026-W44``) are converted to a date by
+Formats (CONTRACT section 3): ``YYYY`` annual, ``YYYY-Sn`` half-yearly (Eurostat energy prices),
+``YYYY-Qn`` quarterly, ``YYYY-MM`` monthly, ``YYYY-MM-DD`` daily or weekly. ECB weekly periods (``2026-W44``) are converted to a date by
 :func:`normalize` (the Friday of that ISO week, the reference day of the Eurosystem weekly
 financial statement).
 """
@@ -10,6 +10,7 @@ import re
 
 _WEEK = re.compile(r"^(\d{4})-W(\d{2})$")
 _Q = re.compile(r"^(\d{4})-Q([1-4])$")
+_S = re.compile(r"^(\d{4})-S([12])$")
 _M = re.compile(r"^(\d{4})-(\d{2})$")
 _D = re.compile(r"^(\d{4})-(\d{2})-(\d{2})$")
 _A = re.compile(r"^(\d{4})$")
@@ -28,15 +29,20 @@ def normalize(p, week_day=5):
     m = re.match(r"^(\d{4})Q([1-4])$", p)
     if m:
         return f"{m.group(1)}-Q{m.group(2)}"
+    m = re.match(r"^(\d{4})-?[SH]([12])$", p)  # SDMX half-years: 2026-S1, 2026S1, 2026-H1
+    if m:
+        return f"{m.group(1)}-S{m.group(2)}"
     return p
 
 
 def freq_of(p):
-    """'A', 'Q', 'M' or 'D' from the shape of the period string; None if unknown."""
+    """'A', 'S', 'Q', 'M' or 'D' from the shape of the period string; None if unknown."""
     if _M.match(p):
         return "M"
     if _Q.match(p):
         return "Q"
+    if _S.match(p):
+        return "S"
     if _D.match(p):
         return "D"
     if _A.match(p):
@@ -44,14 +50,18 @@ def freq_of(p):
     return None
 
 
-PER_YEAR = {"A": 1, "Q": 4, "M": 12}
+PER_YEAR = {"A": 1, "S": 2, "Q": 4, "M": 12}
 
 
 def shift(p, n):
-    """Shift an A, Q or M period by n periods (n may be negative). Daily: n days."""
+    """Shift an A, S, Q or M period by n periods (n may be negative). Daily: n days."""
     f = freq_of(p)
     if f == "A":
         return str(int(p) + n)
+    if f == "S":
+        y, h = int(p[:4]), int(p[-1])
+        k = y * 2 + (h - 1) + n
+        return f"{k // 2}-S{k % 2 + 1}"
     if f == "Q":
         y, q = int(p[:4]), int(p[-1])
         k = y * 4 + (q - 1) + n
@@ -70,6 +80,8 @@ def start_date(p):
     f = freq_of(p)
     if f == "A":
         return datetime.date(int(p), 1, 1)
+    if f == "S":
+        return datetime.date(int(p[:4]), 1 if p[-1] == "1" else 7, 1)
     if f == "Q":
         return datetime.date(int(p[:4]), 3 * int(p[-1]) - 2, 1)
     if f == "M":
@@ -93,6 +105,8 @@ def to_freq(p, freq):
     d = start_date(p)
     if freq == "A":
         return f"{d.year}"
+    if freq == "S":
+        return f"{d.year}-S{1 if d.month <= 6 else 2}"
     if freq == "Q":
         return f"{d.year}-Q{(d.month - 1) // 3 + 1}"
     if freq == "M":

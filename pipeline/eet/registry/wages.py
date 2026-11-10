@@ -16,7 +16,6 @@ from .. import sources as S
 from .. import transforms
 from ..context import Missing
 from ..spec import Chart, Derived, Ref, Section, Series
-from .labour import reads
 
 PAGE = "wages"
 EWT_URL = "https://data.ecb.europa.eu/data/datasets/EWT"
@@ -54,7 +53,7 @@ SERIES = [
     Series("hicp_index_ea", "eurostat", dataset="prc_hicp_minr",
            filters={"geo": "EA21", "unit": "I25", "coicop18": "TOTAL"}, freq="M", unit="index, 2025 = 100",
            decimals=2, start="1996-01", label="HICP, index 2025 = 100"),
-    Series("indeed_wages", "csv", dataset=S.INDEED_WAGES + "main/posted-wage-growth-by-country.csv",
+    Series("indeed_wages", "indeed_wages", dataset=S.INDEED_WAGES + "main/posted-wage-growth-by-country.csv",
            split="jobcountry", keep=_keep_indeed, value_col="posted_wage_growth_yoy_3moavg", scale=100.0,
            freq="M", unit="% y/y", label="Indeed posted wage growth, 3-month average",
            labels={"EA": "Euro area"}, source_name="Indeed Hiring Lab wage tracker", source_url=INDEED_WAGE_URL),
@@ -197,7 +196,6 @@ CHARTS = [
                   Ref("comp_per_employee_yoy", "cpe", "Compensation per employee", "base"),
                   Ref("lci_wages", "lci", "Labour cost index, wages and salaries (hourly)", "context")],
           start="2000-Q1", default_window="10y",
-          build=reads("comp_employees", "employees"),
           source="ECB (INW); Eurostat (namq_10_gdp, namq_10_pe, lc_lci_r2_q)",
           source_url="https://data.ecb.europa.eu/data/datasets/INW",
           notes="Negotiated wages come from collective agreements (ECB INW flow), about 50 days after the quarter. "
@@ -275,7 +273,6 @@ CHARTS = [
           series=[Ref("real_negotiated_wages", "negotiated", "Real negotiated wages", "story"),
                   Ref("real_comp_per_employee", "cpe", "Real compensation per employee", "base")],
           start="2001-Q1", default_window="10y", original=True,
-          build=reads("negotiated_wages", "comp_employees", "employees", "hicp_index_ea"),
           source="ECB (INW); Eurostat (namq_10_gdp, namq_10_pe, prc_hicp_minr)",
           source_url="https://data.ecb.europa.eu/data/datasets/INW",
           reference_lines=[{"axis": "y", "value": 0, "label": "No real growth"}],

@@ -9,6 +9,7 @@ Exit status is non-zero only if more than 20% of the attempted series fail or if
 check fails (CONTRACT section 7). Failed series are listed in index.json ``failed``.
 """
 import argparse
+import copy
 import datetime
 import json
 import os
@@ -164,8 +165,50 @@ def _existing_bundles():
     return out
 
 
-def build_site(reg, ctx, chart_ids, failed, full, log=print):
-    """Write chart bundles for ``chart_ids``, then index/methods/snapshot for the whole registry."""
+def _base(sid):
+    return (sid or "").split("__")[0]
+
+
+def merge_failed(reg, failed, previous, attempted):
+    """This run's failures plus the earlier ones it could not have cleared.
+
+    ``previous`` is the ``failed`` list of the index.json on disk. An earlier entry is kept when its
+    series is still in the registry and this run did not try to fetch it live (``attempted`` holds
+    the series ids fetched live; an offline run attempts none). Entries are unique by id; this run's
+    entry wins."""
+    out, seen = [], set()
+    for f in failed:
+        if f.get("id") not in seen:
+            seen.add(f.get("id"))
+            out.append(f)
+    for f in previous or []:
+        fid = f.get("id") if isinstance(f, dict) else None
+        if not fid or fid in seen or _base(fid) not in reg.series or _base(fid) in attempted:
+            continue
+        seen.add(fid)
+        out.append({"id": fid, "error": f.get("error", "")})
+    return out
+
+
+def _read_index():
+    try:
+        with open(os.path.join(paths.SITE_DATA, "index.json"), encoding="utf-8") as fh:
+            return json.load(fh)
+    except (OSError, ValueError):
+        return {}
+
+
+def build_site(reg, ctx, chart_ids, failed, full, attempted=frozenset(), log=print):
+    """Write chart bundles for ``chart_ids``, then index/methods/snapshot for the whole registry.
+
+    The shared files (index.json, methods.json, snapshot.csv) are rebuilt under the build lock from
+    what is on disk at that moment, so concurrent ``--only`` runs keep each other's charts, methods
+    entries and failures."""
+    with paths.build_lock():
+        return _build_site(reg, ctx, chart_ids, failed, full, attempted, log)
+
+
+def _build_site(reg, ctx, chart_ids, failed, full, attempted, log=print):
     os.makedirs(paths.CHARTS, exist_ok=True)
     chart_errors, used_by_chart, built = [], {}, {}
     for cid in chart_ids:
@@ -180,6 +223,8 @@ def build_site(reg, ctx, chart_ids, failed, full, log=print):
         bundles.write_json(os.path.join(paths.CHARTS, f"{cid}.json"), b)
         used_by_chart[cid] = used
         built[cid] = b
+    prev_index = _read_index()
+    failed = merge_failed(reg, failed, prev_index.get("failed"), attempted)
     attach_chart_ids(reg, failed, used_by_chart)
     existing = _existing_bundles()
     if full:  # remove bundles of charts no longer in the registry
@@ -188,14 +233,10 @@ def build_site(reg, ctx, chart_ids, failed, full, log=print):
                 os.remove(os.path.join(paths.CHARTS, f"{cid}.json"))
                 existing.pop(cid)
     # strip: rebuild every tile; fall back to the last good tile if a series is missing
-    prev_idx = {}
-    ipath = os.path.join(paths.SITE_DATA, "index.json")
-    if os.path.exists(ipath):
-        try:
-            with open(ipath, encoding="utf-8") as fh:
-                prev_idx = {t["id"]: t for t in json.load(fh).get("strip", [])}
-        except (ValueError, KeyError, TypeError):
-            prev_idx = {}
+    try:
+        prev_idx = {t["id"]: t for t in prev_index.get("strip", [])}
+    except (KeyError, TypeError):
+        prev_idx = {}
     strip, snap_extra = [], {}
     for t in reg.tiles:
         try:
@@ -237,9 +278,8 @@ def build_site(reg, ctx, chart_ids, failed, full, log=print):
                             "caveats": c.caveats, "original": bool(c.original),
                             "updated": existing[cid].get("data_updated")})
     bundles.write_json(mpath, {"entries": entries}, compact=False)
-    with open(os.path.join(paths.SITE_DATA, "snapshot.csv"), "w", encoding="utf-8", newline="") as fh:
-        fh.write(bundles.snapshot_csv(strip, snap_extra, ctx.built_at))
-    return built, chart_errors, strip
+    paths.atomic_write(os.path.join(paths.SITE_DATA, "snapshot.csv"), bundles.snapshot_csv(strip, snap_extra, ctx.built_at))
+    return built, chart_errors, strip, failed
 
 
 def main(argv=None):
@@ -266,32 +306,21 @@ def main(argv=None):
     memory = {}
     rows, failed = [], []
     if a.offline:
-        # keep the last live run's failures; use the raw cache only for series never stored
-        try:
-            with open(os.path.join(paths.SITE_DATA, "index.json"), encoding="utf-8") as fh:
-                failed = [f for f in json.load(fh).get("failed", []) if f.get("id") in ids
-                          or f.get("id", "").split("__")[0] in ids]
-        except (OSError, ValueError):
-            failed = []
+        # nothing is fetched live, so every earlier failure stands (merged in build_site); the raw
+        # cache is used only for series never stored
+        attempted = frozenset()
         missing = [i for i in ids if not store.load(i) and not store.children(i)]
         if missing:
-            rows, failed2, memory = fetch_all(reg, missing, today, meta, offline=True)
-            failed += failed2
+            rows, failed, memory = fetch_all(reg, missing, today, meta, offline=True)
     else:
+        attempted = frozenset(ids)
+        before = copy.deepcopy(meta)
         rows, failed, memory = fetch_all(reg, ids, today, meta)
-        store.save_meta(meta)
-        if a.only:  # keep earlier failures of series this partial run did not attempt
-            try:
-                with open(os.path.join(paths.SITE_DATA, "index.json"), encoding="utf-8") as fh:
-                    failed += [f for f in json.load(fh).get("failed", [])
-                               if f.get("id", "").split("__")[0] not in ids and f.get("id") in reg.series
-                               or f.get("id", "").split("__")[0] in reg.series
-                               and f.get("id", "").split("__")[0] not in ids]
-            except (OSError, ValueError):
-                pass
+        meta = store.save_meta({k: v for k, v in meta.items() if before.get(k) != v})
     ctx = make_context(reg, today, built_at, meta, memory)
     chart_ids = sorted(c.id for c in reg.charts.values() if c.module in names)
-    built, chart_errors, strip = build_site(reg, ctx, chart_ids, failed, full=not a.only)
+    built, chart_errors, strip, failed = build_site(reg, ctx, chart_ids, failed, full=not a.only,
+                                                    attempted=attempted)
     # summary
     print()
     print(f"{'series':36} {'source':9} {'status':7} {'latest':24} {'value':>12} {'new':>5} {'rev':>4} {'secs':>5}")

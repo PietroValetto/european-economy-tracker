@@ -1,5 +1,5 @@
-// Section pages, driven entirely by index.json: page header, section blocks (charts on the
-// left, tables on the right), "Coming soon" for empty pages and sections, "Not updated" for
+// Section pages, driven entirely by index.json: page header, section blocks (one grid of
+// charts and tables per section), "Coming soon" for empty pages and sections, "Not updated" for
 // anything listed in index.failed.
 
 import { loadIndex, loadChart, PAGES, href } from './config.js';
@@ -112,41 +112,57 @@ export async function renderPage(pageId, main) {
       block.appendChild(p);
       continue;
     }
-    // Charts left, tables right: the lead chart sits beside the section's tables.
-    if (tables.length) {
-      const lead = document.createElement('div');
-      lead.className = 'lead-row';
-      const left = document.createElement('div');
-      left.className = 'lead-chart';
-      const right = document.createElement('aside');
-      right.className = 'lead-tables';
-      lead.append(left, right);
-      block.appendChild(lead);
-      if (charts[0]) {
-        const fig = document.createElement('figure');
-        left.appendChild(fig);
-        jobs.push(mountChart(fig, charts[0], index, isFailed));
-      }
-      for (const t of tables) {
-        const fig = document.createElement('figure');
-        right.appendChild(fig);
-        jobs.push(mountChart(fig, t, index, isFailed));
-      }
-    }
-    const rest = tables.length ? charts.slice(1) : charts;
-    if (rest.length) {
-      const grid = document.createElement('div');
-      grid.className = 'chart-grid' + (rest.length === 1 ? ' is-single' : '');
-      block.appendChild(grid);
-      for (const id of rest) {
-        const fig = document.createElement('figure');
-        grid.appendChild(fig);
-        jobs.push(mountChart(fig, id, index, isFailed));
-      }
-    }
+    // One grid per section: charts and tables flow together in two columns on wide screens.
+    // Order: the lead chart, the tables, then the other charts. Long tables, heatmaps and
+    // country strips span both columns; once everything is drawn, arrangeGrid() pairs the
+    // half-width items so no column is left with a hole beside a tall neighbour.
+    const grid = document.createElement('div');
+    grid.className = 'chart-grid';
+    block.appendChild(grid);
+    const order = charts.length ? [charts[0], ...tables, ...charts.slice(1)] : tables;
+    const secJobs = order.map((id) => {
+      const fig = document.createElement('figure');
+      grid.appendChild(fig);
+      return mountChart(fig, id, index, isFailed).then((b) => {
+        if (b && b.type === 'table' && isWideTable(b)) fig.classList.add('chart--wide');
+        return b;
+      });
+    });
+    jobs.push(Promise.all(secJobs).then(() => arrangeGrid(grid)));
   }
   await Promise.all(jobs);
   scrollToHash();
+}
+
+/** A table too long or too wide to sit beside a chart gets the full row. */
+export function isWideTable(b) {
+  return (b.rows || []).length > 12 || (b.columns || []).length > 6;
+}
+
+/**
+ * Reorder a section grid so half-width items come in pairs: a full-width item met while one
+ * half-width item waits for a partner is held back until the pair is complete. A half-width
+ * item left without a partner takes the full row (.is-solo). Order is preserved otherwise.
+ */
+export function arrangeGrid(grid) {
+  const items = [...grid.children];
+  const wide = (n) => n.classList.contains('chart--wide');
+  const out = [];
+  let pending = null;
+  let held = [];
+  for (const n of items) {
+    n.classList.remove('is-solo');
+    if (wide(n)) {
+      if (pending) held.push(n); else out.push(n);
+    } else if (pending) {
+      out.push(pending, n, ...held);
+      pending = null; held = [];
+    } else {
+      pending = n;
+    }
+  }
+  if (pending) { pending.classList.add('is-solo'); out.push(pending, ...held); }
+  out.forEach((n) => grid.appendChild(n));
 }
 
 /** Content arrives after the browser's own jump, so redo it once everything is drawn. */

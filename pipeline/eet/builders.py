@@ -67,13 +67,15 @@ def period_label(p):
     if f == "D":
         d = P.start_date(p)
         return f"{d.day} {d.strftime('%b %Y')}"
+    if f == "S":
+        return f"H{p[-1]} {p[:4]}"
     return p
 
 
 def _finish_rows(out_rows, reference="max"):
-    """Tables have no text columns (CONTRACT column formats are numeric), so a row whose latest
-    period differs from the table's latest period gets it appended to its label ("Supercore (Sep 2026)").
-    Every row also carries its own ``period``."""
+    """A row whose latest period differs from the table's latest period gets it appended to its
+    label ("Supercore (Sep 2026)"), which keeps bank tables to numeric columns; a hook that wants a
+    separate period column can use a ``text`` column instead. Every row also carries ``period``."""
     periods = [r["period"] for r in out_rows if r.get("period")]
     if not periods:
         latest = None

@@ -9,7 +9,7 @@ vintage from DG ECFIN Redisstat (``FDMS_UBLGE``, ``FDMS_UDGG``); Eurostat annual
 convergence yields (``irt_lt_mcby_a``) and nominal GDP (``nama_10_gdp``) for r minus g.
 
 This module also holds the small helpers the international and Europe modules share
-(:func:`pick_period`, :func:`country_bars`, :class:`Fields`).
+(:func:`pick_period`, :func:`country_bars`, :func:`period_text`).
 """
 from .. import builders, geo
 from .. import periods as P
@@ -26,24 +26,6 @@ RG_COUNTRIES = ["DE", "FR", "IT", "ES"]
 
 
 # ---------------------------------------------------------------------------- shared helpers
-
-class Fields(dict):
-    """Bundle fields from a build hook that the core must merge verbatim.
-
-    The core pops ``series`` from a hook's result to round the points and to compute
-    ``latest``/``previous`` by period. Categorical bars (``[["Italy", 137.1], ...]``, CONTRACT
-    section 3) have no periods, so that step would fail; this dict keeps ``series`` in place and
-    the core's final ``bundle.update(...)`` copies it, with ``latest``, ``previous`` and any other
-    field, as given. Values are rounded here. A chart using it still needs one ordinary ``Ref``
-    (the core refuses a chart with no series); the hook's fields replace what the core built
-    from it. See docs/notes/fiscal-international-europe.md (core change requested).
-    """
-
-    def pop(self, key, *default):
-        if key == "series":
-            return default[0] if default else []
-        return super().pop(key, *default)
-
 
 def _rnd(v, d):
     if v is None:
@@ -72,22 +54,15 @@ def pick_period(obs_by_code, min_share=0.6):
     if not lasts:
         return None
     n = len(obs_by_code)
-    for p in sorted(lasts, key=_period_key, reverse=True):
+    for p in sorted(lasts, key=P.compare_key, reverse=True):
         if len(lasts[p]) >= max(1, min_share * n):
             return p
-    return max(lasts, key=_period_key)
-
-
-def _period_key(p):
-    if len(p) == 7 and p[4:6] == "-S":           # Eurostat half-years: 2026-S1, 2026-S2
-        return (int(p[:4]), 1 if p[-1] == "1" else 7)
-    d = P.start_date(p)
-    return (d.year, d.month, d.day)
+    return max(lasts, key=P.compare_key)
 
 
 def period_text(p):
     """'2025', 'Q2 2026', 'Sep 2026', 'first half of 2026'."""
-    if len(p) == 7 and p[4:6] == "-S":
+    if P.freq_of(p) == "S":
         return f"{'first' if p[-1] == '1' else 'second'} half of {p[:4]}"
     return builders.period_label(p)
 
@@ -143,10 +118,10 @@ def country_bars(panel, key, label, *, codes=None, highlight=None, sort="desc", 
             v, f = value_at(ea, period)
             if v is not None:
                 latest = {"period": period, "values": {key: _rnd(v, decimals)}, "flag": f or None}
-            prev = [(p, w) for p, w, _ in ea if w is not None and _period_key(p) < _period_key(period)]
+            prev = [(p, w) for p, w, _ in ea if w is not None and P.compare_key(p) < P.compare_key(period)]
             if prev:
                 previous = {"period": prev[-1][0], "values": {key: _rnd(prev[-1][1], decimals)}}
-        out = Fields(series=series, latest=latest, previous=previous)
+        out = {"series": series, "latest": latest, "previous": previous}
         if highlight:
             out["highlight"] = country_name(highlight, labels)
         notes = chart.notes or ""
@@ -158,17 +133,6 @@ def country_bars(panel, key, label, *, codes=None, highlight=None, sort="desc", 
             out["subtitle"] = f"{chart.subtitle}, {period_text(period)}"
         return out
     return build
-
-
-def as_month(obs):
-    """Half-year periods (2026-S1) to the first month of the half (2026-01), so the core can
-    order them. Used only on the placeholder Ref of a categorical bar chart."""
-    out = []
-    for p, v, f in obs:
-        if len(p) == 7 and p[4:6] == "-S":
-            p = f"{p[:4]}-{'01' if p[-1] == '1' else '07'}"
-        out.append((p, v, f))
-    return out
 
 
 # ---------------------------------------------------------------------------- series
@@ -225,6 +189,20 @@ def primary_balance(balance, interest):
     return [(p, v + iv[p], f) for p, v, f in balance if v is not None and iv.get(p) is not None]
 
 
+def effective_rate(interest, debt, ngdp):
+    """Implicit interest rate on government debt, %: interest paid in year t over the debt stock at
+    the end of t-1. From ratios to GDP: i_t / d_(t-1) x GDP_t / GDP_(t-1) x 100."""
+    d = {p: v for p, v, _ in debt}
+    y = {p: v for p, v, _ in ngdp}
+    out = []
+    for p, v, f in interest:
+        prev = str(int(p) - 1)
+        if v is None or not d.get(prev) or not y.get(prev) or y.get(p) is None:
+            continue
+        out.append((p, v / d[prev] * y[p] / y[prev] * 100.0, f))
+    return out
+
+
 DERIVED = [
     Derived("fis_primary_a_ea", ["fis_balance_a__EA21", "fis_interest_a__EA21"], primary_balance, freq="A",
             unit="% of GDP", label="Primary balance"),
@@ -234,6 +212,10 @@ DERIVED = [
     Derived(f"fis_rg_{c.lower()}", [f"fis_y10_annual__{c}", f"fis_ngdp_annual__{c}"], r_minus_g, freq="A",
             unit="pp", decimals=1, label=geo.name(c))
     for c in RG_COUNTRIES
+] + [
+    Derived(f"fis_eff_rate_{c.lower()}", [f"fis_interest_a__{c}", f"fis_debt_a__{c}", f"fis_ngdp_annual__{c}"],
+            effective_rate, freq="A", unit="%", decimals=1, label=geo.name(c))
+    for c in ["EA21"] + RG_COUNTRIES
 ]
 
 SECTIONS = [
@@ -329,11 +311,6 @@ def fiscal_table(ctx, chart):
 
 # ---------------------------------------------------------------------------- charts
 
-def _placeholder(sid, transform=None):
-    """The one ordinary Ref a categorical chart needs (see :class:`Fields`)."""
-    return [Ref(sid, "placeholder", "", "base", transform=transform)]
-
-
 CHARTS = [
     Chart("gov-debt", PAGE, "debt", 10,
           "Euro area government debt", "General government gross debt, euro area, % of GDP",
@@ -348,7 +325,7 @@ CHARTS = [
     Chart("gov-debt-countries", PAGE, "debt", 20,
           "Government debt by country", "General government gross debt, % of GDP",
           kicker="Country by country", type="bar", units="% of GDP", decimals=1, frequency="A", geo="multi",
-          series=_placeholder("fis_debt_a__EA21"),
+          series=[],
           build=country_bars("fis_debt_a", "debt", "Gross debt", codes=COUNTRIES, highlight="IT", sort="desc"),
           reference_lines=[{"axis": "x", "value": 60, "label": "60%"}], default_window="max",
           source_url=EDP_URL,
@@ -381,7 +358,7 @@ CHARTS = [
     Chart("gov-deficit-countries", PAGE, "deficit", 20,
           "Government balance by country", "Net lending (+) or net borrowing (-) of general government, % of GDP",
           kicker="Country by country", type="bar", units="% of GDP", decimals=1, frequency="A", geo="multi",
-          series=_placeholder("fis_balance_a__EA21"),
+          series=[],
           build=country_bars("fis_balance_a", "balance", "Government balance", codes=COUNTRIES, highlight="FR",
                              sort="asc"),
           reference_lines=[{"axis": "x", "value": -3, "label": "-3%"}], default_window="max", source_url=EDP_URL,
@@ -415,7 +392,7 @@ CHARTS = [
     Chart("gov-interest-countries", PAGE, "interest", 10,
           "Interest bills by country", "General government interest expenditure, % of GDP",
           kicker="The cost of debt", type="bar", units="% of GDP", decimals=1, frequency="A", geo="multi",
-          series=_placeholder("fis_interest_a__EA21"),
+          series=[],
           build=country_bars("fis_interest_a", "interest", "Interest expenditure", codes=COUNTRIES,
                              highlight="IT", sort="desc"),
           default_window="max", source_url=EDP_URL,
@@ -453,6 +430,26 @@ CHARTS = [
           caveats="An original indicator, not an official measure. The relevant rate for debt dynamics is the "
                   "effective (implicit) interest rate on the whole stock, which moves far more slowly than the "
                   "10-year yield; use this chart for direction, not to compute debt paths."),
+    Chart("gov-effective-rate", PAGE, "interest", 40,
+          "What governments pay on their debt",
+          "Implicit interest rate on general government debt and the 10-year bond yield, euro area, %",
+          kicker="Debt dynamics", units="%", decimals=1, frequency="A",
+          series=[Ref("fis_eff_rate_ea21", "effective", "Effective rate on the debt stock", "story"),
+                  Ref("fis_y10_annual__EA", "y10", "10-year yield, annual average", "base"),
+                  Ref("fis_eff_rate_it", "IT", "Italy, effective rate", "context"),
+                  Ref("fis_eff_rate_fr", "FR", "France, effective rate", "context"),
+                  Ref("fis_eff_rate_de", "DE", "Germany, effective rate", "context")],
+          start="2000", default_window="max", original=True,
+          notes="The effective rate follows the market yield slowly, because only the debt that matures or is newly "
+                "issued each year is refinanced at current yields.",
+          what="Interest paid by general government in a year divided by its gross debt at the end of the previous "
+               "year: the average rate on the whole debt stock, next to the 10-year yield on new borrowing.",
+          transform_text="Effective rate = interest payable (D41, % of GDP) in year t divided by gross debt (% of GDP) "
+                         "at the end of t-1, times nominal GDP growth (GDP_t / GDP_t-1), times 100. All from "
+                         "gov_10dd_edpt1 and nama_10_gdp (CP_MEUR).",
+          caveats="An original indicator. Debt is at nominal (face) value and interest on an accrual basis, so the "
+                  "ratio is an approximation of the average coupon; the euro area GDP is EA21, its debt and "
+                  "interest the EDP aggregate."),
     Chart("gov-forecast-deficit", PAGE, "forecasts", 10,
           "The Commission's deficit forecast", "Euro area general government balance, % of GDP",
           kicker="Forecast", units="% of GDP", decimals=1, frequency="A",

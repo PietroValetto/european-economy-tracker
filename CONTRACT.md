@@ -85,7 +85,7 @@ responses go to `pipeline/.cache/` (git-ignored).
 Field rules:
 
 - `type` is one of the renderer's chart types (section 6).
-- `series[].points` is a list of `[period, value]`. `value` is a number or `null` (a known gap: the renderer breaks the line). Periods use the source's own format: `YYYY` annual, `YYYY-Qn` quarterly, `YYYY-MM` monthly, `YYYY-MM-DD` daily or weekly. All points in one series share one frequency.
+- `series[].points` is a list of `[period, value]`. `value` is a number or `null` (a known gap: the renderer breaks the line). Periods use the source's own format: `YYYY` annual, `YYYY-Sn` half-yearly (`2026-S1`, `2026-S2`), `YYYY-Qn` quarterly, `YYYY-MM` monthly, `YYYY-MM-DD` daily or weekly. All points in one series share one frequency.
 - `series[].role`: `story` (the series the chart is about: drawn in amber, **at most one per chart**), `base` (green), `context` (slate or mute, thinner), `band` (two-value range drawn as an area: then `points` are `[period, low, high]`).
 - For `type: "stacked-bar"` or `"contrib"`, add `"total_key"` naming the series drawn as a line or dot on top of the stack.
 - For `type: "scatter"` (for example a Beveridge curve), points are `[period, x, y]` and the bundle adds `"x_label"` and `"y_label"`.
@@ -94,13 +94,16 @@ Field rules:
 - For `type: "country-strip"` (small multiples, one panel per country), `series[]` has one entry per country with `"key"` = Eurostat geo code and `"label"` = country name; the story country (if any) has role `story`.
 - `latest` and `previous` are what the key-indicator tile and the "latest value" label show. Values are already rounded for display by the pipeline (`decimals` below).
 - Optional `"decimals": 1` (display precision, default 1) and `"format": "pct" | "pp" | "index" | "eur_bn" | "level"`.
+- Optional `series[].decimals`: the display precision of one series when it differs from the bundle's `decimals` (for example a GDP total at 1 decimal over contributions at 2). Labels and tooltips use it.
 - Optional `series[].mark`: `"bar"` or `"line"`. For `bar-line`, it says which series are bars (default: the first series is bars, the rest lines).
 - Optional `series[].curve`: `"step-after"` for policy rates and other step series (default: linear).
-- Categorical bars (for example debt by country): `points` may use category labels instead of periods (`[["Italy", 137.1], ...]`), with an optional bundle-level `"highlight": "IT"` naming the one bar drawn in amber.
+- Categorical bars (for example debt by country): `points` may use category labels instead of periods (`[["Italy", 137.1], ...]`), with an optional bundle-level `"highlight"` naming the one bar drawn in amber (the bar's label, for example `"Italy"`). Such a bundle has no period axis: `latest` carries the snapshot period and the aggregate's value (or `period: null` and empty `values`), and the subtitle names the period.
 - Table `columns[].format` is one of `pct`, `pp`, `index`, `level`, `eur_bn`, `change` (`pp` and `change` are shown signed). Rows may carry `"decimals"`.
-- Table columns may also use format `text`. Table rows may carry `"period"`; when a row's period differs from the table's, the pipeline appends it to the label ("Supercore (Sep 2026)"). Markets-table rows may carry `change_unit`, `decimals`, `period`.
+- Table columns may also use format `text`: their cells are strings (or `null`), shown as written, for periods, lags or notes (the international overview has "Latest period" and "Age at this update" columns). Numeric cells take the row's `decimals`, else the column's, else the bundle's. Table rows may carry `"period"`; when a row's period differs from the table's, the pipeline appends it to the label ("Supercore (Sep 2026)"). Markets-table rows may carry `change_unit`, `decimals`, `period`.
 - `latest.periods` (series key to period) is emitted when the series of one chart end on different periods.
-- `frequency` is one of `A`, `Q`, `M`, `W`, `D`. Weekly points are dated to the reference day (`YYYY-MM-DD`).
+- `frequency` is one of `A`, `S` (half-yearly), `Q`, `M`, `W`, `D`. Weekly points are dated to the reference day (`YYYY-MM-DD`).
+- Flags are publisher observation-status codes (`e`, `p`, `b`, ...). Codes that only mean "normal value" (BIS and OECD `A`) are dropped by the parser and never appear.
+- `source` lists each publisher once with its datasets, for example `"Eurostat (gov_10dd_edpt1, nama_10_gdp); ECB (YC)"`. A chart built from a derived series credits the series it was computed from.
 - Bundles always carry `decimals` and `format`. Heatmaps also carry `row_keys` (geo codes in row order).
 - `original: true` marks a measure the tracker computes itself (it shows an "Original" tag and links to its methods entry).
 - `data_updated` is the publisher's own update stamp (Eurostat `updated`, ECB `Last-Modified`). `built_at` is the pipeline run time as an ISO timestamp in `UTC` (suffix `Z`).
@@ -130,7 +133,7 @@ Field rules:
 
 - Page ids and their order are fixed: `home` (no entry in `pages`; it is `site/index.html`), `gdp`, `labour`, `wages`, `inflation`, `financial`, `ecb`, `fiscal`, `international`, `europe` (European-only indicators: fragmentation, energy, surveys), `calendar`, `methods`, `about`. A page whose sections are all empty shows a short "Coming soon" note rather than disappearing.
 - `strip` holds the 12 key-indicator tiles for the home page, in display order. `good_direction` is `up`, `down` or `none` and colours the change arrow.
-- `failed` lists series that could not be built on this run; the site shows the last good bundle and a quiet "not updated" mark.
+- `failed` lists series that could not be fetched; the site shows the last good bundle and a quiet "not updated" mark. A partial or offline build keeps earlier failures of series it did not fetch live, so `failed` always describes the whole site. `index.json`, `methods.json`, `snapshot.csv` and `store/_meta.json` are written atomically under a build lock (`pipeline/.cache/build.lock`) and merged with what is on disk, so concurrent `--only` builds do not overwrite each other.
 
 ## 5. Other generated files in `site/data/`
 
@@ -155,6 +158,7 @@ current and is filled when it is revised. `store/_meta.json` keeps per-series fe
 - One HTML file per page: `site/index.html` (home) and `site/<page>/index.html`. Shared JS in `site/assets/js/`, shared CSS in `site/assets/css/`. Each page's HTML is a thin shell; the JS renders sections from `data/index.json` and the chart bundles, so **adding a chart needs no site change**.
 - Data base path: pages compute it from their depth (a `<meta name="eet-root" content="../">` tag in each page). Append `?fixtures=1` to load `_fixtures/` instead of `data/`.
 - Brand: Popular Economics design system (copied into `site/assets/brand/`). Archivo for headlines and numbers (700/800, negative tracking), Inter for body and UI. Paper `#FAF7F0` ground, ink `#1B1712` text, slate `#6B655C` secondary, mute `#A8A296` sources. Green `#1F8A5B` is the base series and accent; **amber `#F0A93B` appears once per chart**, on the story series. Hairlines (`rgba(27,23,18,.08/.12/.22)`) instead of boxes; no gradients, no shadows inside the page, no animation on load. Kicker, sentence-case headline, 52x5px amber rule, subtitle is the signature for page headers. Sentence case everywhere; the only uppercase is the small kicker.
+- Section layout: one grid per section. On screens 960px and wider it has two columns; the lead chart comes first, then the section's tables, then the other charts. Heatmaps, country strips and long tables (more than 12 rows or 6 columns) take a full row; half-width items are paired so no column is left with a hole, and an unpaired one takes the full row.
 - Chart furniture: kicker, title, subtitle, the chart, then a source line in mute type. Latest-value label at the end of each line. Window buttons (1y, 5y, 10y, max). Download PNG and Copy link per chart. Accessible: every chart gets a text alternative generated from its bundle (title, latest values, period).
 - Responsive down to 360px width, 16px side gutter, no horizontal page scroll. Tables scroll inside their own container.
 - Chart types the renderer must support: `line`, `bar`, `bar-line`, `stacked-bar`, `contrib`, `scatter`, `heatmap`, `table`, `country-strip`.

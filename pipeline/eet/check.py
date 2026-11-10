@@ -14,11 +14,11 @@ import sys
 
 from . import pages, paths
 from . import periods as P
-from .spec import CHART_TYPES, COLUMN_FORMATS, CURVES, DIRECTIONS, FORMATS, MARKS, ROLES, WINDOWS
+from .spec import CHART_TYPES, COLUMN_FORMATS, CURVES, DIRECTIONS, FORMATS, FREQS, MARKS, ROLES, WINDOWS
 
 ISO_Z = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$")
 KEBAB = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
-FREQ_OK = {"A", "Q", "M", "W", "D"}
+FREQ_OK = set(FREQS)
 
 REQUIRED = {"id": str, "page": str, "section": str, "order": (int, float), "title": str, "kicker": str,
             "subtitle": str, "type": str, "units": str, "frequency": str, "geo": str, "series": list,
@@ -92,6 +92,8 @@ def check_bundle(b, fname, rep):
         if s.get("key") in keys:
             rep.err(sw, f"duplicate key {s.get('key')!r}")
         keys.add(s.get("key"))
+        if "decimals" in s and not isinstance(s["decimals"], int):
+            rep.err(sw, "decimals must be an integer")
         if "mark" in s and s["mark"] not in MARKS:
             rep.err(sw, f"mark {s['mark']!r} not one of {MARKS}")
         if "curve" in s and s["curve"] not in CURVES:
@@ -176,6 +178,7 @@ def check_bundle(b, fname, rep):
             rep.err(w, "table needs rows")
         else:
             ckeys = {c.get("key") for c in cols or [] if isinstance(c, dict)}
+            text_cols = {c.get("key") for c in cols or [] if isinstance(c, dict) and c.get("format") == "text"}
             for r in rows:
                 if not (isinstance(r, dict) and "label" in r and isinstance(r.get("values"), dict) and "flag" in r):
                     rep.err(w, f"table row {r!r} needs label, values, flag")
@@ -183,7 +186,10 @@ def check_bundle(b, fname, rep):
                 if "decimals" in r and not isinstance(r["decimals"], int):
                     rep.err(w, f"table row {r['label']!r} decimals must be an integer")
                 for k, v in r["values"].items():
-                    if v is not None and not _num(v):
+                    if k in text_cols:
+                        if v is not None and not isinstance(v, str):
+                            rep.err(w, f"table row {r['label']!r} text value {k}={v!r} is not a string or null")
+                    elif v is not None and not _num(v):
                         rep.err(w, f"table row {r['label']!r} value {k}={v!r} is not a number or null")
                 extra = set(r["values"]) - ckeys
                 if extra:

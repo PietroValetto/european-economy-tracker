@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "built_at": "2026-11-09T16:31:19Z",
+ "built_at": "2026-11-09T17:48:03Z",
  "pages": [
   {
    "id": "gdp",
@@ -387,7 +387,8 @@
      "charts": [
       "gov-interest-countries",
       "gov-interest-ea",
-      "gov-r-minus-g"
+      "gov-r-minus-g",
+      "gov-effective-rate"
      ],
      "tables": []
     },
@@ -453,6 +454,7 @@
      "intro": "Policy rates, long-term yields and exchange rates against the dollar.",
      "charts": [
       "intl-policy-rates",
+      "intl-real-policy-rates",
       "intl-10y-yields",
       "intl-fx-usd"
      ],

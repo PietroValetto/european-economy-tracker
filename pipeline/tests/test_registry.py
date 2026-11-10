@@ -24,7 +24,8 @@ class RegistryTests(unittest.TestCase):
         for s in reg.series.values():
             url = sources.url_for(s)
             self.assertNotIn("lastTimePeriod", url, s.id)
-            self.assertNotIn("EA20", url, s.id)
+            if s.source == "eurostat":  # Eurostat's euro area is EA21; OECD's is still EA20
+                self.assertNotIn("EA20", url, s.id)
             if s.source == "ecb":
                 self.assertEqual(url.count("/"), 6, s.id)  # one key per request
         self.assertIn("prc_hicp_minr", sources.url_for(reg.series["hicp_headline"]))

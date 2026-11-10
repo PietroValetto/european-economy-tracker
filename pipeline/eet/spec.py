@@ -14,13 +14,16 @@ See ``eet/registry/README.md`` for a worked example.
 from dataclasses import dataclass, field
 from typing import Any, Callable
 
-SOURCES = ("eurostat", "ecfin", "ecb", "bis", "oecd", "indeed", "csv")
-FREQS = ("A", "Q", "M", "W", "D")
+SOURCES = ("eurostat", "ecfin", "ecb", "bis", "oecd", "indeed", "csv",
+           # national families (eet.sources, second half): dataset is the full request URL
+           "bundesbank", "insee", "cbs", "istat", "gus", "indeed_wages")
+NATIONAL = ("bundesbank", "insee", "cbs", "istat", "gus", "indeed_wages")
+FREQS = ("A", "S", "Q", "M", "W", "D")
 ROLES = ("story", "base", "context", "band")
 CHART_TYPES = ("line", "bar", "bar-line", "stacked-bar", "contrib", "scatter", "heatmap", "table",
                "country-strip")
 FORMATS = ("pct", "pp", "index", "eur_bn", "level")
-COLUMN_FORMATS = ("pct", "pp", "index", "level", "eur_bn", "change")
+COLUMN_FORMATS = ("pct", "pp", "index", "level", "eur_bn", "change", "text")
 MARKS = ("bar", "line")
 CURVES = ("step-after",)
 DIRECTIONS = ("up", "down", "none")
@@ -28,21 +31,23 @@ WINDOWS = ("1y", "5y", "10y", "max")
 
 PUBLISHER = {"eurostat": "Eurostat", "ecfin": "European Commission (DG ECFIN)", "ecb": "European Central Bank",
              "bis": "Bank for International Settlements", "oecd": "OECD", "indeed": "Indeed Hiring Lab",
-             "csv": ""}
+             "csv": "", "bundesbank": "Deutsche Bundesbank", "insee": "INSEE", "cbs": "CBS (Statistics Netherlands)",
+             "istat": "ISTAT", "gus": "GUS (Statistics Poland)", "indeed_wages": "Indeed Hiring Lab"}
 
 
 @dataclass
 class Series:
     """One series (or, with ``split``, a panel of series) fetched from a publisher.
 
-    source    eurostat | ecfin | ecb | bis | oecd | indeed | csv
+    source    eurostat | ecfin | ecb | bis | oecd | indeed | csv, or a national family:
+              bundesbank | insee | cbs | istat | gus | indeed_wages
     dataset   Eurostat/ECFIN dataset code; ECB/BIS flow; OECD "AGENCY,DSD@DF,VERSION";
-              Indeed country folder (EA, DE, ...); csv: the full URL
+              Indeed country folder (EA, DE, ...); csv and national families: the full URL
     key       ECB/BIS/OECD SDMX series key (one key per request at the ECB; "+" only inside one
               dimension)
     filters   Eurostat/ECFIN: {dimension: code}. With ``split``, the split dimension may hold a
               list of codes. csv/indeed: {column: value} row filter
-    freq      A Q M W D (W and D both use YYYY-MM-DD periods)
+    freq      A S Q M W D (S: half-years YYYY-S1/S2; W and D both use YYYY-MM-DD periods)
     start     first period to request (Eurostat sinceTimePeriod, SDMX startPeriod)
     split     make a panel: Eurostat dimension name, or ECB key position (0-based) holding a
               wildcard/OR. Children are stored as ``<id>__<code>``

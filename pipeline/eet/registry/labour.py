@@ -174,19 +174,6 @@ def labour_rates_table(ctx, chart):
                                      "values": {}, "flag": None}}
 
 
-def reads(*sids):
-    """A build hook that only reads the inputs of derived series, so the chart's source line, update
-    stamp and methods entry list them (the context caches derived results)."""
-    def build(ctx, chart):
-        for sid in sids:
-            try:
-                ctx.obs(sid)
-            except Missing:
-                pass
-        return {}
-    return build
-
-
 def weekly(obs):
     """Every seventh daily point, counted back from the latest (keeps country lines light)."""
     return list(reversed(list(reversed(obs))[::7]))
@@ -220,7 +207,7 @@ CHARTS = [
           kicker="Labour market", units="pp", format="pp", decimals=2,
           series=[Ref("sahm_ea", "sahm", "Sahm-rule indicator", "story")],
           reference_lines=[{"axis": "y", "value": 0.5, "label": "US trigger (0.5)"}],
-          start="2001-01", default_window="max", original=True, build=reads("unemployment_rate"),
+          start="2001-01", default_window="max", original=True,
           source="Eurostat (une_rt_m)",
           source_url="https://ec.europa.eu/eurostat/databrowser/view/une_rt_m/default/table",
           notes="Computed by the tracker. In the United States a reading of 0.5 or more has marked the start of "

@@ -294,7 +294,7 @@
      "url": "https://ec.europa.eu/eurostat/databrowser/view/nrg_pc_204/default/table"
     }
    ],
-   "frequency": "A",
+   "frequency": "S",
    "caveats": "Prices are averages over the half-year and include taxes and support measures, which differ by country.",
    "original": false,
    "updated": "2026-10-19T23:00:00+0200"
@@ -560,7 +560,7 @@
      "url": "https://ec.europa.eu/eurostat/databrowser/view/nrg_pc_202/default/table"
     }
    ],
-   "frequency": "A",
+   "frequency": "S",
    "caveats": "Prices include taxes and support measures, which differ by country.",
    "original": false,
    "updated": "2026-10-19T11:00:00+0200"
@@ -775,6 +775,33 @@
    "updated": "2026-10-21T11:00:00+0200"
   },
   {
+   "id": "gov-effective-rate",
+   "title": "What governments pay on their debt",
+   "what": "Interest paid by general government in a year divided by its gross debt at the end of the previous year: the average rate on the whole debt stock, next to the 10-year yield on new borrowing.",
+   "transform": "Effective rate = interest payable (D41, % of GDP) in year t divided by gross debt (% of GDP) at the end of t-1, times nominal GDP growth (GDP_t / GDP_t-1), times 100. All from gov_10dd_edpt1 and nama_10_gdp (CP_MEUR).",
+   "sources": [
+    {
+     "name": "Eurostat (gov_10dd_edpt1)",
+     "dataset": "gov_10dd_edpt1",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table"
+    },
+    {
+     "name": "Eurostat (nama_10_gdp)",
+     "dataset": "nama_10_gdp",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table"
+    },
+    {
+     "name": "Eurostat (irt_lt_mcby_a)",
+     "dataset": "irt_lt_mcby_a",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/irt_lt_mcby_a/default/table"
+    }
+   ],
+   "frequency": "A",
+   "caveats": "An original indicator. Debt is at nominal (face) value and interest on an accrual basis, so the ratio is an approximation of the average coupon; the euro area GDP is EA21, its debt and interest the EDP aggregate.",
+   "original": true,
+   "updated": "2026-11-05T23:00:00+0100"
+  },
+  {
    "id": "gov-forecast-debt",
    "title": "The Commission's debt forecast",
    "what": "Eurostat's annual euro area government debt ratio and the European Commission's latest published forecast.",
@@ -956,7 +983,7 @@
     {
      "name": "ECB (HICP)",
      "dataset": "HICP",
-     "url": "https://data.ecb.europa.eu/data/datasets/HICP/HICP.M.U2.N.PCCI00.4F0.3MM"
+     "url": "https://data.ecb.europa.eu/data/datasets/HICP/HICP.M.U2.N.DOM000.4F0.INX"
     }
    ],
    "frequency": "M",
@@ -1262,24 +1289,19 @@
   {
    "id": "intl-10y-yields",
    "title": "Ten-year government bond yields",
-   "what": "Ten-year benchmark government bond yields, monthly averages: the euro area from Eurostat (EMU convergence-criterion yield for the euro area), the others from the OECD.",
+   "what": "Ten-year benchmark government bond yields, monthly averages, all from the OECD's financial indicators (the euro area aggregate is the OECD's EA20).",
    "transform": "As published.",
    "sources": [
     {
      "name": "OECD (financial indicators)",
      "dataset": "OECD.SDD.STES,DSD_STES@DF_FINMARK,",
      "url": "https://data-explorer.oecd.org/"
-    },
-    {
-     "name": "Eurostat (irt_lt_mcby_m)",
-     "dataset": "irt_lt_mcby_m",
-     "url": "https://ec.europa.eu/eurostat/databrowser/view/irt_lt_mcby_m/default/table"
     }
    ],
    "frequency": "M",
-   "caveats": "The euro area yield is a GDP-weighted average of member states' yields, not a single bond; the financial conditions page has the AAA curve and country spreads.",
+   "caveats": "The euro area yield is a weighted average of member states' yields, not a single bond, and differs slightly from Eurostat's EMU convergence yield (used on the Europe page), which comes out about a month later. The financial conditions page has the AAA curve and country spreads.",
    "original": false,
-   "updated": "2026-10-13T11:00:00+0200"
+   "updated": null
   },
   {
    "id": "intl-fx-usd",
@@ -1368,7 +1390,7 @@
    "id": "intl-overview",
    "title": "The large economies at a glance",
    "what": "Real GDP growth on a year earlier, consumer price inflation, the unemployment rate, the central bank policy rate and the 10-year government bond yield in the euro area, the US, the UK, Japan and China.",
-   "transform": "Latest published value of each series. Column headers give the most recent period; the notes list cells on an older period and how many days old each column is.",
+   "transform": "Latest published value of each series. 'Latest period' is the period most economies have published for that indicator, with any economy on another period in brackets; 'Age at this update' counts the days from the end of that period to this build.",
    "sources": [
     {
      "name": "BIS (WS_LONG_CPI)",
@@ -1409,11 +1431,6 @@
      "name": "Eurostat (une_rt_m)",
      "dataset": "une_rt_m",
      "url": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m/default/table"
-    },
-    {
-     "name": "Eurostat (irt_lt_mcby_m)",
-     "dataset": "irt_lt_mcby_m",
-     "url": "https://ec.europa.eu/eurostat/databrowser/view/irt_lt_mcby_m/default/table"
     }
    ],
    "frequency": "M",
@@ -1437,6 +1454,33 @@
    "caveats": "Policy rates are not comparable across countries as levels of stance; compare them with each economy's inflation.",
    "original": false,
    "updated": null
+  },
+  {
+   "id": "intl-real-policy-rates",
+   "title": "Real policy rates",
+   "what": "Each central bank's policy rate minus the latest annual consumer price inflation: a simple, backward-looking measure of how tight policy is.",
+   "transform": "Policy rate (BIS WS_CBPOL, end of month) minus inflation (Eurostat HICP for the euro area, BIS WS_LONG_CPI for the others), month by month.",
+   "sources": [
+    {
+     "name": "BIS (WS_LONG_CPI)",
+     "dataset": "WS_LONG_CPI",
+     "url": "https://data.bis.org/topics/WS_LONG_CPI"
+    },
+    {
+     "name": "BIS (WS_CBPOL)",
+     "dataset": "WS_CBPOL",
+     "url": "https://data.bis.org/topics/WS_CBPOL"
+    },
+    {
+     "name": "Eurostat (prc_hicp_minr)",
+     "dataset": "prc_hicp_minr",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table"
+    }
+   ],
+   "frequency": "M",
+   "caveats": "Uses current inflation, not expected inflation, so it overstates tightness when inflation is falling and understates it when inflation is rising.",
+   "original": true,
+   "updated": "2026-11-04T11:00:00+0100"
   },
   {
    "id": "intl-unemployment",
@@ -2124,9 +2168,24 @@
    "transform": "As in the charts above; real rows are computed by the tracker.",
    "sources": [
     {
+     "name": "Eurostat (namq_10_gdp)",
+     "dataset": "namq_10_gdp",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp/default/table"
+    },
+    {
+     "name": "Eurostat (namq_10_pe)",
+     "dataset": "namq_10_pe",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_pe/default/table"
+    },
+    {
      "name": "ECB (EWT)",
      "dataset": "EWT",
      "url": "https://data.ecb.europa.eu/data/datasets/EWT/EWT.M.U2.N.WT.INWS._T.4F0.GY"
+    },
+    {
+     "name": "Eurostat (prc_hicp_minr)",
+     "dataset": "prc_hicp_minr",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table"
     },
     {
      "name": "Indeed Hiring Lab wage tracker",
@@ -2176,7 +2235,13 @@
    "title": "Slope of the yield curve",
    "what": "Difference between the 10-year and 2-year spot yields on the AAA euro area curve.",
    "transform": "10-year yield minus 2-year yield on the same day.",
-   "sources": [],
+   "sources": [
+    {
+     "name": "ECB (YC)",
+     "dataset": "YC",
+     "url": "https://data.ecb.europa.eu/data/datasets/YC/YC.B.U2.EUR.4F.G_N_A.SV_C_YM.SR_10Y"
+    }
+   ],
    "frequency": "D",
    "caveats": "",
    "original": false,

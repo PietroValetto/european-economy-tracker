@@ -9,7 +9,9 @@
     ctx.today                         -> "2026-11-09" (UTC date of the run)
 
 Every series read through the context is recorded, so the bundle's ``source`` line,
-``data_updated`` stamp and methods entry cover exactly the data the chart used.
+``data_updated`` stamp and methods entry cover exactly the data the chart used. A derived series
+records the inputs it was computed from, and a later read from the cache records them again, so a
+chart is credited with a derived series' inputs whichever chart computed it first.
 """
 import contextlib
 
@@ -30,6 +32,7 @@ class BuildContext:
         self.today = today
         self.built_at = built_at
         self._cache = {}
+        self._deps = {}                # derived id -> every series id read to compute it
         self._tracks = []
 
     # -------------------------------------------------------------- tracking
@@ -54,15 +57,19 @@ class BuildContext:
         self._note(sid)
         if sid in self._cache:
             out = self._cache[sid]
+            for dep in self._deps.get(sid, ()):  # a cached derived series still credits its inputs
+                self._note(dep)
         else:
             spec = self.reg.spec(sid)
             if spec is None:
                 raise Missing(f"{sid}: not in the registry")
             if isinstance(spec, Derived):
-                args = []
-                for i in spec.inputs:
-                    args.append(self.panel(i[:-3]) if i.endswith("__*") else self.obs(i))
-                out = spec.fn(*args) or []
+                with self.track() as deps:
+                    args = []
+                    for i in spec.inputs:
+                        args.append(self.panel(i[:-3]) if i.endswith("__*") else self.obs(i))
+                    out = spec.fn(*args) or []
+                self._deps[sid] = frozenset(deps)
             else:
                 out = self._loader(sid) or []
             self._cache[sid] = out

@@ -23,6 +23,10 @@ OECD = "https://sdmx.oecd.org/public/rest/data/"
 INDEED = "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/"
 
 
+# OBS_STATUS codes that mean "normal value": dropped by the parser so they never show as a flag.
+NORMAL_FLAGS = {"bis": ("A",), "oecd": ("A",)}
+
+
 class EmptySeries(ValueError):
     pass
 
@@ -97,6 +101,8 @@ def display_url(s):
         return "https://data-explorer.oecd.org/"
     if s.source == "indeed":
         return "https://github.com/hiring-lab/job_postings_tracker"
+    if s.source in FAMILY_HOME:
+        return FAMILY_HOME[s.source]
     return url_for(s)
 
 
@@ -104,7 +110,8 @@ def source_text(s):
     if s.source_name:
         return s.source_name
     pub = {"eurostat": "Eurostat", "ecfin": "European Commission", "ecb": "ECB", "bis": "BIS",
-           "oecd": "OECD", "indeed": "Indeed Hiring Lab"}.get(s.source, "")
+           "oecd": "OECD", "indeed": "Indeed Hiring Lab", "bundesbank": "Bundesbank", "insee": "INSEE",
+           "cbs": "CBS", "istat": "ISTAT", "gus": "GUS", "indeed_wages": "Indeed Hiring Lab"}.get(s.source, "")
     if s.source in ("eurostat", "ecfin"):
         return f"{pub} ({s.dataset})"
     if s.source in ("ecb", "bis"):
@@ -135,11 +142,13 @@ def parse_body(s, body):
         value_col = s.value_col or ("indeed_job_postings_index_SA" if s.source == "indeed" else "OBS_VALUE")
         flag_col = s.flag_col or ("" if s.source == "indeed" else "OBS_STATUS")
         where = s.filters if s.source in ("indeed", "csv") else None
+        normal = NORMAL_FLAGS.get(s.source, ())
         if s.split is not None:
             group_by = csvdata.ecb_key_part(s.split) if isinstance(s.split, int) else s.split
-            groups = csvdata.parse_multi(body, group_by, period_col, value_col, flag_col, where=where)
+            groups = csvdata.parse_multi(body, group_by, period_col, value_col, flag_col, where=where,
+                                         normal=normal)
         else:
-            groups = {None: csvdata.parse(body, period_col, value_col, flag_col, where=where)}
+            groups = {None: csvdata.parse(body, period_col, value_col, flag_col, where=where, normal=normal)}
     out = {}
     for code, obs in groups.items():
         if code is None:
@@ -178,10 +187,8 @@ def fetch(s, offline=False):
 # =========================================================================== national families
 #
 # National statistical offices and agencies (research/04_national_sources.md) and the Indeed wage
-# tracker. ``spec.SOURCES`` is fixed by the core, so a Series reaches these families with
-# ``source="csv"`` and a ``dataset`` URL starting with one of the prefixes below; the family is
-# recognised from that prefix (``family(s)``). A Series whose source is the family name itself is
-# also accepted, for when the core adds the names to ``spec.SOURCES``.
+# tracker. A Series names its family as its ``source`` (``spec.NATIONAL``); ``dataset`` is the full
+# request URL, built from the prefixes below.
 #
 #   bundesbank    dataset = BUNDESBANK + "<FLOW>/<KEY>"               one CSV per series
 #   insee         dataset = INSEE_BDM + "SERIES_BDM/<IDBANK>"          SDMX-ML
@@ -204,6 +211,10 @@ INDEED_WAGES = "https://raw.githubusercontent.com/hiring-lab/indeed-wage-tracker
 
 FAMILY_PREFIXES = {"bundesbank": BUNDESBANK, "insee": INSEE_BDM, "cbs": CBS, "istat": ISTAT, "gus": GUS_DBW,
                    "indeed_wages": INDEED_WAGES}
+FAMILY_HOME = {"bundesbank": "https://www.bundesbank.de/en/statistics/time-series-databases",
+               "insee": "https://www.insee.fr/en/statistiques", "cbs": "https://opendata.cbs.nl/statline/",
+               "istat": "https://esploradati.istat.it/databrowser/", "gus": "https://dbw.stat.gov.pl/",
+               "indeed_wages": "https://github.com/hiring-lab/indeed-wage-tracker"}
 FAMILY_EXT = {"bundesbank": "csv", "insee": "xml", "cbs": "json", "istat": "csv", "gus": "json",
               "indeed_wages": "csv"}
 
@@ -217,13 +228,7 @@ _last_istat = [0.0]
 
 def family(s):
     """The national family name for Series ``s``, or None for the core families."""
-    if s.source in FAMILY_PREFIXES:
-        return s.source
-    if s.source == "csv":
-        for name, prefix in FAMILY_PREFIXES.items():
-            if s.dataset.startswith(prefix):
-                return name
-    return None
+    return s.source if s.source in FAMILY_PREFIXES else None
 
 
 def _cbs_filter(s, start_year=None):

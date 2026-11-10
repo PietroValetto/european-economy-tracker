@@ -6,14 +6,16 @@ heatmap cells are rounded to the chart's (or series') ``decimals``.
 import csv
 import io
 import json
-import os
+import re
 
-from . import geo, pages
+from . import geo, pages, paths
 from . import periods as P
 from . import sources
-from .builders import last_point, series_entry
+from .builders import series_entry
 from .context import Missing, latest_stamp
-from .spec import Derived
+from .spec import NATIONAL, Derived
+
+URL_SOURCES = ("csv",) + NATIONAL  # their "dataset" is a request URL, not a dataset code
 
 SCHEMA = 1
 
@@ -64,13 +66,22 @@ def _last_two(points, step=False):
     return vals[-1], (vals[-2] if len(vals) > 1 else None)
 
 
+def _timed(s):
+    """True if a bundle series is indexed by periods. Categorical bars (``[["Italy", 137.1], ...]``)
+    are not: they have no latest or previous period, so their build hook supplies those."""
+    p = s["points"][0][0] if s.get("points") and s["points"][0] else None
+    return isinstance(p, str) and P.freq_of(p) is not None
+
+
 def latest_previous(series, decimals_for, flag_of):
     """Contract ``latest`` / ``previous`` from bundle series (values rounded).
 
     ``latest.period`` is the most recent period across series; ``values`` holds each series' last
     value. When series end on different periods, ``periods`` maps key -> its own last period.
+    Series whose points are categories rather than periods are skipped; with none left, the result
+    is ``(None, None)``.
     """
-    usable = [s for s in series if s.get("role") != "band" and s.get("points")]
+    usable = [s for s in series if s.get("role") != "band" and s.get("points") and _timed(s)]
     if not usable:
         return None, None
     prim = _primary(usable)
@@ -94,6 +105,20 @@ def latest_previous(series, decimals_for, flag_of):
     p_last, p_prev = lasts[prim["key"]]
     previous = {"period": p_prev[0], "values": prev_vals} if p_prev else None
     return latest, previous
+
+
+def join_sources(texts):
+    """'Eurostat (a)', 'ECB (X)', 'Eurostat (b)' -> 'Eurostat (a, b); ECB (X)' (first-seen order)."""
+    groups, order = {}, []
+    for t in texts:
+        m = re.match(r"^(.*?) \(([^()]*)\)$", t)
+        pub, code = (m.group(1), m.group(2)) if m else (t, None)
+        if pub not in groups:
+            groups[pub] = []
+            order.append(pub)
+        if code and code not in groups[pub]:
+            groups[pub].append(code)
+    return "; ".join(f"{p} ({', '.join(groups[p])})" if groups[p] else p for p in order)
 
 
 def _decimals(ctx, chart, ref_or_none, sid):
@@ -198,7 +223,7 @@ def build_chart(ctx, chart):
         "markers": chart.markers,
         "y_domain": chart.y_domain,
         "default_window": chart.default_window,
-        "source": chart.source or "; ".join(src_texts),
+        "source": chart.source or join_sources(src_texts),
         "source_url": chart.source_url or (sources.display_url(prim_spec) if prim_spec else ""),
         "notes": chart.notes,
         "methods_id": chart.id,
@@ -209,6 +234,10 @@ def build_chart(ctx, chart):
                                                                         if series else 1),
         "format": chart.format,
     }
+    for e in series:  # a series shown at another precision than the bundle says so
+        d = dec_by_key.get(e["key"])
+        if d is not None and d != bundle["decimals"]:
+            e["decimals"] = d
     if chart.total_key:
         bundle["total_key"] = chart.total_key
     if chart.highlight:
@@ -232,9 +261,12 @@ def build_chart(ctx, chart):
         bundle["columns"] = cols
         bundle["rows"] = rows
         if bundle["latest"] is None:
-            periods = [r["values"].get("period") for r in rows if isinstance(r["values"].get("period"), str)]
+            periods = [p for r in rows for p in (r.get("period"), r["values"].get("period"))
+                       if isinstance(p, str) and P.freq_of(p)]
             bundle["latest"] = {"period": max(periods, key=P.compare_key) if periods else None, "values": {},
                                 "flag": None}
+    if bundle["latest"] is None and chart.type not in ("table", "heatmap") and "latest" not in extra:
+        bundle["latest"] = {"period": None, "values": {}, "flag": None}  # categorical, hook gave none
     if chart.type == "heatmap":
         cells = extra.pop("cells", [])
         bundle["rows"] = extra.pop("rows", [])
@@ -248,15 +280,12 @@ def build_chart(ctx, chart):
 
 
 def write_json(path, obj, compact=True):
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    tmp = path + ".tmp"
-    with open(tmp, "w", encoding="utf-8") as fh:
-        if compact:
-            json.dump(obj, fh, ensure_ascii=False, separators=(",", ":"))
-        else:
-            json.dump(obj, fh, ensure_ascii=False, indent=1)
-        fh.write("\n")
-    os.replace(tmp, path)
+    """Atomic JSON write (temp file with the process id, then rename)."""
+    if compact:
+        text = json.dumps(obj, ensure_ascii=False, separators=(",", ":"))
+    else:
+        text = json.dumps(obj, ensure_ascii=False, indent=1)
+    paths.atomic_write(path, text + "\n")
 
 
 def methods_entry(ctx, chart, used, bundle):
@@ -269,7 +298,7 @@ def methods_entry(ctx, chart, used, bundle):
         if k in seen:
             continue
         seen.add(k)
-        srcs.append({"name": sources.source_text(sp), "dataset": sp.dataset if sp.source != "csv" else "",
+        srcs.append({"name": sources.source_text(sp), "dataset": sp.dataset if sp.source not in URL_SOURCES else "",
                      "url": sources.display_url(sp)})
     transform = chart.transform_text
     if not transform:

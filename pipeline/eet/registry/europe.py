@@ -14,8 +14,7 @@ from .. import geo
 from .. import periods as P
 from ..context import Missing
 from ..spec import Chart, Ref, Section, Series
-from .fiscal import (COUNTRIES, EA_MEMBERS, as_month, country_bars, country_name, period_text, pick_period,
-                     value_at)
+from .fiscal import COUNTRIES, EA_MEMBERS, country_bars, country_name, period_text, pick_period, value_at
 
 PAGE = "europe"
 
@@ -63,12 +62,12 @@ SERIES = [
            label="Business registrations and bankruptcies, index 2021 = 100", start="2015-Q1"),
     Series("eu_elec_price", "eurostat", dataset="nrg_pc_204",
            filters={"siec": "E7000", "nrg_cons": "KWH2500-4999", "unit": "KWH", "tax": "I_TAX", "currency": "EUR",
-                    "geo": ENERGY_CODES}, split="geo", freq="A", unit="euro cents per kWh", scale=100.0,
+                    "geo": ENERGY_CODES}, split="geo", freq="S", unit="euro cents per kWh", scale=100.0,
            label="Household electricity price, all taxes included", start="2022-S1",
            source_url=NRG_URL.format("nrg_pc_204")),
     Series("eu_gas_price", "eurostat", dataset="nrg_pc_202",
            filters={"siec": "G3000", "nrg_cons": "GJ20-199", "unit": "KWH", "tax": "I_TAX", "currency": "EUR",
-                    "geo": GAS_CODES}, split="geo", freq="A", unit="euro cents per kWh", scale=100.0,
+                    "geo": GAS_CODES}, split="geo", freq="S", unit="euro cents per kWh", scale=100.0,
            label="Household gas price, all taxes included", start="2022-S1",
            source_url=NRG_URL.format("nrg_pc_202")),
     Series("eu_hicp_admin", "eurostat", dataset="prc_hicp_minr",
@@ -278,7 +277,7 @@ CHARTS = [
     Chart("wealth-top10", PAGE, "households", 20,
           "How concentrated wealth is", "Share of household net wealth held by the wealthiest 10%, %",
           kicker="Households", type="bar", units="%", decimals=1, frequency="Q", geo="multi",
-          series=[Ref("eu_dwa_top10__I10", "placeholder", "", "base")],
+          series=[],
           build=country_bars("eu_dwa_top10", "top10", "Top 10% share", ea_code="I10", sort="desc"),
           default_window="max", source_url="https://data.ecb.europa.eu/data/datasets/DWA",
           notes="The euro area aggregate is the ECB's (area code I10).",
@@ -298,8 +297,8 @@ CHARTS = [
     Chart("electricity-prices", PAGE, "energy", 10,
           "What households pay for electricity",
           "Household electricity price, 2,500-5,000 kWh a year, all taxes included, euro cents per kWh",
-          kicker="Energy", type="bar", units="c/kWh", format="level", decimals=1, frequency="A", geo="multi",
-          series=[Ref("eu_elec_price__EA", "placeholder", "", "base", transform=as_month)],
+          kicker="Energy", type="bar", units="c/kWh", format="level", decimals=1, frequency="S", geo="multi",
+          series=[],
           build=country_bars("eu_elec_price", "price", "Electricity price", codes=ENERGY_CODES, highlight="IT",
                              ea_code="EA", sort="desc"),
           default_window="max", source_url=NRG_URL.format("nrg_pc_204"),
@@ -311,8 +310,8 @@ CHARTS = [
     Chart("gas-prices", PAGE, "energy", 20,
           "What households pay for gas",
           "Household gas price, 20-200 GJ a year, all taxes included, euro cents per kWh",
-          kicker="Energy", type="bar", units="c/kWh", format="level", decimals=1, frequency="A", geo="multi",
-          series=[Ref("eu_gas_price__EA", "placeholder", "", "base", transform=as_month)],
+          kicker="Energy", type="bar", units="c/kWh", format="level", decimals=1, frequency="S", geo="multi",
+          series=[],
           build=country_bars("eu_gas_price", "price", "Gas price", codes=GAS_CODES, highlight="IT", ea_code="EA",
                              sort="desc"),
           default_window="max", source_url=NRG_URL.format("nrg_pc_202"),

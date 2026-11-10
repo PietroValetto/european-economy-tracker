@@ -51,6 +51,13 @@ SERIES = [
            key="USA+GBR+JPN+CHN.M.IRLT.PA._Z._Z._Z._Z.N", split="REF_AREA", labels=OECD_LABELS,
            freq="M", unit="%", decimals=2, label="Long-term government bond yield (10 years)", start="2000-01",
            source_name="OECD (financial indicators)"),
+    # the euro area 10-year yield from the OECD (its euro area code is EA20): one month fresher than
+    # Eurostat's EMU convergence series (irt_lt_mcby_m, used on the Europe page), and the same source as
+    # the other economies' yields on this page
+    Series("oecd_y10_ea", "oecd", dataset="OECD.SDD.STES,DSD_STES@DF_FINMARK,",
+           key="EA20.M.IRLT.PA._Z._Z._Z._Z.N", freq="M", unit="%", decimals=2,
+           label="Euro area long-term government bond yield (10 years)", start="2000-01",
+           source_name="OECD (financial indicators)"),
     # BIS
     Series("bis_policy_rate", "bis", dataset="WS_CBPOL", key="M.US+XM+GB+JP+CN", split="REF_AREA",
            labels=BIS_LABELS, freq="M", unit="%", decimals=2, label="Central bank policy rate, end of month",
@@ -92,12 +99,6 @@ def sum12(obs):
     return out
 
 
-def clean_flags(obs):
-    """BIS and OECD mark ordinary observations with OBS_STATUS 'A' (normal value): drop that one
-    so it is not shown as a flag; keep real flags (provisional, estimated, break)."""
-    return [(p, v, "" if f == "A" else f) for p, v, f in obs]
-
-
 def usd_index(obs):
     """National currency per US dollar -> US dollars per unit of national currency, 2019 = 100.
 
@@ -106,7 +107,16 @@ def usd_index(obs):
     return transforms.rebase(inv, "2019")
 
 
+REAL_RATE = [("EA", "bis_policy_rate__XM", "hicp_headline", "ECB"),
+             ("US", "bis_policy_rate__US", "bis_cpi__US", "Federal Reserve"),
+             ("UK", "bis_policy_rate__GB", "bis_cpi__GB", "Bank of England"),
+             ("JP", "bis_policy_rate__JP", "bis_cpi__JP", "Bank of Japan")]
+
 DERIVED = [
+    Derived(f"intl_real_rate_{key.lower()}", [rate, cpi], transforms.spread, freq="M", unit="%", decimals=1,
+            label=name)
+    for key, rate, cpi, name in REAL_RATE
+] + [
     Derived(f"intl_ca12_{c.lower()}", [f"intl_ea_ca__{c}"], sum12, freq="M", unit="EUR bn", decimals=0,
             label=lab)
     for c, lab in (("CA", "Current account"), ("G", "Goods"), ("S", "Services"), ("IN1", "Primary income"),
@@ -135,19 +145,24 @@ OVERVIEW = [
     ("policy", "Policy rate, %", "pct", 2, {"EA": "bis_policy_rate__XM", "US": "bis_policy_rate__US",
                                             "UK": "bis_policy_rate__GB", "JP": "bis_policy_rate__JP",
                                             "CN": "bis_policy_rate__CN"}),
-    ("y10", "10-year yield, %", "pct", 2, {"EA": "y10_members__EA", "US": "oecd_y10__USA", "UK": "oecd_y10__GBR",
+    ("y10", "10-year yield, %", "pct", 2, {"EA": "oecd_y10_ea", "US": "oecd_y10__USA", "UK": "oecd_y10__GBR",
                                            "JP": "oecd_y10__JPN", "CN": "oecd_y10__CHN"}),
 ]
 ECONOMIES = [("EA", "Euro area"), ("US", "United States"), ("UK", "United Kingdom"), ("JP", "Japan"),
              ("CN", "China")]
+SHORT = {"EA": "euro area", "US": "US", "UK": "UK", "JP": "Japan", "CN": "China"}
 
 
 def overview_table(ctx, chart):
-    """Latest value of each headline indicator per economy. The reference period of each column
-    is the most recent one; cells on an older period are listed in the notes (period and lag)."""
+    """One row per headline indicator, one column per economy, then two text columns: the period
+    most economies are on (any economy on another period in brackets) and how old that period is
+    at build time."""
     import datetime
-    rows = {code: {"label": name, "values": {}, "flag": None, "periods": {}} for code, name in ECONOMIES}
-    cols, older = [], []
+    today = datetime.date.fromisoformat(ctx.today)
+    cols = [{"key": code, "label": name, "format": "pct"} for code, name in ECONOMIES]
+    cols += [{"key": "period", "label": "Latest period", "format": "text"},
+             {"key": "lag", "label": "Age at this update", "format": "text"}]
+    rows, periods = [], []
     for key, label, fmt, dec, ids in OVERVIEW:
         latest = {}
         for econ, sid in ids.items():
@@ -159,33 +174,26 @@ def overview_table(ctx, chart):
                 latest[econ] = lp
         if not latest:
             continue
-        ref = max((lp[0] for lp in latest.values()), key=P.compare_key)
-        cols.append({"key": key, "label": f"{label} ({period_text(ref)})", "format": fmt, "decimals": dec})
-        for econ, _ in ECONOMIES:
-            lp = latest.get(econ)
-            rows[econ]["values"][key] = lp[1] if lp else None
-            if lp:
-                rows[econ]["periods"][key] = lp[0]
-                if lp[0] != ref:
-                    older.append(f"{dict(ECONOMIES)[econ]} {label.split(',')[0].lower()} {period_text(lp[0])}")
-    if not cols:
+        # the period most economies are on (ties: the newest); the others are named in brackets
+        counts = {}
+        for lp in latest.values():
+            counts[lp[0]] = counts.get(lp[0], 0) + 1
+        ref = max(counts, key=lambda p: (counts[p], P.compare_key(p)))
+        periods.append(max((lp[0] for lp in latest.values()), key=P.compare_key))
+        older = [f"{SHORT[e]} {period_text(lp[0])}" for e, lp in latest.items() if lp[0] != ref]
+        vals = {econ: (latest[econ][1] if econ in latest else None) for econ, _ in ECONOMIES}
+        vals["period"] = period_text(ref) + (f" ({'; '.join(older)})" if older else "")
+        vals["lag"] = f"{(today - P.end_date(ref)).days} days"
+        rows.append({"label": label, "values": vals, "flag": None, "decimals": dec})
+    if not rows:
         raise Missing("overview has no data")
-    today = datetime.date.fromisoformat(ctx.today)
-    lags = []
-    for key, label, *_ in OVERVIEW:
-        ps = [r["periods"][key] for r in rows.values() if key in r["periods"]]
-        if ps:
-            newest = max(ps, key=P.compare_key)
-            lags.append(f"{label.split(',')[0]} {(today - P.end_date(newest)).days} days")
-    notes = chart.notes
-    if older:
-        notes += " Older periods: " + "; ".join(older) + "."
-    if lags:
-        notes += " Days from the end of the latest period to this build: " + "; ".join(lags) + "."
-    out_rows = [r for r in rows.values() if any(v is not None for v in r["values"].values())]
-    newest = max((p for r in out_rows for p in r["periods"].values()), key=P.compare_key)
-    return {"columns": cols, "rows": out_rows, "notes": notes.strip(),
-            "latest": {"period": newest, "values": {}, "flag": None}}
+    # drop an economy with no value in any row (no empty column)
+    used = [c for c in cols if c["format"] == "text" or any(r["values"].get(c["key"]) is not None for r in rows)]
+    keys = {c["key"] for c in used}
+    for r in rows:
+        r["values"] = {k: v for k, v in r["values"].items() if k in keys}
+    return {"columns": used, "rows": rows,
+            "latest": {"period": max(periods, key=P.compare_key), "values": {}, "flag": None}}
 
 
 def _econ(sids, story="EA"):
@@ -193,8 +201,7 @@ def _econ(sids, story="EA"):
     refs = []
     for key, sid in sids:
         role = "story" if key == story else ("base" if key == "US" else "context")
-        tr = None if sid in ("hicp_headline", "unemployment_rate") or sid.startswith("glance_") else clean_flags
-        refs.append(Ref(sid, key, dict(ECONOMIES)[key], role, transform=tr))
+        refs.append(Ref(sid, key, dict(ECONOMIES)[key], role))
     return refs
 
 
@@ -203,14 +210,15 @@ CHARTS = [
           "The large economies at a glance", "Latest readings",
           kicker="International", type="table", units="", decimals=1, build=overview_table,
           source="Eurostat; OECD; BIS", source_url="https://data-explorer.oecd.org/",
-          notes="Euro area: Eurostat GDP, HICP, unemployment and 10-year yield; BIS policy rate (ECB deposit "
+          notes="Euro area: Eurostat GDP, HICP and unemployment; OECD 10-year yield; BIS policy rate (ECB deposit "
                 "facility rate). Other economies: OECD GDP, unemployment and yields; BIS consumer prices and "
                 "policy rates. China has no harmonised unemployment rate.",
           what="Real GDP growth on a year earlier, consumer price inflation, the unemployment rate, the central bank "
                "policy rate and the 10-year government bond yield in the euro area, the US, the UK, Japan and "
                "China.",
-          transform_text="Latest published value of each series. Column headers give the most recent period; the "
-                         "notes list cells on an older period and how many days old each column is.",
+          transform_text="Latest published value of each series. 'Latest period' is the period most economies have "
+                         "published for that indicator, with any economy on another period in brackets; 'Age at this "
+                         "update' counts the days from the end of that period to this build.",
           caveats="National definitions differ: inflation is the HICP for the euro area and national CPIs "
                   "elsewhere; China's GDP and CPI are official figures with a different methodology."),
     Chart("intl-gdp-growth", PAGE, "growth", 10,
@@ -265,7 +273,7 @@ CHARTS = [
     Chart("intl-policy-rates", PAGE, "rates-fx", 10,
           "Central bank policy rates", "Policy rate at the end of the month, %",
           kicker="Interest rates", decimals=2, frequency="M",
-          series=[Ref(f"bis_policy_rate__{code}", key, name, role, curve="step-after", transform=clean_flags)
+          series=[Ref(f"bis_policy_rate__{code}", key, name, role, curve="step-after")
                   for code, key, name, role in (("XM", "EA", "ECB", "story"), ("US", "US", "Federal Reserve", "base"),
                                                 ("GB", "UK", "Bank of England", "context"),
                                                 ("JP", "JP", "Bank of Japan", "context"),
@@ -277,23 +285,39 @@ CHARTS = [
           what="The policy rate of each central bank at the end of every month, as compiled by the BIS.",
           caveats="Policy rates are not comparable across countries as levels of stance; compare them with each "
                   "economy's inflation."),
+    Chart("intl-real-policy-rates", PAGE, "rates-fx", 15,
+          "Real policy rates", "Policy rate at the end of the month minus consumer price inflation, %",
+          kicker="Interest rates", decimals=1, frequency="M",
+          series=[Ref(f"intl_real_rate_{key.lower()}", key, name, "story" if key == "EA" else
+                      ("base" if key == "US" else "context")) for key, _, _, name in REAL_RATE],
+          start="2015-01", reference_lines=[{"axis": "y", "value": 0, "label": ""}], default_window="5y",
+          original=True,
+          notes="Above zero, the policy rate is higher than current inflation. Euro area: ECB steering rate minus "
+                "HICP inflation (including the flash estimate); others: BIS policy rates minus national CPIs.",
+          what="Each central bank's policy rate minus the latest annual consumer price inflation: a simple, "
+               "backward-looking measure of how tight policy is.",
+          transform_text="Policy rate (BIS WS_CBPOL, end of month) minus inflation (Eurostat HICP for the euro area, "
+                         "BIS WS_LONG_CPI for the others), month by month.",
+          caveats="Uses current inflation, not expected inflation, so it overstates tightness when inflation is "
+                  "falling and understates it when inflation is rising."),
     Chart("intl-10y-yields", PAGE, "rates-fx", 20,
           "Ten-year government bond yields", "Long-term government bond yield, monthly average, %",
           kicker="Interest rates", decimals=2, frequency="M",
-          series=_econ([("EA", "y10_members__EA"), ("US", "oecd_y10__USA"), ("UK", "oecd_y10__GBR"),
+          series=_econ([("EA", "oecd_y10_ea"), ("US", "oecd_y10__USA"), ("UK", "oecd_y10__GBR"),
                         ("JP", "oecd_y10__JPN"), ("CN", "oecd_y10__CHN")]),
           start="2015-01", default_window="5y",
-          what="Ten-year benchmark government bond yields, monthly averages: the euro area from Eurostat (EMU "
-               "convergence-criterion yield for the euro area), the others from the OECD.",
-          caveats="The euro area yield is a GDP-weighted average of member states' yields, not a single bond; the "
-                  "financial conditions page has the AAA curve and country spreads."),
+          what="Ten-year benchmark government bond yields, monthly averages, all from the OECD's financial "
+               "indicators (the euro area aggregate is the OECD's EA20).",
+          caveats="The euro area yield is a weighted average of member states' yields, not a single bond, and differs "
+                  "slightly from Eurostat's EMU convergence yield (used on the Europe page), which comes out about a "
+                  "month later. The financial conditions page has the AAA curve and country spreads."),
     Chart("intl-fx-usd", PAGE, "rates-fx", 30,
           "Currencies against the dollar", "US dollars per unit of currency, monthly average, index 2019 = 100",
           kicker="Currencies", units="index", format="index", decimals=1, frequency="M",
-          series=[Ref("bis_usd__XM", "EA", "Euro", "story", transform=[clean_flags, usd_index]),
-                  Ref("bis_usd__GB", "UK", "Pound sterling", "base", transform=[clean_flags, usd_index]),
-                  Ref("bis_usd__JP", "JP", "Yen", "context", transform=[clean_flags, usd_index]),
-                  Ref("bis_usd__CN", "CN", "Renminbi", "context", transform=[clean_flags, usd_index])],
+          series=[Ref("bis_usd__XM", "EA", "Euro", "story", transform=usd_index),
+                  Ref("bis_usd__GB", "UK", "Pound sterling", "base", transform=usd_index),
+                  Ref("bis_usd__JP", "JP", "Yen", "context", transform=usd_index),
+                  Ref("bis_usd__CN", "CN", "Renminbi", "context", transform=usd_index)],
           reference_lines=[{"axis": "y", "value": 100, "label": "2019 average"}], default_window="max",
           original=True,
           notes="Above 100, the currency buys more dollars than on average in 2019.",
@@ -337,7 +361,7 @@ CHARTS = [
     Chart("current-account-countries", PAGE, "external", 40,
           "Current accounts across the euro area", "Current account balance, % of GDP, average of four quarters",
           kicker="Trade with the world", type="bar", units="% of GDP", decimals=1, frequency="Q", geo="multi",
-          series=[Ref("intl_ca_gdp__DE", "placeholder", "", "base")],
+          series=[],
           build=country_bars("intl_ca_gdp", "ca", "Current account", codes=CA_CODES, highlight="DE",
                              sort="desc", transform="roll:4"),
           reference_lines=[{"axis": "x", "value": 0, "label": ""}], default_window="max",

@@ -327,6 +327,7 @@ function drawTime(host, bundle, state, { width, height, compact = false, endLabe
   const styled = styleSeries(prepTime(bundle.series || []));
   const { series, start } = applyWindow(styled, state.window);
   const dec = decimalsOf(bundle);
+  const sdec = (s) => (Number.isInteger(s && s.decimals) ? s.decimals : dec);  // per-series precision
   const suffix = unitSuffix(bundle.units);
 
   // Which series are bars, lines, bands, stacks.
@@ -392,7 +393,7 @@ function drawTime(host, bundle, state, { width, height, compact = false, endLabe
     const last = lastValid(s.rows);
     if (!last) return null;
     const { v, flag } = latestLabelValue(bundle, s, last);
-    return { s, last, text: fmtNum(v, dec) + suffix, flag };
+    return { s, last, text: fmtNum(v, sdec(s)) + suffix, flag };
   }).filter(Boolean);
 
   const yt = d3.scaleLinear().domain(yDomain).ticks(height < 200 ? 3 : height < 260 ? 4 : 5);
@@ -467,10 +468,10 @@ function drawTime(host, bundle, state, { width, height, compact = false, endLabe
     col.entries.push({ label: s.label || s.key, color: s.color, value, flag: r.flag });
     if (kind === 'line' && r.value != null) col.dots.push({ py: clampY(r.value), color: s.color });
   };
-  for (const s of bands) for (const r of s.rows) add(s, r, r.low == null ? '–' : `${fmtNum(r.low, dec)} to ${fmtNum(r.high, dec)}${suffix}`, 'band');
-  for (const s of bars) for (const r of s.rows) add(s, r, r.value == null ? '–' : fmtNum(r.value, dec) + suffix, 'bar');
-  for (const s of stack) for (const r of s.rows) add(s, r, r.value == null ? '–' : fmtNum(r.value, dec) + suffix, 'bar');
-  for (const s of lineLike) for (const r of s.rows) add(s, r, r.value == null ? '–' : fmtNum(r.value, dec) + suffix, 'line');
+  for (const s of bands) for (const r of s.rows) add(s, r, r.low == null ? '–' : `${fmtNum(r.low, sdec(s))} to ${fmtNum(r.high, sdec(s))}${suffix}`, 'band');
+  for (const s of bars) for (const r of s.rows) add(s, r, r.value == null ? '–' : fmtNum(r.value, sdec(s)) + suffix, 'bar');
+  for (const s of stack) for (const r of s.rows) add(s, r, r.value == null ? '–' : fmtNum(r.value, sdec(s)) + suffix, 'bar');
+  for (const s of lineLike) for (const r of s.rows) add(s, r, r.value == null ? '–' : fmtNum(r.value, sdec(s)) + suffix, 'line');
   // Step series (e.g. policy rates) have sparse points: carry them to every hover column.
   const cols = [...colMap.values()].sort((a, b) => a.x - b.x);
   for (const s of lineLike.filter((s) => s.curve && String(s.curve).startsWith('step'))) {
@@ -479,7 +480,7 @@ function drawTime(host, bundle, state, { width, height, compact = false, endLabe
     for (const col of cols) {
       while (j < rows.length && rows[j].x <= col.x) lastR = rows[j++];
       if (lastR && !col.entries.some((e) => e.label === (s.label || s.key))) {
-        col.entries.push({ label: s.label || s.key, color: s.color, value: fmtNum(lastR.value, dec) + suffix, flag: null });
+        col.entries.push({ label: s.label || s.key, color: s.color, value: fmtNum(lastR.value, sdec(s)) + suffix, flag: null });
         col.dots.push({ py: clampY(lastR.value), color: s.color });
       }
     }
@@ -513,7 +514,7 @@ function drawCategoryBars(host, bundle, state, { width }) {
   const labelW = Math.ceil(d3.max(rows, (r) => textWidth(r.label, `500 12px ${FONT_BODY}`)) || 40);
   const marginLeft = Math.min(width * 0.42, labelW + 10);
   const valW = Math.ceil(d3.max(rows, (r) => textWidth(fmtNum(r.value, dec) + suffix, `700 12px ${FONT_DISPLAY}`)) || 20) + 10;
-  const height = rows.length * 26 + 30;
+  const height = rows.length * (rows.length > 14 ? 22 : 26) + 30;  // long country lists: tighter rows
   const xs = rows.map((r) => r.value).filter((v) => v != null);
   const refs = (bundle.reference_lines || []).filter((r) => r.axis === 'x').map((r) => +r.value);
   const xDomain = niceYDomain(xs, { includeZero: true, refs, fixed: bundle.y_domain });
@@ -531,7 +532,9 @@ function drawCategoryBars(host, bundle, state, { width }) {
       Plot.barX(rows, { y: 'label', x: 'value', fill: (d) => d.color }),
       Plot.ruleX([0], { stroke: c.ruleStrong }),
       ...refMarks(bundle, null, xDomain, { horizontal: true }),
-      Plot.text(rows, { y: 'label', x: 'value', text: (d) => fmtNum(d.value, dec) + suffix, dx: 5, textAnchor: 'start', fill: (d) => (d.color === c.amber ? c.ink : c.green), fontFamily: FONT_DISPLAY, fontWeight: 700, fontSize: 12 }),
+      // value labels sit right of the bar end; for negative bars, right of the zero line (a label at
+      // the bar end would be drawn over the bar)
+      Plot.text(rows, { y: 'label', x: (d) => (d.value < 0 ? 0 : d.value), text: (d) => fmtNum(d.value, dec) + suffix, dx: 5, textAnchor: 'start', fill: (d) => (d.color === c.amber ? c.ink : c.green), fontFamily: FONT_DISPLAY, fontWeight: 700, fontSize: 12 }),
     ],
   });
   svg.removeAttribute('viewBox');
@@ -736,7 +739,7 @@ function drawCountryStrip(host, bundle, state, { width, compact }) {
     panel.className = 'cs-panel' + (s.role === 'story' ? ' is-story' : '');
     const last = lastValid(s.rows);
     const lv = last ? latestLabelValue(bundle, s, last) : null;
-    panel.innerHTML = `<div class="cs-head"><span class="cs-name">${esc(s.label || s.key)}</span>${lv ? `<span class="cs-val" style="color:${s.text}">${esc(fmtNum(lv.v, dec) + unitSuffix(bundle.units))}${lv.flag ? `<sup class="flag" title="${esc(flagLabel(lv.flag))}">${esc(lv.flag)}</sup>` : ''}</span>` : ''}</div><div class="cs-plot" tabindex="0" role="img" aria-label="${esc(`${s.label}: ${lv ? fmtNum(lv.v, dec) + unitSuffix(bundle.units) : 'no data'}`)}"></div>`;
+    panel.innerHTML = `<div class="cs-head"><span class="cs-name">${esc(s.label || s.key)}</span>${lv ? `<span class="cs-val" style="color:${s.text}">${esc(fmtNum(lv.v, Number.isInteger(s.decimals) ? s.decimals : dec) + unitSuffix(bundle.units))}${lv.flag ? `<sup class="flag" title="${esc(flagLabel(lv.flag))}">${esc(lv.flag)}</sup>` : ''}</span>` : ''}</div><div class="cs-plot" tabindex="0" role="img" aria-label="${esc(`${s.label}: ${lv ? fmtNum(lv.v, dec) + unitSuffix(bundle.units) : 'no data'}`)}"></div>`;
     grid.appendChild(panel);
     const plotHost = panel.querySelector('.cs-plot');
     const sub = { ...bundle, type: 'line', series: [{ ...bundle.series[i], role: s.role === 'story' ? 'story' : 'base' }], markers: [] };
@@ -752,6 +755,8 @@ function fmtCell(v, col, bundle, row) {
   if (v == null || v === '') return '–';
   const f = col.format || (typeof v === 'number' ? 'level' : 'text');
   if (f === 'text' || typeof v !== 'number') return String(v);
+  // markets rows: a % change (exchange rates) is not on the row's level precision (EUR/USD: 4)
+  if (f === 'change' && row && row.change_unit === '%') return `${fmtChange(v, 2)}%`;
   const d = Number.isInteger(col.decimals) ? col.decimals
     : row && Number.isInteger(row.decimals) ? row.decimals
       : f === 'eur_bn' ? 0 : decimalsOf(bundle);
@@ -839,11 +844,14 @@ function heatLegend(bundle) {
   const vals = (bundle.cells || []).map((d) => num(d[2])).filter((v) => v != null);
   if (!vals.length) return '';
   const h = heatColor(bundle, vals);
+  // the key spans the data actually shown (a diverging scale's symmetric bound, such as a
+  // negative debt ratio, is never a real value)
+  const lo = d3.min(vals), hi = d3.max(vals);
   const steps = 7;
-  const sw = d3.range(steps).map((i) => h.fn(h.lo + (h.hi - h.lo) * (i / (steps - 1))));
+  const sw = d3.range(steps).map((i) => h.fn(lo + (hi - lo) * (i / (steps - 1))));
   const dec = decimalsOf(bundle);
-  const mid = h.mid != null ? `<span class="hl-mid">${esc(fmtValue(h.mid, bundle))}</span>` : '';
-  return `<div class="heat-legend" aria-hidden="true"><span>${esc(fmtNum(h.lo, dec))}</span><span class="hl-sw">${sw.map((col) => `<i style="background:${col}"></i>`).join('')}</span><span>${esc(fmtNum(h.hi, dec))}</span>${mid ? `<span class="hl-note">centred on ${mid}</span>` : ''}</div>`;
+  const mid = h.mid != null && h.mid > lo && h.mid < hi ? `<span class="hl-mid">${esc(fmtValue(h.mid, bundle))}</span>` : '';
+  return `<div class="heat-legend" aria-hidden="true"><span>${esc(fmtNum(lo, dec))}</span><span class="hl-sw">${sw.map((col) => `<i style="background:${col}"></i>`).join('')}</span><span>${esc(fmtNum(hi, dec))}</span>${mid ? `<span class="hl-note">centred on ${mid}</span>` : ''}</div>`;
 }
 
 function flagsUsed(bundle) {
