@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "built_at": "2026-11-11T12:20:45Z",
+ "built_at": "2026-11-11T22:51:39Z",
  "pages": [
   {
    "id": "gdp",
@@ -656,10 +656,10 @@
   {
    "id": "eur-usd",
    "label": "EUR/USD",
-   "value": 1.1214,
+   "value": 1.1127,
    "unit": "US$ per €",
-   "period": "2026-11-10",
-   "previous": 1.1193,
+   "period": "2026-11-11",
+   "previous": 1.1214,
    "decimals": 4,
    "good_direction": "none",
    "chart_id": "eur-usd",
@@ -740,13 +740,5 @@
   "NL",
   "PL"
  ],
- "failed": [
-  {
-   "id": "bls_firms_standards",
-   "error": "FetchError: HTTP 504",
-   "chart_ids": [
-    "bls-firms"
-   ]
-  }
- ]
+ "failed": []
 }
