@@ -1,20 +1,8 @@
 {
- "built_at": "2026-11-10T13:27:25Z",
- "from": "2026-11-10",
- "to": "2026-12-25",
+ "built_at": "2026-11-11T12:36:04Z",
+ "from": "2026-11-11",
+ "to": "2026-12-26",
  "events": [
-  {
-   "id": "2026-11-10-recovery-facility",
-   "date": "2026-11-10",
-   "time": "11:00",
-   "tz": "Europe/Brussels",
-   "title": "Recovery and Resilience Facility statistics",
-   "publisher": "Eurostat",
-   "tier": 3,
-   "datasets": [],
-   "chart_ids": [],
-   "period": null
-  },
   {
    "id": "2026-11-13-gdp-flash",
    "date": "2026-11-13",

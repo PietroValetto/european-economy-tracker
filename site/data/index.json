@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "built_at": "2026-11-10T21:51:33Z",
+ "built_at": "2026-11-11T12:20:45Z",
  "pages": [
   {
    "id": "gdp",
@@ -643,10 +643,10 @@
   {
    "id": "yield-10y",
    "label": "10-year yield (AAA)",
-   "value": 3.27,
+   "value": 3.33,
    "unit": "%",
-   "period": "2026-11-09",
-   "previous": 3.29,
+   "period": "2026-11-10",
+   "previous": 3.27,
    "decimals": 2,
    "good_direction": "none",
    "chart_id": "yields-aaa",
@@ -740,5 +740,13 @@
   "NL",
   "PL"
  ],
- "failed": []
+ "failed": [
+  {
+   "id": "bls_firms_standards",
+   "error": "FetchError: HTTP 504",
+   "chart_ids": [
+    "bls-firms"
+   ]
+  }
+ ]
 }
