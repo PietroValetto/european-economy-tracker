@@ -71,7 +71,7 @@
    "frequency": "Q",
    "caveats": "Bankruptcy procedures differ by country; the index shows the trend, not a bankruptcy rate.",
    "original": false,
-   "updated": "2026-11-11T11:00:00+0100"
+   "updated": "2026-11-12T11:00:00+0100"
   },
   {
    "id": "capacity-utilisation",
@@ -105,7 +105,7 @@
    "frequency": "D",
    "caveats": "A higher reading means more stress; the scale is bounded between 0 and 1.",
    "original": false,
-   "updated": "2026-11-11T11:22:09+0000"
+   "updated": "2026-11-12T10:50:08+0000"
   },
   {
    "id": "ciss-countries",
@@ -122,7 +122,7 @@
    "frequency": "D",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-11T11:22:09+0000"
+   "updated": "2026-11-12T10:50:08+0000"
   },
   {
    "id": "construction-output",
@@ -139,7 +139,7 @@
    "frequency": "M",
    "caveats": "Construction is volatile and weather-dependent; the first estimate is often revised.",
    "original": false,
-   "updated": "2026-11-11T11:00:00+0100"
+   "updated": "2026-11-12T11:00:00+0100"
   },
   {
    "id": "consumer-price-expectations",
@@ -404,7 +404,7 @@
    "frequency": "D",
    "caveats": "€STR trades a few basis points below the deposit rate because of excess liquidity.",
    "original": false,
-   "updated": "2026-11-11T07:05:23+0000"
+   "updated": "2026-11-12T07:04:54+0000"
   },
   {
    "id": "eur-usd",
@@ -480,7 +480,7 @@
    "frequency": "M",
    "caveats": "Columns refer to different periods (quarterly, monthly, annual); read across a row with care.",
    "original": false,
-   "updated": "2026-11-10T23:00:00+0100"
+   "updated": "2026-11-12T11:00:00+0100"
   },
   {
    "id": "eurosystem-balance-sheet",
@@ -580,7 +580,7 @@
    "frequency": "Q",
    "caveats": "Inventories include the statistical discrepancy in several countries. Irish intellectual property investment and its imports move investment and net exports in opposite directions.",
    "original": false,
-   "updated": "2026-11-10T23:00:00+0100"
+   "updated": "2026-11-11T23:00:00+0100"
   },
   {
    "id": "gdp-country-heatmap",
@@ -597,7 +597,7 @@
    "frequency": "M",
    "caveats": "The excluding-Ireland row is an approximation computed by the tracker (chain-linked levels are not strictly additive).",
    "original": true,
-   "updated": "2026-11-10T23:00:00+0100"
+   "updated": "2026-11-11T23:00:00+0100"
   },
   {
    "id": "gdp-growth",
@@ -614,7 +614,7 @@
    "frequency": "Q",
    "caveats": "Ireland's GDP, driven by multinationals' accounting, can move the euro area figure by 0.1 to 0.2 points in a quarter; see the euro area excluding Ireland row in the country heatmap.",
    "original": false,
-   "updated": "2026-11-10T23:00:00+0100"
+   "updated": "2026-11-11T23:00:00+0100"
   },
   {
    "id": "gdp-level",
@@ -631,7 +631,7 @@
    "frequency": "Q",
    "caveats": "Chain-linked levels are not strictly additive, so the excluding-Ireland line is an approximation.",
    "original": true,
-   "updated": "2026-11-10T23:00:00+0100"
+   "updated": "2026-11-11T23:00:00+0100"
   },
   {
    "id": "gdp-level-countries",
@@ -648,7 +648,7 @@
    "frequency": "Q",
    "caveats": "The latest quarter is a flash estimate for the countries that publish one; others end a quarter earlier.",
    "original": false,
-   "updated": "2026-11-10T23:00:00+0100"
+   "updated": "2026-11-11T23:00:00+0100"
   },
   {
    "id": "gdp-table",
@@ -665,7 +665,7 @@
    "frequency": "M",
    "caveats": "Exports and imports include trade between euro area members.",
    "original": false,
-   "updated": "2026-11-10T23:00:00+0100"
+   "updated": "2026-11-11T23:00:00+0100"
   },
   {
    "id": "germany-vacancies-kurzarbeit",
@@ -799,7 +799,7 @@
    "frequency": "A",
    "caveats": "An original indicator. Debt is at nominal (face) value and interest on an accrual basis, so the ratio is an approximation of the average coupon; the euro area GDP is EA21, its debt and interest the EDP aggregate.",
    "original": true,
-   "updated": "2026-11-05T23:00:00+0100"
+   "updated": "2026-11-11T23:00:00+0100"
   },
   {
    "id": "gov-forecast-debt",
@@ -916,7 +916,7 @@
    "frequency": "A",
    "caveats": "An original indicator, not an official measure. The relevant rate for debt dynamics is the effective (implicit) interest rate on the whole stock, which moves far more slowly than the 10-year yield; use this chart for direction, not to compute debt paths.",
    "original": true,
-   "updated": "2026-11-05T23:00:00+0100"
+   "updated": "2026-11-11T23:00:00+0100"
   },
   {
    "id": "gov-revenue-expenditure",
@@ -1340,7 +1340,7 @@
    "frequency": "Q",
    "caveats": "The euro area flash for the latest quarter can be revised; China's GDP is the official figure.",
    "original": false,
-   "updated": "2026-11-10T23:00:00+0100"
+   "updated": "2026-11-11T23:00:00+0100"
   },
   {
    "id": "intl-gdp-level",
@@ -1362,7 +1362,7 @@
    "frequency": "Q",
    "caveats": "Measures growth since 2019, not living standards: population grew faster in the US, so the gap per person is smaller than this chart suggests.",
    "original": true,
-   "updated": "2026-11-10T23:00:00+0100"
+   "updated": "2026-11-11T23:00:00+0100"
   },
   {
    "id": "intl-inflation",
@@ -1436,7 +1436,7 @@
    "frequency": "M",
    "caveats": "National definitions differ: inflation is the HICP for the euro area and national CPIs elsewhere; China's GDP and CPI are official figures with a different methodology.",
    "original": false,
-   "updated": "2026-11-10T23:00:00+0100"
+   "updated": "2026-11-11T23:00:00+0100"
   },
   {
    "id": "intl-policy-rates",
@@ -1695,7 +1695,7 @@
    "frequency": "M",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-11T15:20:37+0000"
+   "updated": "2026-11-12T11:00:00+0000"
   },
   {
    "id": "money-credit",
@@ -1744,7 +1744,7 @@
    "frequency": "M",
    "caveats": "The four indicators are released on different days, so their latest months can differ.",
    "original": false,
-   "updated": "2026-11-11T11:00:00+0100"
+   "updated": "2026-11-12T11:00:00+0100"
   },
   {
    "id": "national-employment-growth",
@@ -1847,7 +1847,7 @@
    "frequency": "D",
    "caveats": "Since March 2024 the MRO-DFR spread is 15 basis points; the DFR is the policy rate.",
    "original": false,
-   "updated": "2026-11-11T07:05:23+0000"
+   "updated": "2026-11-12T07:04:54+0000"
   },
   {
    "id": "productivity",
@@ -1886,7 +1886,7 @@
    "frequency": "D",
    "caveats": "A rough proxy. Market-implied ECB paths (€STR OIS, Euribor and €STR futures) are licensed data and are not used.",
    "original": false,
-   "updated": "2026-11-11T11:00:00+0000"
+   "updated": "2026-11-12T11:00:00+0000"
   },
   {
    "id": "real-wages",
@@ -1918,7 +1918,7 @@
    "frequency": "Q",
    "caveats": "HICP is a consumer price index; deflating by the GDP deflator instead gives the real cost to employers, which moved differently in the 2022 energy shock.",
    "original": true,
-   "updated": "2026-11-10T23:00:00+0100"
+   "updated": "2026-11-11T23:00:00+0100"
   },
   {
    "id": "retail-sales",
@@ -2025,7 +2025,7 @@
    "frequency": "M",
    "caveats": "Monthly averages; intra-month spikes are smoothed out.",
    "original": true,
-   "updated": "2026-10-13T11:00:00+0200"
+   "updated": "2026-11-12T11:00:00+0100"
   },
   {
    "id": "staff-projections-growth",
@@ -2159,7 +2159,7 @@
    "frequency": "Q",
    "caveats": "Negotiated wages include one-off payments, which made 2024 jump. The labour cost index is per hour, so changes in hours worked move it.",
    "original": false,
-   "updated": "2026-11-10T23:00:00+0100"
+   "updated": "2026-11-11T23:00:00+0100"
   },
   {
    "id": "wages-table",
@@ -2211,7 +2211,7 @@
    "frequency": "M",
    "caveats": "The wage tracker row shows the current month of a forward-looking series.",
    "original": false,
-   "updated": "2026-11-10T23:00:00+0100"
+   "updated": "2026-11-11T23:00:00+0100"
   },
   {
    "id": "wealth-top10",
@@ -2245,7 +2245,7 @@
    "frequency": "D",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-11T11:00:00+0000"
+   "updated": "2026-11-12T11:00:00+0000"
   },
   {
    "id": "yields-aaa",
@@ -2262,7 +2262,7 @@
    "frequency": "D",
    "caveats": "A fitted curve, not a single bond. The AAA set changes when ratings change.",
    "original": false,
-   "updated": "2026-11-11T11:00:00+0000"
+   "updated": "2026-11-12T11:00:00+0000"
   },
   {
    "id": "yields-by-country",
@@ -2279,7 +2279,7 @@
    "frequency": "M",
    "caveats": "Monthly averages of daily yields, so the latest month lags market moves.",
    "original": false,
-   "updated": "2026-10-13T11:00:00+0200"
+   "updated": "2026-11-12T11:00:00+0100"
   }
  ]
 }
