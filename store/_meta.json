@@ -1196,7 +1196,7 @@
  "eurusd": {
   "last_fetched": "2026-11-12",
   "spec": "d3ec5c8a5220",
-  "updated": "2026-11-11T14:57:21+0000",
+  "updated": "2026-11-12T14:57:02+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A?format=csvdata&detail=dataonly&startPeriod=1999-01-01"
  },
  "ewt_smoothed": {
@@ -3308,7 +3308,7 @@
  "neer_daily": {
   "last_fetched": "2026-11-12",
   "spec": "ac31a0d9b8f1",
-  "updated": "2026-11-11T15:20:37+0000",
+  "updated": "2026-11-12T15:25:34+0000",
   "url": "https://data-api.ecb.europa.eu/service/data/EXR/D.E03.EUR.EN00.A?format=csvdata&detail=dataonly&startPeriod=2024-01-01"
  },
  "negotiated_wages": {

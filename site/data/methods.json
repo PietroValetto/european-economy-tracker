@@ -421,7 +421,7 @@
    "frequency": "D",
    "caveats": "A rise means a stronger euro.",
    "original": false,
-   "updated": "2026-11-11T14:57:21+0000"
+   "updated": "2026-11-12T14:57:02+0000"
   },
   {
    "id": "euro-effective-rate",
@@ -1695,7 +1695,7 @@
    "frequency": "M",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-12T11:00:00+0000"
+   "updated": "2026-11-12T15:25:34+0000"
   },
   {
    "id": "money-credit",
