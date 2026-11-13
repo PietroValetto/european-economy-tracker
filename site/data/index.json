@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "built_at": "2026-11-12T22:20:36Z",
+ "built_at": "2026-11-13T12:45:40Z",
  "pages": [
   {
    "id": "gdp",
@@ -643,10 +643,10 @@
   {
    "id": "yield-10y",
    "label": "10-year yield (AAA)",
-   "value": 3.34,
+   "value": 3.37,
    "unit": "%",
-   "period": "2026-11-11",
-   "previous": 3.33,
+   "period": "2026-11-12",
+   "previous": 3.34,
    "decimals": 2,
    "good_direction": "none",
    "chart_id": "yields-aaa",
@@ -721,10 +721,10 @@
   {
    "id": "job-postings",
    "label": "Job postings (Indeed)",
-   "value": 104.4,
+   "value": 104.5,
    "unit": "index, Feb 2020 = 100",
-   "period": "2026-10-30",
-   "previous": 104.5,
+   "period": "2026-11-06",
+   "previous": 104.4,
    "decimals": 1,
    "good_direction": "up",
    "chart_id": "indeed-postings",
