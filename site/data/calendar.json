@@ -1,67 +1,8 @@
 {
- "built_at": "2026-11-13T12:52:04Z",
- "from": "2026-11-13",
- "to": "2026-12-28",
+ "built_at": "2026-11-14T12:04:46Z",
+ "from": "2026-11-14",
+ "to": "2026-12-29",
  "events": [
-  {
-   "id": "2026-11-13-gdp-flash",
-   "date": "2026-11-13",
-   "time": "11:00",
-   "tz": "Europe/Brussels",
-   "title": "GDP and employment, flash estimate, Q3 2026",
-   "publisher": "Eurostat",
-   "tier": 1,
-   "datasets": [
-    "namq_10_gdp",
-    "namq_10_pe"
-   ],
-   "chart_ids": [
-    "gdp-growth",
-    "europe-at-a-glance",
-    "gdp-contributions",
-    "gdp-country-heatmap",
-    "gdp-level",
-    "gdp-level-countries",
-    "gdp-table",
-    "intl-gdp-growth",
-    "intl-gdp-level",
-    "intl-overview",
-    "real-wages",
-    "wage-growth",
-    "wages-table",
-    "employment-growth",
-    "employment-level"
-   ],
-   "period": "2026-Q3"
-  },
-  {
-   "id": "2026-11-13-trade",
-   "date": "2026-11-13",
-   "time": "11:00",
-   "tz": "Europe/Brussels",
-   "title": "International trade in goods, September",
-   "publisher": "Eurostat",
-   "tier": 2,
-   "datasets": [
-    "ext_st_eu27_2020sitc"
-   ],
-   "chart_ids": [],
-   "period": "2026-09"
-  },
-  {
-   "id": "2026-11-13-consumption-by-purpose",
-   "date": "2026-11-13",
-   "time": "11:00",
-   "tz": "Europe/Brussels",
-   "title": "Household consumption by purpose",
-   "publisher": "Eurostat",
-   "tier": 3,
-   "datasets": [
-    "nama_10_co3_p3"
-   ],
-   "chart_ids": [],
-   "period": null
-  },
   {
    "id": "2026-11-16-industrial-production",
    "date": "2026-11-16",

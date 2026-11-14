@@ -139,7 +139,7 @@
    "frequency": "M",
    "caveats": "Construction is volatile and weather-dependent; the first estimate is often revised.",
    "original": false,
-   "updated": "2026-11-12T11:00:00+0100"
+   "updated": "2026-11-14T11:00:00+0100"
   },
   {
    "id": "consumer-price-expectations",
@@ -1744,7 +1744,7 @@
    "frequency": "M",
    "caveats": "The four indicators are released on different days, so their latest months can differ.",
    "original": false,
-   "updated": "2026-11-13T11:00:00+0100"
+   "updated": "2026-11-14T11:00:00+0100"
   },
   {
    "id": "national-employment-growth",
@@ -1864,7 +1864,7 @@
    "frequency": "Q",
    "caveats": "Whole-economy productivity, including the public sector, where output is measured mostly by inputs. Short-time work in 2020 made per-person and per-hour productivity diverge.",
    "original": false,
-   "updated": "2026-11-13T11:00:00+0100"
+   "updated": "2026-11-13T23:00:00+0100"
   },
   {
    "id": "rate-path-forwards",
@@ -1935,7 +1935,7 @@
    "frequency": "M",
    "caveats": "Retail covers about a third of household consumption; it excludes cars, fuel stations are included.",
    "original": false,
-   "updated": "2026-11-13T11:00:00+0100"
+   "updated": "2026-11-14T11:00:00+0100"
   },
   {
    "id": "sahm-rule",
@@ -1986,7 +1986,7 @@
    "frequency": "M",
    "caveats": "Turnover is in current prices: part of the growth is inflation. Eurostat publishes no euro area volume index for services. The latest month is often flagged i (see Eurostat metadata).",
    "original": false,
-   "updated": "2026-11-11T11:00:00+0100"
+   "updated": "2026-11-14T11:00:00+0100"
   },
   {
    "id": "spf-rate-path",
@@ -2127,7 +2127,7 @@
    "frequency": "Q",
    "caveats": "A rise means labour costs grow faster than productivity; firms either pass it on into prices or absorb it in margins.",
    "original": false,
-   "updated": "2026-11-13T11:00:00+0100"
+   "updated": "2026-11-13T23:00:00+0100"
   },
   {
    "id": "wage-growth",
@@ -2211,7 +2211,7 @@
    "frequency": "M",
    "caveats": "The wage tracker row shows the current month of a forward-looking series.",
    "original": false,
-   "updated": "2026-11-13T11:00:00+0100"
+   "updated": "2026-11-13T23:00:00+0100"
   },
   {
    "id": "wealth-top10",

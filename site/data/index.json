@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "built_at": "2026-11-13T22:02:35Z",
+ "built_at": "2026-11-14T11:54:17Z",
  "pages": [
   {
    "id": "gdp",
@@ -740,5 +740,13 @@
   "NL",
   "PL"
  ],
- "failed": []
+ "failed": [
+  {
+   "id": "it_unemployment_rate",
+   "error": "FetchError: network error: TimeoutError('The read operation timed out')",
+   "chart_ids": [
+    "national-unemployment-rates"
+   ]
+  }
+ ]
 }
