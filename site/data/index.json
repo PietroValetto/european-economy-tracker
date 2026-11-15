@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "built_at": "2026-11-14T11:54:17Z",
+ "built_at": "2026-11-15T12:25:53Z",
  "pages": [
   {
    "id": "gdp",
@@ -742,10 +742,35 @@
  ],
  "failed": [
   {
-   "id": "it_unemployment_rate",
-   "error": "FetchError: network error: TimeoutError('The read operation timed out')",
+   "id": "rate_mortgage",
+   "error": "FetchError: HTTP 503",
    "chart_ids": [
-    "national-unemployment-rates"
+    "lending-rates"
+   ]
+  },
+  {
+   "id": "yc_aaa_10y",
+   "error": "FetchError: HTTP 503",
+   "chart_ids": [
+    "markets-table",
+    "yield-curve-slope",
+    "yields-aaa"
+   ]
+  },
+  {
+   "id": "yc_aaa_2y",
+   "error": "FetchError: HTTP 503",
+   "chart_ids": [
+    "markets-table",
+    "yield-curve-slope",
+    "yields-aaa"
+   ]
+  },
+  {
+   "id": "yc_all_10y",
+   "error": "FetchError: HTTP 503",
+   "chart_ids": [
+    "markets-table"
    ]
   }
  ]
