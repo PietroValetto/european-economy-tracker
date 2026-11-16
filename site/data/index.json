@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "built_at": "2026-11-15T12:25:53Z",
+ "built_at": "2026-11-16T13:17:21Z",
  "pages": [
   {
    "id": "gdp",
@@ -643,10 +643,10 @@
   {
    "id": "yield-10y",
    "label": "10-year yield (AAA)",
-   "value": 3.37,
+   "value": 3.41,
    "unit": "%",
-   "period": "2026-11-12",
-   "previous": 3.34,
+   "period": "2026-11-13",
+   "previous": 3.37,
    "decimals": 2,
    "good_direction": "none",
    "chart_id": "yields-aaa",
@@ -740,38 +740,5 @@
   "NL",
   "PL"
  ],
- "failed": [
-  {
-   "id": "rate_mortgage",
-   "error": "FetchError: HTTP 503",
-   "chart_ids": [
-    "lending-rates"
-   ]
-  },
-  {
-   "id": "yc_aaa_10y",
-   "error": "FetchError: HTTP 503",
-   "chart_ids": [
-    "markets-table",
-    "yield-curve-slope",
-    "yields-aaa"
-   ]
-  },
-  {
-   "id": "yc_aaa_2y",
-   "error": "FetchError: HTTP 503",
-   "chart_ids": [
-    "markets-table",
-    "yield-curve-slope",
-    "yields-aaa"
-   ]
-  },
-  {
-   "id": "yc_all_10y",
-   "error": "FetchError: HTTP 503",
-   "chart_ids": [
-    "markets-table"
-   ]
-  }
- ]
+ "failed": []
 }
