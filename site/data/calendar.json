@@ -1,57 +1,8 @@
 {
- "built_at": "2026-11-16T13:29:08Z",
- "from": "2026-11-16",
- "to": "2026-12-31",
+ "built_at": "2026-11-17T14:13:46Z",
+ "from": "2026-11-17",
+ "to": "2027-01-01",
  "events": [
-  {
-   "id": "2026-11-16-industrial-production",
-   "date": "2026-11-16",
-   "time": "11:00",
-   "tz": "Europe/Brussels",
-   "title": "Industrial production, September",
-   "publisher": "Eurostat",
-   "tier": 2,
-   "datasets": [
-    "sts_inpr_m"
-   ],
-   "chart_ids": [
-    "industrial-production",
-    "monthly-activity-table"
-   ],
-   "period": "2026-09"
-  },
-  {
-   "id": "2026-11-16-bankruptcies",
-   "date": "2026-11-16",
-   "time": "11:00",
-   "tz": "Europe/Brussels",
-   "title": "Business registrations and bankruptcies",
-   "publisher": "Eurostat",
-   "tier": 3,
-   "datasets": [
-    "sts_rb_q"
-   ],
-   "chart_ids": [
-    "business-demography"
-   ],
-   "period": null
-  },
-  {
-   "id": "2026-11-16-energy",
-   "date": "2026-11-16",
-   "time": "11:00",
-   "tz": "Europe/Brussels",
-   "title": "Monthly energy statistics",
-   "publisher": "Eurostat",
-   "tier": 3,
-   "datasets": [
-    "nrg_cb_gasm",
-    "nrg_cb_oilm",
-    "nrg_cb_em"
-   ],
-   "chart_ids": [],
-   "period": null
-  },
   {
    "id": "2026-11-18-hicp-final",
    "date": "2026-11-18",
