@@ -246,7 +246,7 @@
    "frequency": "M",
    "caveats": "These measures are published about two weeks after the flash HICP and only for the euro area.",
    "original": false,
-   "updated": "2026-11-04T11:00:00+0100"
+   "updated": "2026-11-17T18:38:46+0000"
   },
   {
    "id": "ecb-wage-tracker",
@@ -421,7 +421,7 @@
    "frequency": "D",
    "caveats": "A rise means a stronger euro.",
    "original": false,
-   "updated": "2026-11-16T14:57:07+0000"
+   "updated": "2026-11-17T14:57:19+0000"
   },
   {
    "id": "euro-effective-rate",
@@ -497,7 +497,7 @@
    "frequency": "W",
    "caveats": "Quarter-end revaluations of gold and foreign currency cause small jumps.",
    "original": false,
-   "updated": "2026-11-10T14:18:41+0000"
+   "updated": "2026-11-17T14:17:44+0000"
   },
   {
    "id": "fiscal-table",
@@ -989,7 +989,7 @@
    "frequency": "M",
    "caveats": "",
    "original": true,
-   "updated": "2026-11-04T10:06:25+0000"
+   "updated": "2026-11-17T18:38:46+0000"
   },
   {
    "id": "hicp-components",
@@ -1695,7 +1695,7 @@
    "frequency": "M",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-17T11:00:00+0000"
+   "updated": "2026-11-17T15:22:08+0000"
   },
   {
    "id": "money-credit",
