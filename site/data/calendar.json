@@ -1,7 +1,7 @@
 {
- "built_at": "2026-11-17T14:13:46Z",
- "from": "2026-11-17",
- "to": "2027-01-01",
+ "built_at": "2026-11-18T13:53:22Z",
+ "from": "2026-11-18",
+ "to": "2027-01-02",
  "events": [
   {
    "id": "2026-11-18-hicp-final",
@@ -537,20 +537,6 @@
     "wages-table"
    ],
    "period": "2026-Q3"
-  },
-  {
-   "id": "2026-12-17-ppp",
-   "date": "2026-12-17",
-   "time": "11:00",
-   "tz": "Europe/Brussels",
-   "title": "Purchasing power parities",
-   "publisher": "Eurostat",
-   "tier": 3,
-   "datasets": [
-    "prc_ppp_ind"
-   ],
-   "chart_ids": [],
-   "period": null
   },
   {
    "id": "2026-12-17-ecb-decision",

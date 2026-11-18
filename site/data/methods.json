@@ -105,7 +105,7 @@
    "frequency": "D",
    "caveats": "A higher reading means more stress; the scale is bounded between 0 and 1.",
    "original": false,
-   "updated": "2026-11-17T10:26:34+0000"
+   "updated": "2026-11-18T10:28:08+0000"
   },
   {
    "id": "ciss-countries",
@@ -122,7 +122,7 @@
    "frequency": "D",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-17T10:26:34+0000"
+   "updated": "2026-11-18T10:28:08+0000"
   },
   {
    "id": "construction-output",
@@ -246,7 +246,7 @@
    "frequency": "M",
    "caveats": "These measures are published about two weeks after the flash HICP and only for the euro area.",
    "original": false,
-   "updated": "2026-11-17T18:38:46+0000"
+   "updated": "2026-11-18T12:01:13+0000"
   },
   {
    "id": "ecb-wage-tracker",
@@ -331,7 +331,7 @@
    "frequency": "Q",
    "caveats": "Counts persons, not jobs or hours; hours per worker have fallen since 2019.",
    "original": false,
-   "updated": "2026-11-16T11:00:00+0100"
+   "updated": "2026-11-17T23:00:00+0100"
   },
   {
    "id": "employment-level",
@@ -348,7 +348,7 @@
    "frequency": "Q",
    "caveats": "The EA21 aggregate is backcast for the whole period with today's 21 members.",
    "original": false,
-   "updated": "2026-11-16T11:00:00+0100"
+   "updated": "2026-11-17T23:00:00+0100"
   },
   {
    "id": "employment-rates",
@@ -404,7 +404,7 @@
    "frequency": "D",
    "caveats": "€STR trades a few basis points below the deposit rate because of excess liquidity.",
    "original": false,
-   "updated": "2026-11-17T07:05:20+0000"
+   "updated": "2026-11-18T07:05:26+0000"
   },
   {
    "id": "eur-usd",
@@ -480,7 +480,7 @@
    "frequency": "M",
    "caveats": "Columns refer to different periods (quarterly, monthly, annual); read across a row with care.",
    "original": false,
-   "updated": "2026-11-16T23:00:00+0100"
+   "updated": "2026-11-18T11:00:00+0100"
   },
   {
    "id": "eurosystem-balance-sheet",
@@ -580,7 +580,7 @@
    "frequency": "Q",
    "caveats": "Inventories include the statistical discrepancy in several countries. Irish intellectual property investment and its imports move investment and net exports in opposite directions.",
    "original": false,
-   "updated": "2026-11-16T23:00:00+0100"
+   "updated": "2026-11-17T23:00:00+0100"
   },
   {
    "id": "gdp-country-heatmap",
@@ -597,7 +597,7 @@
    "frequency": "M",
    "caveats": "The excluding-Ireland row is an approximation computed by the tracker (chain-linked levels are not strictly additive).",
    "original": true,
-   "updated": "2026-11-16T23:00:00+0100"
+   "updated": "2026-11-17T23:00:00+0100"
   },
   {
    "id": "gdp-growth",
@@ -614,7 +614,7 @@
    "frequency": "Q",
    "caveats": "Ireland's GDP, driven by multinationals' accounting, can move the euro area figure by 0.1 to 0.2 points in a quarter; see the euro area excluding Ireland row in the country heatmap.",
    "original": false,
-   "updated": "2026-11-16T23:00:00+0100"
+   "updated": "2026-11-17T23:00:00+0100"
   },
   {
    "id": "gdp-level",
@@ -631,7 +631,7 @@
    "frequency": "Q",
    "caveats": "Chain-linked levels are not strictly additive, so the excluding-Ireland line is an approximation.",
    "original": true,
-   "updated": "2026-11-16T23:00:00+0100"
+   "updated": "2026-11-17T23:00:00+0100"
   },
   {
    "id": "gdp-level-countries",
@@ -648,7 +648,7 @@
    "frequency": "Q",
    "caveats": "The latest quarter is a flash estimate for the countries that publish one; others end a quarter earlier.",
    "original": false,
-   "updated": "2026-11-16T23:00:00+0100"
+   "updated": "2026-11-17T23:00:00+0100"
   },
   {
    "id": "gdp-table",
@@ -665,7 +665,7 @@
    "frequency": "M",
    "caveats": "Exports and imports include trade between euro area members.",
    "original": false,
-   "updated": "2026-11-16T23:00:00+0100"
+   "updated": "2026-11-17T23:00:00+0100"
   },
   {
    "id": "germany-vacancies-kurzarbeit",
@@ -950,7 +950,7 @@
    "frequency": "M",
    "caveats": "Seasonal adjustment is the ECB's; short-horizon rates are volatile and are revised when the seasonal factors are re-estimated.",
    "original": true,
-   "updated": "2026-11-04T10:06:25+0000"
+   "updated": "2026-11-18T10:32:56+0000"
   },
   {
    "id": "hicp-administered",
@@ -967,7 +967,7 @@
    "frequency": "M",
    "caveats": "Which items count as administered differs by country and changes over time (prc_hicp_admp).",
    "original": false,
-   "updated": "2026-11-04T11:00:00+0100"
+   "updated": "2026-11-18T11:00:00+0100"
   },
   {
    "id": "hicp-bank",
@@ -989,7 +989,7 @@
    "frequency": "M",
    "caveats": "",
    "original": true,
-   "updated": "2026-11-17T18:38:46+0000"
+   "updated": "2026-11-18T12:01:13+0000"
   },
   {
    "id": "hicp-components",
@@ -1006,7 +1006,7 @@
    "frequency": "M",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-04T11:00:00+0100"
+   "updated": "2026-11-18T11:00:00+0100"
   },
   {
    "id": "hicp-constant-tax",
@@ -1028,7 +1028,7 @@
    "frequency": "M",
    "caveats": "Constant-tax data are published with the final HICP only.",
    "original": false,
-   "updated": "2026-11-04T11:00:00+0100"
+   "updated": "2026-11-18T11:00:00+0100"
   },
   {
    "id": "hicp-contributions",
@@ -1050,7 +1050,7 @@
    "frequency": "M",
    "caveats": "Published with the final HICP, so the latest flash month has no contributions yet.",
    "original": false,
-   "updated": "2026-11-04T11:00:00+0100"
+   "updated": "2026-11-18T11:00:00+0100"
   },
   {
    "id": "hicp-countries",
@@ -1067,7 +1067,7 @@
    "frequency": "M",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-04T11:00:00+0100"
+   "updated": "2026-11-18T11:00:00+0100"
   },
   {
    "id": "hicp-country-heatmap",
@@ -1084,7 +1084,7 @@
    "frequency": "M",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-04T11:00:00+0100"
+   "updated": "2026-11-18T11:00:00+0100"
   },
   {
    "id": "hicp-flash-final",
@@ -1101,7 +1101,7 @@
    "frequency": "M",
    "caveats": "The flash estimate is published on the last working day of the month or the first of the next; the final release follows mid-month.",
    "original": false,
-   "updated": "2026-11-04T11:00:00+0100"
+   "updated": "2026-11-18T11:00:00+0100"
   },
   {
    "id": "hicp-headline-core",
@@ -1118,7 +1118,7 @@
    "frequency": "M",
    "caveats": "HICP excludes owner-occupied housing costs. Since January 2026 the index follows ECOICOP version 2 (prc_hicp_minr); the euro area series is the fixed EA21 composition.",
    "original": false,
-   "updated": "2026-11-04T11:00:00+0100"
+   "updated": "2026-11-18T11:00:00+0100"
   },
   {
    "id": "house-prices",
@@ -1250,7 +1250,7 @@
    "frequency": "M",
    "caveats": "Irish pharmaceutical and contract manufacturing swing the euro area index from month to month.",
    "original": false,
-   "updated": "2026-11-16T11:00:00+0100"
+   "updated": "2026-11-18T11:00:00+0100"
   },
   {
    "id": "inflation-expectations-consumers",
@@ -1340,7 +1340,7 @@
    "frequency": "Q",
    "caveats": "The euro area flash for the latest quarter can be revised; China's GDP is the official figure.",
    "original": false,
-   "updated": "2026-11-16T23:00:00+0100"
+   "updated": "2026-11-17T23:00:00+0100"
   },
   {
    "id": "intl-gdp-level",
@@ -1362,7 +1362,7 @@
    "frequency": "Q",
    "caveats": "Measures growth since 2019, not living standards: population grew faster in the US, so the gap per person is smaller than this chart suggests.",
    "original": true,
-   "updated": "2026-11-16T23:00:00+0100"
+   "updated": "2026-11-17T23:00:00+0100"
   },
   {
    "id": "intl-inflation",
@@ -1384,7 +1384,7 @@
    "frequency": "M",
    "caveats": "The OECD's euro area CPI stops at December 2025 (the ECOICOP 2 switch), so the euro area line is Eurostat's HICP. The UK series is the CPI, the US the CPI-U.",
    "original": false,
-   "updated": "2026-11-04T11:00:00+0100"
+   "updated": "2026-11-18T11:00:00+0100"
   },
   {
    "id": "intl-overview",
@@ -1436,7 +1436,7 @@
    "frequency": "M",
    "caveats": "National definitions differ: inflation is the HICP for the euro area and national CPIs elsewhere; China's GDP and CPI are official figures with a different methodology.",
    "original": false,
-   "updated": "2026-11-16T23:00:00+0100"
+   "updated": "2026-11-18T11:00:00+0100"
   },
   {
    "id": "intl-policy-rates",
@@ -1480,7 +1480,7 @@
    "frequency": "M",
    "caveats": "Uses current inflation, not expected inflation, so it overstates tightness when inflation is falling and understates it when inflation is rising.",
    "original": true,
-   "updated": "2026-11-04T11:00:00+0100"
+   "updated": "2026-11-18T11:00:00+0100"
   },
   {
    "id": "intl-unemployment",
@@ -1695,7 +1695,7 @@
    "frequency": "M",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-17T15:22:08+0000"
+   "updated": "2026-11-18T11:00:00+0000"
   },
   {
    "id": "money-credit",
@@ -1744,7 +1744,7 @@
    "frequency": "M",
    "caveats": "The four indicators are released on different days, so their latest months can differ.",
    "original": false,
-   "updated": "2026-11-17T11:00:00+0100"
+   "updated": "2026-11-18T11:00:00+0100"
   },
   {
    "id": "national-employment-growth",
@@ -1847,7 +1847,7 @@
    "frequency": "D",
    "caveats": "Since March 2024 the MRO-DFR spread is 15 basis points; the DFR is the policy rate.",
    "original": false,
-   "updated": "2026-11-17T07:05:20+0000"
+   "updated": "2026-11-18T07:05:26+0000"
   },
   {
    "id": "productivity",
@@ -1864,7 +1864,7 @@
    "frequency": "Q",
    "caveats": "Whole-economy productivity, including the public sector, where output is measured mostly by inputs. Short-time work in 2020 made per-person and per-hour productivity diverge.",
    "original": false,
-   "updated": "2026-11-16T11:00:00+0100"
+   "updated": "2026-11-17T23:00:00+0100"
   },
   {
    "id": "rate-path-forwards",
@@ -1886,7 +1886,7 @@
    "frequency": "D",
    "caveats": "A rough proxy. Market-implied ECB paths (€STR OIS, Euribor and €STR futures) are licensed data and are not used.",
    "original": false,
-   "updated": "2026-11-17T11:00:00+0000"
+   "updated": "2026-11-18T11:00:00+0000"
   },
   {
    "id": "real-wages",
@@ -1918,7 +1918,7 @@
    "frequency": "Q",
    "caveats": "HICP is a consumer price index; deflating by the GDP deflator instead gives the real cost to employers, which moved differently in the 2022 energy shock.",
    "original": true,
-   "updated": "2026-11-16T23:00:00+0100"
+   "updated": "2026-11-18T11:00:00+0100"
   },
   {
    "id": "retail-sales",
@@ -2127,7 +2127,7 @@
    "frequency": "Q",
    "caveats": "A rise means labour costs grow faster than productivity; firms either pass it on into prices or absorb it in margins.",
    "original": false,
-   "updated": "2026-11-16T11:00:00+0100"
+   "updated": "2026-11-17T23:00:00+0100"
   },
   {
    "id": "wage-growth",
@@ -2159,7 +2159,7 @@
    "frequency": "Q",
    "caveats": "Negotiated wages include one-off payments, which made 2024 jump. The labour cost index is per hour, so changes in hours worked move it.",
    "original": false,
-   "updated": "2026-11-16T23:00:00+0100"
+   "updated": "2026-11-17T23:00:00+0100"
   },
   {
    "id": "wages-table",
@@ -2211,7 +2211,7 @@
    "frequency": "M",
    "caveats": "The wage tracker row shows the current month of a forward-looking series.",
    "original": false,
-   "updated": "2026-11-16T23:00:00+0100"
+   "updated": "2026-11-18T11:00:00+0100"
   },
   {
    "id": "wealth-top10",
@@ -2245,7 +2245,7 @@
    "frequency": "D",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-17T11:00:00+0000"
+   "updated": "2026-11-18T11:00:00+0000"
   },
   {
    "id": "yields-aaa",
@@ -2262,7 +2262,7 @@
    "frequency": "D",
    "caveats": "A fitted curve, not a single bond. The AAA set changes when ratings change.",
    "original": false,
-   "updated": "2026-11-17T11:00:00+0000"
+   "updated": "2026-11-18T11:00:00+0000"
   },
   {
    "id": "yields-by-country",

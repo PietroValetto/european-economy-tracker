@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "built_at": "2026-11-17T23:35:30Z",
+ "built_at": "2026-11-18T13:37:18Z",
  "pages": [
   {
    "id": "gdp",
@@ -612,7 +612,7 @@
    "good_direction": "none",
    "chart_id": "hicp-headline-core",
    "page": "inflation",
-   "flag": "e"
+   "flag": null
   },
   {
    "id": "hicp-core",
@@ -625,7 +625,7 @@
    "good_direction": "none",
    "chart_id": "hicp-headline-core",
    "page": "inflation",
-   "flag": "e"
+   "flag": null
   },
   {
    "id": "dfr",
@@ -645,8 +645,8 @@
    "label": "10-year yield (AAA)",
    "value": 3.42,
    "unit": "%",
-   "period": "2026-11-16",
-   "previous": 3.41,
+   "period": "2026-11-17",
+   "previous": 3.42,
    "decimals": 2,
    "good_direction": "none",
    "chart_id": "yields-aaa",
@@ -721,10 +721,10 @@
   {
    "id": "job-postings",
    "label": "Job postings (Indeed)",
-   "value": 104.5,
+   "value": 105.1,
    "unit": "index, Feb 2020 = 100",
-   "period": "2026-11-06",
-   "previous": 104.4,
+   "period": "2026-11-13",
+   "previous": 105.2,
    "decimals": 1,
    "good_direction": "up",
    "chart_id": "indeed-postings",
