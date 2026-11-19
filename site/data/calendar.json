@@ -1,45 +1,8 @@
 {
- "built_at": "2026-11-18T13:53:22Z",
- "from": "2026-11-18",
- "to": "2027-01-02",
+ "built_at": "2026-11-19T14:22:09Z",
+ "from": "2026-11-19",
+ "to": "2027-01-03",
  "events": [
-  {
-   "id": "2026-11-18-hicp-final",
-   "date": "2026-11-18",
-   "time": "11:00",
-   "tz": "Europe/Brussels",
-   "title": "Inflation (HICP), final, October",
-   "publisher": "Eurostat",
-   "tier": 2,
-   "datasets": [
-    "prc_hicp_minr",
-    "prc_hicp_ctr",
-    "prc_hicp_ct",
-    "prc_hicp_fpd",
-    "prc_hicp_inw",
-    "HICP"
-   ],
-   "chart_ids": [
-    "hicp-headline-core",
-    "ecb-underlying",
-    "europe-at-a-glance",
-    "hicp-administered",
-    "hicp-bank",
-    "hicp-components",
-    "hicp-constant-tax",
-    "hicp-contributions",
-    "hicp-countries",
-    "hicp-country-heatmap",
-    "intl-inflation",
-    "intl-overview",
-    "intl-real-policy-rates",
-    "real-wages",
-    "wages-table",
-    "hicp-flash-final",
-    "hicp-3m-annualised"
-   ],
-   "period": "2026-10"
-  },
   {
    "id": "2026-11-19-balance-of-payments",
    "date": "2026-11-19",

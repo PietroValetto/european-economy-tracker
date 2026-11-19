@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "built_at": "2026-11-18T22:59:07Z",
+ "built_at": "2026-11-19T14:03:49Z",
  "pages": [
   {
    "id": "gdp",
@@ -643,9 +643,9 @@
   {
    "id": "yield-10y",
    "label": "10-year yield (AAA)",
-   "value": 3.42,
+   "value": 3.41,
    "unit": "%",
-   "period": "2026-11-17",
+   "period": "2026-11-18",
    "previous": 3.42,
    "decimals": 2,
    "good_direction": "none",
@@ -682,10 +682,10 @@
   {
    "id": "wages",
    "label": "Negotiated wages",
-   "value": 2.4,
+   "value": 2.5,
    "unit": "% y/y",
    "period": "2026-Q2",
-   "previous": 2.6,
+   "previous": 2.5,
    "decimals": 1,
    "good_direction": "none",
    "chart_id": "wage-growth",
@@ -697,8 +697,8 @@
    "label": "Job vacancy rate",
    "value": 2.1,
    "unit": "%",
-   "period": "2026-Q2",
-   "previous": 2.2,
+   "period": "2026-Q3",
+   "previous": 2.1,
    "decimals": 1,
    "good_direction": "none",
    "chart_id": "job-vacancy-rate",
@@ -740,5 +740,20 @@
   "NL",
   "PL"
  ],
- "failed": []
+ "failed": [
+  {
+   "id": "it_employment",
+   "error": "FetchError: HTTP 500",
+   "chart_ids": [
+    "national-employment-growth"
+   ]
+  },
+  {
+   "id": "it_unemployment_rate",
+   "error": "FetchError: HTTP 500",
+   "chart_ids": [
+    "national-unemployment-rates"
+   ]
+  }
+ ]
 }
