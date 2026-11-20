@@ -20,7 +20,7 @@
    "frequency": "Q",
    "caveats": "The vacancy rate covers firms in industry, construction and services; the unemployment rate covers the whole labour force.",
    "original": true,
-   "updated": "2026-11-19T11:00:00+0100"
+   "updated": "2026-11-19T23:00:00+0100"
   },
   {
    "id": "bls-firms",
@@ -139,7 +139,7 @@
    "frequency": "M",
    "caveats": "Construction is volatile and weather-dependent; the first estimate is often revised.",
    "original": false,
-   "updated": "2026-11-19T11:00:00+0100"
+   "updated": "2026-11-20T11:00:00+0100"
   },
   {
    "id": "consumer-price-expectations",
@@ -331,7 +331,7 @@
    "frequency": "Q",
    "caveats": "Counts persons, not jobs or hours; hours per worker have fallen since 2019.",
    "original": false,
-   "updated": "2026-11-18T23:00:00+0100"
+   "updated": "2026-11-19T23:00:00+0100"
   },
   {
    "id": "employment-level",
@@ -348,7 +348,7 @@
    "frequency": "Q",
    "caveats": "The EA21 aggregate is backcast for the whole period with today's 21 members.",
    "original": false,
-   "updated": "2026-11-18T23:00:00+0100"
+   "updated": "2026-11-19T23:00:00+0100"
   },
   {
    "id": "employment-rates",
@@ -404,7 +404,7 @@
    "frequency": "D",
    "caveats": "€STR trades a few basis points below the deposit rate because of excess liquidity.",
    "original": false,
-   "updated": "2026-11-19T07:05:14+0000"
+   "updated": "2026-11-20T07:05:23+0000"
   },
   {
    "id": "eur-usd",
@@ -480,7 +480,7 @@
    "frequency": "M",
    "caveats": "Columns refer to different periods (quarterly, monthly, annual); read across a row with care.",
    "original": false,
-   "updated": "2026-11-18T11:00:00+0100"
+   "updated": "2026-11-19T23:00:00+0100"
   },
   {
    "id": "eurosystem-balance-sheet",
@@ -1436,7 +1436,7 @@
    "frequency": "M",
    "caveats": "National definitions differ: inflation is the HICP for the euro area and national CPIs elsewhere; China's GDP and CPI are official figures with a different methodology.",
    "original": false,
-   "updated": "2026-11-18T11:00:00+0100"
+   "updated": "2026-11-19T23:00:00+0100"
   },
   {
    "id": "intl-policy-rates",
@@ -1502,7 +1502,7 @@
    "frequency": "M",
    "caveats": "The UK figure is a three-month average and arrives later. China publishes no comparable rate.",
    "original": false,
-   "updated": "2026-11-05T23:00:00+0100"
+   "updated": "2026-11-19T23:00:00+0100"
   },
   {
    "id": "job-quality",
@@ -1612,7 +1612,7 @@
    "frequency": "M",
    "caveats": "Rows end in different months or quarters; each label states its period.",
    "original": false,
-   "updated": "2026-11-19T11:00:00+0100"
+   "updated": "2026-11-19T23:00:00+0100"
   },
   {
    "id": "labour-slack",
@@ -1695,7 +1695,7 @@
    "frequency": "M",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-19T15:24:52+0000"
+   "updated": "2026-11-20T11:00:00+0000"
   },
   {
    "id": "money-credit",
@@ -1744,7 +1744,7 @@
    "frequency": "M",
    "caveats": "The four indicators are released on different days, so their latest months can differ.",
    "original": false,
-   "updated": "2026-11-19T11:00:00+0100"
+   "updated": "2026-11-20T11:00:00+0100"
   },
   {
    "id": "national-employment-growth",
@@ -1847,7 +1847,7 @@
    "frequency": "D",
    "caveats": "Since March 2024 the MRO-DFR spread is 15 basis points; the DFR is the policy rate.",
    "original": false,
-   "updated": "2026-11-19T07:05:14+0000"
+   "updated": "2026-11-20T07:05:23+0000"
   },
   {
    "id": "productivity",
@@ -1864,7 +1864,7 @@
    "frequency": "Q",
    "caveats": "Whole-economy productivity, including the public sector, where output is measured mostly by inputs. Short-time work in 2020 made per-person and per-hour productivity diverge.",
    "original": false,
-   "updated": "2026-11-18T23:00:00+0100"
+   "updated": "2026-11-19T23:00:00+0100"
   },
   {
    "id": "rate-path-forwards",
@@ -1886,7 +1886,7 @@
    "frequency": "D",
    "caveats": "A rough proxy. Market-implied ECB paths (€STR OIS, Euribor and €STR futures) are licensed data and are not used.",
    "original": false,
-   "updated": "2026-11-19T11:00:00+0000"
+   "updated": "2026-11-20T11:00:00+0000"
   },
   {
    "id": "real-wages",
@@ -1918,7 +1918,7 @@
    "frequency": "Q",
    "caveats": "HICP is a consumer price index; deflating by the GDP deflator instead gives the real cost to employers, which moved differently in the 2022 energy shock.",
    "original": true,
-   "updated": "2026-11-19T13:40:21+0000"
+   "updated": "2026-11-19T23:00:00+0100"
   },
   {
    "id": "retail-sales",
@@ -1952,7 +1952,7 @@
    "frequency": "M",
    "caveats": "A house application of Claudia Sahm's US rule, not an official indicator. Monthly unemployment is revised, which can move the indicator after the fact.",
    "original": true,
-   "updated": "2026-11-05T23:00:00+0100"
+   "updated": "2026-11-19T23:00:00+0100"
   },
   {
    "id": "sentiment-components",
@@ -2093,7 +2093,7 @@
    "frequency": "M",
    "caveats": "Spain's rate is structurally higher; compare changes rather than levels across countries.",
    "original": false,
-   "updated": "2026-11-05T23:00:00+0100"
+   "updated": "2026-11-19T23:00:00+0100"
   },
   {
    "id": "unemployment-rate",
@@ -2110,7 +2110,7 @@
    "frequency": "M",
    "caveats": "Youth unemployment rates are high partly because many young people are students and not in the labour force: the denominator is small.",
    "original": false,
-   "updated": "2026-11-05T23:00:00+0100"
+   "updated": "2026-11-19T23:00:00+0100"
   },
   {
    "id": "unit-labour-costs",
@@ -2127,7 +2127,7 @@
    "frequency": "Q",
    "caveats": "A rise means labour costs grow faster than productivity; firms either pass it on into prices or absorb it in margins.",
    "original": false,
-   "updated": "2026-11-18T23:00:00+0100"
+   "updated": "2026-11-19T23:00:00+0100"
   },
   {
    "id": "wage-growth",
@@ -2159,7 +2159,7 @@
    "frequency": "Q",
    "caveats": "Negotiated wages include one-off payments, which made 2024 jump. The labour cost index is per hour, so changes in hours worked move it.",
    "original": false,
-   "updated": "2026-11-19T13:40:21+0000"
+   "updated": "2026-11-19T23:00:00+0100"
   },
   {
    "id": "wages-table",
@@ -2211,7 +2211,7 @@
    "frequency": "M",
    "caveats": "The wage tracker row shows the current month of a forward-looking series.",
    "original": false,
-   "updated": "2026-11-19T13:40:21+0000"
+   "updated": "2026-11-19T23:00:00+0100"
   },
   {
    "id": "wealth-top10",
@@ -2245,7 +2245,7 @@
    "frequency": "D",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-19T11:00:00+0000"
+   "updated": "2026-11-20T11:00:00+0000"
   },
   {
    "id": "yields-aaa",
@@ -2262,7 +2262,7 @@
    "frequency": "D",
    "caveats": "A fitted curve, not a single bond. The AAA set changes when ratings change.",
    "original": false,
-   "updated": "2026-11-19T11:00:00+0000"
+   "updated": "2026-11-20T11:00:00+0000"
   },
   {
    "id": "yields-by-country",

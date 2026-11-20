@@ -1,76 +1,8 @@
 {
- "built_at": "2026-11-19T14:22:09Z",
- "from": "2026-11-19",
- "to": "2027-01-03",
+ "built_at": "2026-11-20T13:54:10Z",
+ "from": "2026-11-20",
+ "to": "2027-01-04",
  "events": [
-  {
-   "id": "2026-11-19-balance-of-payments",
-   "date": "2026-11-19",
-   "time": "11:00",
-   "tz": "Europe/Brussels",
-   "title": "Balance of payments, September",
-   "publisher": "Eurostat",
-   "tier": 2,
-   "datasets": [
-    "bop_c6_m",
-    "bop_c6_q"
-   ],
-   "chart_ids": [],
-   "period": "2026-09"
-  },
-  {
-   "id": "2026-11-19-construction",
-   "date": "2026-11-19",
-   "time": "11:00",
-   "tz": "Europe/Brussels",
-   "title": "Production in construction, September",
-   "publisher": "Eurostat",
-   "tier": 2,
-   "datasets": [
-    "sts_copr_m"
-   ],
-   "chart_ids": [
-    "construction-output",
-    "monthly-activity-table"
-   ],
-   "period": "2026-09"
-  },
-  {
-   "id": "2026-11-19-job-vacancies-flash",
-   "date": "2026-11-19",
-   "time": "11:00",
-   "tz": "Europe/Brussels",
-   "title": "Job vacancies, flash estimate, Q3 2026",
-   "publisher": "Eurostat",
-   "tier": 3,
-   "datasets": [
-    "jvs_q_r21"
-   ],
-   "chart_ids": [
-    "job-vacancy-rate",
-    "beveridge-curve",
-    "labour-rates-table"
-   ],
-   "period": "2026-Q3"
-  },
-  {
-   "id": "2026-11-19-labour-costs-flash",
-   "date": "2026-11-19",
-   "time": "11:00",
-   "tz": "Europe/Brussels",
-   "title": "Labour cost index, flash estimate, Q3 2026",
-   "publisher": "Eurostat",
-   "tier": 3,
-   "datasets": [
-    "lc_lci_r2_q"
-   ],
-   "chart_ids": [
-    "labour-cost-index",
-    "wage-growth",
-    "wages-table"
-   ],
-   "period": "2026-Q3"
-  },
   {
    "id": "2026-11-20-gdp-by-industry",
    "date": "2026-11-20",
