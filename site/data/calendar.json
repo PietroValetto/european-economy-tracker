@@ -1,47 +1,8 @@
 {
- "built_at": "2026-11-20T13:54:10Z",
- "from": "2026-11-20",
- "to": "2027-01-04",
+ "built_at": "2026-11-21T13:15:02Z",
+ "from": "2026-11-21",
+ "to": "2027-01-05",
  "events": [
-  {
-   "id": "2026-11-20-gdp-by-industry",
-   "date": "2026-11-20",
-   "time": "11:00",
-   "tz": "Europe/Brussels",
-   "title": "GDP and employment by industry, Q3 2026",
-   "publisher": "Eurostat",
-   "tier": 3,
-   "datasets": [
-    "namq_10_a10",
-    "namq_10_a10_e"
-   ],
-   "chart_ids": [],
-   "period": "2026-Q3"
-  },
-  {
-   "id": "2026-11-20-government-debt-structure",
-   "date": "2026-11-20",
-   "time": "11:00",
-   "tz": "Europe/Brussels",
-   "title": "Structure of government debt",
-   "publisher": "Eurostat",
-   "tier": 3,
-   "datasets": [],
-   "chart_ids": [],
-   "period": null
-  },
-  {
-   "id": "2026-11-20-consumer-confidence-flash",
-   "date": "2026-11-20",
-   "time": "16:00",
-   "tz": "Europe/Brussels",
-   "title": "Consumer confidence, flash estimate, November",
-   "publisher": "European Commission",
-   "tier": 2,
-   "datasets": [],
-   "chart_ids": [],
-   "period": "2026-11"
-  },
   {
    "id": "2026-11-27-business-consumer-surveys",
    "date": "2026-11-27",
