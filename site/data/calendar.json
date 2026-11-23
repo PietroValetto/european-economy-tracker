@@ -1,7 +1,7 @@
 {
- "built_at": "2026-11-22T13:08:05Z",
- "from": "2026-11-22",
- "to": "2027-01-06",
+ "built_at": "2026-11-23T16:04:43Z",
+ "from": "2026-11-23",
+ "to": "2027-01-07",
  "events": [
   {
    "id": "2026-11-27-business-consumer-surveys",
@@ -521,6 +521,63 @@
    ],
    "chart_ids": [],
    "period": null
+  },
+  {
+   "id": "2027-01-07-unemployment",
+   "date": "2027-01-07",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Unemployment, November 2026",
+   "publisher": "Eurostat",
+   "tier": 1,
+   "datasets": [
+    "une_rt_m"
+   ],
+   "chart_ids": [
+    "unemployment-rate",
+    "beveridge-curve",
+    "europe-at-a-glance",
+    "intl-overview",
+    "intl-unemployment",
+    "labour-rates-table",
+    "sahm-rule",
+    "unemployment-countries"
+   ],
+   "period": "2026-11"
+  },
+  {
+   "id": "2027-01-07-business-consumer-surveys",
+   "date": "2027-01-07",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Economic sentiment and business and consumer surveys, December 2026",
+   "publisher": "European Commission",
+   "tier": 2,
+   "datasets": [
+    "ei_bssi_m_r2",
+    "ei_bsco_m"
+   ],
+   "chart_ids": [
+    "economic-sentiment",
+    "esi-countries",
+    "sentiment-components",
+    "consumer-price-expectations"
+   ],
+   "period": "2026-12"
+  },
+  {
+   "id": "2027-01-07-producer-prices",
+   "date": "2027-01-07",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Industrial producer prices, November 2026",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "sts_inppd_m"
+   ],
+   "chart_ids": [],
+   "period": "2026-11"
   }
  ]
 }
