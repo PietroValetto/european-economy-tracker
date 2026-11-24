@@ -20,7 +20,7 @@
    "frequency": "Q",
    "caveats": "The vacancy rate covers firms in industry, construction and services; the unemployment rate covers the whole labour force.",
    "original": true,
-   "updated": "2026-11-20T23:00:00+0100"
+   "updated": "2026-11-24T11:00:00+0100"
   },
   {
    "id": "bls-firms",
@@ -105,7 +105,7 @@
    "frequency": "D",
    "caveats": "A higher reading means more stress; the scale is bounded between 0 and 1.",
    "original": false,
-   "updated": "2026-11-23T09:07:40+0000"
+   "updated": "2026-11-24T11:56:26+0000"
   },
   {
    "id": "ciss-countries",
@@ -122,7 +122,7 @@
    "frequency": "D",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-23T09:07:40+0000"
+   "updated": "2026-11-24T11:56:26+0000"
   },
   {
    "id": "construction-output",
@@ -404,7 +404,7 @@
    "frequency": "D",
    "caveats": "€STR trades a few basis points below the deposit rate because of excess liquidity.",
    "original": false,
-   "updated": "2026-11-23T07:05:32+0000"
+   "updated": "2026-11-24T07:04:54+0000"
   },
   {
    "id": "eur-usd",
@@ -421,7 +421,7 @@
    "frequency": "D",
    "caveats": "A rise means a stronger euro.",
    "original": false,
-   "updated": "2026-11-23T14:57:41+0000"
+   "updated": "2026-11-24T14:57:01+0000"
   },
   {
    "id": "euro-effective-rate",
@@ -480,7 +480,7 @@
    "frequency": "M",
    "caveats": "Columns refer to different periods (quarterly, monthly, annual); read across a row with care.",
    "original": false,
-   "updated": "2026-11-20T23:00:00+0100"
+   "updated": "2026-11-24T11:00:00+0100"
   },
   {
    "id": "eurosystem-balance-sheet",
@@ -497,7 +497,7 @@
    "frequency": "W",
    "caveats": "Quarter-end revaluations of gold and foreign currency cause small jumps.",
    "original": false,
-   "updated": "2026-11-17T14:17:44+0000"
+   "updated": "2026-11-24T14:50:06+0000"
   },
   {
    "id": "fiscal-table",
@@ -1436,7 +1436,7 @@
    "frequency": "M",
    "caveats": "National definitions differ: inflation is the HICP for the euro area and national CPIs elsewhere; China's GDP and CPI are official figures with a different methodology.",
    "original": false,
-   "updated": "2026-11-20T23:00:00+0100"
+   "updated": "2026-11-24T11:00:00+0100"
   },
   {
    "id": "intl-policy-rates",
@@ -1502,7 +1502,7 @@
    "frequency": "M",
    "caveats": "The UK figure is a three-month average and arrives later. China publishes no comparable rate.",
    "original": false,
-   "updated": "2026-11-20T23:00:00+0100"
+   "updated": "2026-11-24T11:00:00+0100"
   },
   {
    "id": "job-quality",
@@ -1612,7 +1612,7 @@
    "frequency": "M",
    "caveats": "Rows end in different months or quarters; each label states its period.",
    "original": false,
-   "updated": "2026-11-20T23:00:00+0100"
+   "updated": "2026-11-24T11:00:00+0100"
   },
   {
    "id": "labour-slack",
@@ -1695,7 +1695,7 @@
    "frequency": "M",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-23T15:17:33+0000"
+   "updated": "2026-11-24T15:21:43+0000"
   },
   {
    "id": "money-credit",
@@ -1744,7 +1744,7 @@
    "frequency": "M",
    "caveats": "The four indicators are released on different days, so their latest months can differ.",
    "original": false,
-   "updated": "2026-11-21T11:00:00+0100"
+   "updated": "2026-11-24T11:00:00+0100"
   },
   {
    "id": "national-employment-growth",
@@ -1847,7 +1847,7 @@
    "frequency": "D",
    "caveats": "Since March 2024 the MRO-DFR spread is 15 basis points; the DFR is the policy rate.",
    "original": false,
-   "updated": "2026-11-23T07:05:32+0000"
+   "updated": "2026-11-24T07:04:54+0000"
   },
   {
    "id": "productivity",
@@ -1886,7 +1886,7 @@
    "frequency": "D",
    "caveats": "A rough proxy. Market-implied ECB paths (€STR OIS, Euribor and €STR futures) are licensed data and are not used.",
    "original": false,
-   "updated": "2026-11-23T11:00:00+0000"
+   "updated": "2026-11-24T11:00:00+0000"
   },
   {
    "id": "real-wages",
@@ -1935,7 +1935,7 @@
    "frequency": "M",
    "caveats": "Retail covers about a third of household consumption; it excludes cars, fuel stations are included.",
    "original": false,
-   "updated": "2026-11-21T11:00:00+0100"
+   "updated": "2026-11-24T11:00:00+0100"
   },
   {
    "id": "sahm-rule",
@@ -1952,7 +1952,7 @@
    "frequency": "M",
    "caveats": "A house application of Claudia Sahm's US rule, not an official indicator. Monthly unemployment is revised, which can move the indicator after the fact.",
    "original": true,
-   "updated": "2026-11-20T23:00:00+0100"
+   "updated": "2026-11-24T11:00:00+0100"
   },
   {
    "id": "sentiment-components",
@@ -2093,7 +2093,7 @@
    "frequency": "M",
    "caveats": "Spain's rate is structurally higher; compare changes rather than levels across countries.",
    "original": false,
-   "updated": "2026-11-20T23:00:00+0100"
+   "updated": "2026-11-24T11:00:00+0100"
   },
   {
    "id": "unemployment-rate",
@@ -2110,7 +2110,7 @@
    "frequency": "M",
    "caveats": "Youth unemployment rates are high partly because many young people are students and not in the labour force: the denominator is small.",
    "original": false,
-   "updated": "2026-11-20T23:00:00+0100"
+   "updated": "2026-11-24T11:00:00+0100"
   },
   {
    "id": "unit-labour-costs",
@@ -2228,7 +2228,7 @@
    "frequency": "Q",
    "caveats": "Experimental statistics: survey data (HFCS) aligned to national accounts totals, with modelled top tails. Cross-country levels are less reliable than changes over time.",
    "original": false,
-   "updated": "2026-08-24T09:00:33+0000"
+   "updated": "2026-11-24T15:28:54+0000"
   },
   {
    "id": "yield-curve-slope",
@@ -2245,7 +2245,7 @@
    "frequency": "D",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-23T11:00:00+0000"
+   "updated": "2026-11-24T11:00:00+0000"
   },
   {
    "id": "yields-aaa",
@@ -2262,7 +2262,7 @@
    "frequency": "D",
    "caveats": "A fitted curve, not a single bond. The AAA set changes when ratings change.",
    "original": false,
-   "updated": "2026-11-23T11:00:00+0000"
+   "updated": "2026-11-24T11:00:00+0000"
   },
   {
    "id": "yields-by-country",

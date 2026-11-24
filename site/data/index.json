@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "built_at": "2026-11-24T02:57:56Z",
+ "built_at": "2026-11-24T15:28:06Z",
  "pages": [
   {
    "id": "gdp",
@@ -643,10 +643,10 @@
   {
    "id": "yield-10y",
    "label": "10-year yield (AAA)",
-   "value": 3.36,
+   "value": 3.32,
    "unit": "%",
-   "period": "2026-11-20",
-   "previous": 3.44,
+   "period": "2026-11-23",
+   "previous": 3.36,
    "decimals": 2,
    "good_direction": "none",
    "chart_id": "yields-aaa",
@@ -656,10 +656,10 @@
   {
    "id": "eur-usd",
    "label": "EUR/USD",
-   "value": 1.0939,
+   "value": 1.0963,
    "unit": "US$ per €",
-   "period": "2026-11-23",
-   "previous": 1.099,
+   "period": "2026-11-24",
+   "previous": 1.0939,
    "decimals": 4,
    "good_direction": "none",
    "chart_id": "eur-usd",

@@ -1,7 +1,7 @@
 {
- "built_at": "2026-11-23T16:04:43Z",
- "from": "2026-11-23",
- "to": "2027-01-07",
+ "built_at": "2026-11-24T15:35:26Z",
+ "from": "2026-11-24",
+ "to": "2027-01-08",
  "events": [
   {
    "id": "2026-11-27-business-consumer-surveys",
@@ -575,6 +575,37 @@
    "tier": 2,
    "datasets": [
     "sts_inppd_m"
+   ],
+   "chart_ids": [],
+   "period": "2026-11"
+  },
+  {
+   "id": "2027-01-08-retail-trade",
+   "date": "2027-01-08",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Retail trade, November 2026",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "sts_trtu_m"
+   ],
+   "chart_ids": [
+    "monthly-activity-table",
+    "retail-sales"
+   ],
+   "period": "2026-11"
+  },
+  {
+   "id": "2027-01-08-import-prices",
+   "date": "2027-01-08",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Industrial import prices, November 2026",
+   "publisher": "Eurostat",
+   "tier": 3,
+   "datasets": [
+    "sts_inpi_m"
    ],
    "chart_ids": [],
    "period": "2026-11"
