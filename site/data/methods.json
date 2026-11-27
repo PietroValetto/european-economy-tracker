@@ -88,7 +88,7 @@
    "frequency": "Q",
    "caveats": "Survey-based and quarterly (January, April, July, October).",
    "original": false,
-   "updated": "2026-10-29T11:00:00+0100"
+   "updated": "2026-11-27T11:00:00+0100"
   },
   {
    "id": "ciss",
@@ -156,7 +156,7 @@
    "frequency": "M",
    "caveats": "A qualitative balance, not a rate of inflation.",
    "original": false,
-   "updated": "2026-10-29T11:00:00+0100"
+   "updated": "2026-11-27T11:00:00+0100"
   },
   {
    "id": "current-account-countries",
@@ -280,7 +280,7 @@
    "frequency": "M",
    "caveats": "A survey of expectations and assessments, not a measure of output; it leads GDP turning points but can miss levels.",
    "original": false,
-   "updated": "2026-10-29T11:00:00+0100"
+   "updated": "2026-11-27T11:00:00+0100"
   },
   {
    "id": "electricity-prices",
@@ -314,7 +314,7 @@
    "frequency": "M",
    "caveats": "A survey of intentions, published before the month ends; it leads employment by a few months but not one for one.",
    "original": false,
-   "updated": "2026-10-29T11:00:00+0100"
+   "updated": "2026-11-27T11:00:00+0100"
   },
   {
    "id": "employment-growth",
@@ -382,7 +382,7 @@
    "frequency": "M",
    "caveats": "",
    "original": false,
-   "updated": "2026-10-29T11:00:00+0100"
+   "updated": "2026-11-27T11:00:00+0100"
   },
   {
    "id": "estr-vs-dfr",
@@ -404,7 +404,7 @@
    "frequency": "D",
    "caveats": "€STR trades a few basis points below the deposit rate because of excess liquidity.",
    "original": false,
-   "updated": "2026-11-26T07:05:22+0000"
+   "updated": "2026-11-27T07:05:12+0000"
   },
   {
    "id": "eur-usd",
@@ -546,7 +546,7 @@
    "frequency": "Q",
    "caveats": "Counts jobs, not persons, and excludes the public sector and the self-employed.",
    "original": false,
-   "updated": "2026-10-30T12:00:00+0100"
+   "updated": "2026-11-27T12:00:00+0100"
   },
   {
    "id": "gas-prices",
@@ -687,7 +687,7 @@
    "frequency": "M",
    "caveats": "The 2020 short-time work peak (about 6 million) dwarfs later values; use the window buttons. Italy's cassa integrazione and Spain's ERTE are not yet in the tracker.",
    "original": false,
-   "updated": "2026-10-30T10:11:21+0100"
+   "updated": "2026-11-27T10:02:40+0100"
   },
   {
    "id": "gov-balance",
@@ -1267,7 +1267,7 @@
    "frequency": "M",
    "caveats": "Households' expectations sit well above measured inflation on average; watch the direction rather than the level.",
    "original": false,
-   "updated": "2026-11-26T14:40:15+0000"
+   "updated": "2026-11-27T09:00:00+0000"
   },
   {
    "id": "inflation-expectations-spf",
@@ -1612,7 +1612,7 @@
    "frequency": "M",
    "caveats": "Rows end in different months or quarters; each label states its period.",
    "original": false,
-   "updated": "2026-11-24T11:00:00+0100"
+   "updated": "2026-11-27T11:00:00+0100"
   },
   {
    "id": "labour-slack",
@@ -1695,7 +1695,7 @@
    "frequency": "M",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-26T15:26:29+0000"
+   "updated": "2026-11-27T11:00:00+0000"
   },
   {
    "id": "money-credit",
@@ -1744,7 +1744,7 @@
    "frequency": "M",
    "caveats": "The four indicators are released on different days, so their latest months can differ.",
    "original": false,
-   "updated": "2026-11-25T11:00:00+0100"
+   "updated": "2026-11-27T11:00:00+0100"
   },
   {
    "id": "national-employment-growth",
@@ -1776,7 +1776,7 @@
    "frequency": "M",
    "caveats": "German monthly employment follows the national-accounts concept (like Eurostat's namq_10_pe); Italian and Dutch figures are survey estimates with sampling error of tens of thousands a month; Polish data cover about 6.4 million of 17.5 million employed. ISTAT revises past months with every release (edition).",
    "original": false,
-   "updated": "2026-11-19T06:30:00+0100"
+   "updated": "2026-11-27T10:02:40+0100"
   },
   {
    "id": "national-unemployment-rates",
@@ -1803,7 +1803,7 @@
    "frequency": "M",
    "caveats": "Eurostat's une_rt_m carries harmonised rates for every country a few days to weeks later; use it for comparisons across countries.",
    "original": false,
-   "updated": "2026-11-19T06:30:00+0100"
+   "updated": "2026-11-27T10:02:40+0100"
   },
   {
    "id": "poland-enterprise-sector",
@@ -1847,7 +1847,7 @@
    "frequency": "D",
    "caveats": "Since March 2024 the MRO-DFR spread is 15 basis points; the DFR is the policy rate.",
    "original": false,
-   "updated": "2026-11-26T07:05:22+0000"
+   "updated": "2026-11-27T07:05:12+0000"
   },
   {
    "id": "productivity",
@@ -1886,7 +1886,7 @@
    "frequency": "D",
    "caveats": "A rough proxy. Market-implied ECB paths (€STR OIS, Euribor and €STR futures) are licensed data and are not used.",
    "original": false,
-   "updated": "2026-11-26T11:00:00+0000"
+   "updated": "2026-11-27T11:00:00+0000"
   },
   {
    "id": "real-wages",
@@ -1935,7 +1935,7 @@
    "frequency": "M",
    "caveats": "Retail covers about a third of household consumption; it excludes cars, fuel stations are included.",
    "original": false,
-   "updated": "2026-11-25T11:00:00+0100"
+   "updated": "2026-11-27T11:00:00+0100"
   },
   {
    "id": "sahm-rule",
@@ -1969,7 +1969,7 @@
    "frequency": "M",
    "caveats": "Balances are not comparable in level across sectors; compare each with its own history.",
    "original": false,
-   "updated": "2026-10-29T11:00:00+0100"
+   "updated": "2026-11-27T11:00:00+0100"
   },
   {
    "id": "services-turnover",
@@ -2245,7 +2245,7 @@
    "frequency": "D",
    "caveats": "",
    "original": false,
-   "updated": "2026-11-26T11:00:00+0000"
+   "updated": "2026-11-27T11:00:00+0000"
   },
   {
    "id": "yields-aaa",
@@ -2262,7 +2262,7 @@
    "frequency": "D",
    "caveats": "A fitted curve, not a single bond. The AAA set changes when ratings change.",
    "original": false,
-   "updated": "2026-11-26T11:00:00+0000"
+   "updated": "2026-11-27T11:00:00+0000"
   },
   {
    "id": "yields-by-country",
