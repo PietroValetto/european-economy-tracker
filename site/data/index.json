@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "built_at": "2026-11-27T14:35:17Z",
+ "built_at": "2026-11-28T00:08:08Z",
  "pages": [
   {
    "id": "gdp",
@@ -656,10 +656,10 @@
   {
    "id": "eur-usd",
    "label": "EUR/USD",
-   "value": 1.0975,
+   "value": 1.0957,
    "unit": "US$ per €",
-   "period": "2026-11-26",
-   "previous": 1.0935,
+   "period": "2026-11-27",
+   "previous": 1.0975,
    "decimals": 4,
    "good_direction": "none",
    "chart_id": "eur-usd",
