@@ -1,28 +1,8 @@
 {
- "built_at": "2026-11-27T14:39:06Z",
- "from": "2026-11-27",
- "to": "2027-01-11",
+ "built_at": "2026-11-28T13:51:57Z",
+ "from": "2026-11-28",
+ "to": "2027-01-12",
  "events": [
-  {
-   "id": "2026-11-27-business-consumer-surveys",
-   "date": "2026-11-27",
-   "time": "11:00",
-   "tz": "Europe/Brussels",
-   "title": "Economic sentiment and business and consumer surveys, November",
-   "publisher": "European Commission",
-   "tier": 2,
-   "datasets": [
-    "ei_bssi_m_r2",
-    "ei_bsco_m"
-   ],
-   "chart_ids": [
-    "economic-sentiment",
-    "esi-countries",
-    "sentiment-components",
-    "consumer-price-expectations"
-   ],
-   "period": "2026-11"
-  },
   {
    "id": "2026-12-01-hicp-flash",
    "date": "2026-12-01",
@@ -687,6 +667,38 @@
     "services-turnover"
    ],
    "period": null
+  },
+  {
+   "id": "2027-01-12-balance-of-payments",
+   "date": "2027-01-12",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Balance of payments, November 2026",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "bop_c6_m",
+    "bop_c6_q"
+   ],
+   "chart_ids": [],
+   "period": "2026-11"
+  },
+  {
+   "id": "2027-01-12-sector-accounts",
+   "date": "2027-01-12",
+   "time": "11:00",
+   "tz": "Europe/Brussels",
+   "title": "Household and business accounts, Q3 2026",
+   "publisher": "Eurostat",
+   "tier": 2,
+   "datasets": [
+    "nasq_10_ki",
+    "nasq_10_nf_tr"
+   ],
+   "chart_ids": [
+    "household-saving-rate"
+   ],
+   "period": "2026-Q3"
   }
  ]
 }
